@@ -34,7 +34,7 @@
 
     <section class="section section--tight" id="today"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker">TODAY</div><h2>今日のK3</h2></div><span class="date-pill" id="todayDate">--/--</span></div>
-      <article class="today-card empty-state">
+      <article class="today-card empty-state" id="todayCard">
         <div class="today-card__date">TODAY</div>
         <div class="today-card__content"><h3>本日の開催情報を準備中</h3><p>Drive連携後、確認済みの予定だけをここに自動表示します。</p></div>
         <span class="status">準備中</span>
@@ -43,15 +43,14 @@
 
     <section class="section" id="schedule"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker">NEXT SCHEDULE</div><h2>次回予定</h2></div><a class="text-link" href="#all-schedule">一覧を見る →</a></div>
-      <div class="card-grid">
-        <article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">SAMPLE</span><time>10/--</time></div><h3>店舗名が入ります</h3><p class="event-name">取材・企画名</p><p class="event-note">公開前に出典・確認日・確度をチェック</p></article>
-        <article class="event-card"><div class="event-card__meta"><span class="chip">SAMPLE</span><time>10/--</time></div><h3>店舗名が入ります</h3><p class="event-name">取材・企画名</p><p class="event-note">店舗公式・本人発信を優先して掲載</p></article>
+      <div class="card-grid" id="scheduleList">
+        <article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回予定を確認中</h3><p class="event-name">公開可能な確認済みデータを準備しています</p><p class="event-note">K3 DATA MASTER連携準備中</p></article>
       </div>
     </div></section>
 
     <section class="section section--dark" id="results"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker section-kicker--light">LATEST RESULTS</div><h2>直近結果</h2></div></div>
-      <div class="result-card">
+      <div class="result-card" id="resultCard">
         <div class="result-card__top"><div><span class="chip chip--light">RESULT</span><h3>結果データ準備中</h3></div><div class="score">—</div></div>
         <div class="metrics"><div><small>平均差枚</small><strong>—</strong></div><div><small>勝率</small><strong>—</strong></div><div><small>対象台数</small><strong>—</strong></div></div>
         <p class="result-card__note">結果取得元が確定したら、店舗別・取材別の履歴と傾向を表示します。</p>
@@ -60,7 +59,7 @@
 
     <section class="section" id="coverage"><div class="container">
       <div class="section-kicker">COVERAGE</div><h2>取材・企画一覧</h2>
-      <div class="coverage-list">
+      <div class="coverage-list" id="coverageList">
         <article><span>01</span><div><h3>クロウ</h3><p>説明・過去実績・開催店舗をここに集約</p></div></article>
         <article><span>02</span><div><h3>スコープ</h3><p>確認済み情報だけを掲載する設計</p></div></article>
         <article><span>03</span><div><h3>その他K3関連企画</h3><p>取材名が増えても追加しやすい構成</p></div></article>
