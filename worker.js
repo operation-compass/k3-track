@@ -6,7 +6,7 @@ export default {
     if (
       url.pathname === "/" ||
       url.pathname === "/index.html" ||
-      url.pathname === "/assets/k3-track-og.png"
+      url.pathname === "/assets/crow-scope-hq.webp"
     ) {
       const headers = new Headers(response.headers);
       headers.set("cache-control", "no-cache, no-store, must-revalidate");
