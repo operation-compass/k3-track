@@ -1,3 +1,5 @@
+const rankOf=v=>{const s=String(v||''); if(/^A[:：]?/.test(s)) return 'A'; if(/^B[:：]?/.test(s)) return 'B'; if(/^C[:：]?/.test(s)) return 'C'; return '';};
+const trustBadge=v=>{const r=rankOf(v); return r?`<span class="trust-badge trust-${r.toLowerCase()}">${r}</span>`:'';};
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const params=new URLSearchParams(location.search);
 const name=params.get('name')||'';
@@ -30,7 +32,7 @@ Promise.all([fetch('./coverage-data.json',{cache:'no-store'}).then(r=>r.json()),
   document.getElementById('coverageStores').innerHTML=d.storeList.map(s=>`<a class="coverage-store" href="./store.html?name=${encodeURIComponent(s.name)}"><strong>${esc(s.name)}</strong><span>${esc(s.count)}回 →</span></a>`).join('');
   const results=d.results||[];
   document.getElementById('coverageResults').innerHTML=results.length?results.map(x=>`<article class="coverage-result-card"><span class="chip chip--light">${esc(dateShort(x.date))}</span><h3>${esc(x.store)}</h3><p>${esc(x.note||x.detail||'確認済み結果')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">結果出典を見る →</a>`:''}</article>`).join(''):'<div class="empty-detail">結果データは順次追加中です。</div>';
-  document.getElementById('coverageHistory').innerHTML=d.events.map(x=>`<article class="coverage-history-item"><div class="coverage-history-item__top"><time>${esc(dateShort(x.date))}</time><span class="chip">${esc(x.kind||'K3')}</span></div><h3>${esc(x.store)}</h3><p>${esc(x.memo||x.event||'確認済み情報')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
+  document.getElementById('coverageHistory').innerHTML=d.events.map(x=>`<article class="coverage-history-item"><div class="coverage-history-item__top"><time>${esc(dateShort(x.date))}</time><div class="history-badges">${trustBadge(x.confidence)}<span class="chip">${esc(x.kind||'K3')}</span></div></div><h3>${esc(x.store)}</h3><p>${esc(x.memo||x.event||'確認済み情報')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
 }).catch(()=>{
   document.getElementById('coverageTitle').textContent='読み込みエラー';
   document.getElementById('coverageHistory').innerHTML='<div class="empty-detail">データを読み込めませんでした。</div>';
