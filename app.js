@@ -46,9 +46,10 @@ function renderVisualShowcase(items=[],assetData={}){
     const coverage=(items||[]).find(x=>x.name===name);
     const desc=coverage?.description||'企画情報・実績を順次追加';
     const asset=(assetData.items||[]).find(x=>x.key===name && x.image);
+    const fallback=`<div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`;
     const art=asset
-      ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}"></div>`
-      : `<div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`;
+      ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`
+      : fallback;
     return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}">${art}<div class="visual-teaser__body"><small>K3 COVERAGE</small><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
   });
   el.innerHTML=rows.join('');
