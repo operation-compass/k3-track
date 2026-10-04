@@ -9,22 +9,27 @@ Promise.all([fetch('./coverage-data.json',{cache:'no-store'}).then(r=>r.json()),
   document.title=(name||'取材・企画別履歴')+'｜K3 TRACK β';
   document.getElementById('coverageTitle').textContent=name||'取材・企画が見つかりません';
   const visual=document.getElementById('coverageVisual');
-  const asset=(assets.items||[]).find(x=>x.key===name && x.image);
+  const asset=(assets.items||[]).find(x=>x.key===name && x.type!=='character' && x.image);
   if(visual){
-    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||name)}">`:`<div class="detail-visual__fallback"><small>K3 COVERAGE</small><strong>${esc(name||'K3')}</strong><span>公式素材反映準備済み</span></div>`;
+    const fallback=`<div class="detail-visual__fallback"><small>K3 COVERAGE</small><strong>${esc(name||'K3')}</strong><span>画像準備中</span></div>`;
+    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" decoding="async" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`:`<div class="detail-visual__fallback"><small>K3 COVERAGE</small><strong>${esc(name||'K3')}</strong><span>画像準備中</span></div>`;
     visual.setAttribute('aria-hidden','false');
   }
+  const status=document.createElement('span');
+  status.className='coverage-status'+(Number(d?.count)>0?'':' is-pending');
+  status.textContent=Number(d?.count)>0?'実績あり':'データ収集中';
+  visual?.insertAdjacentElement('beforebegin',status);
   const character=document.getElementById('coverageCharacter');
   const charAsset=(assets.items||[]).find(x=>x.key===name && x.type==='character' && x.image);
   if(character){
     character.innerHTML=charAsset?`<img src="${esc(charAsset.image)}" alt="${esc(charAsset.label||name)}">`:'';
   }
   if(!d){
-    document.getElementById('coverageSub').textContent='この取材・企画の確認済みデータはありません。';
+    document.getElementById('coverageSub').textContent='開催日・店舗・結果データを収集中です。確認でき次第追加します。';
     document.getElementById('coverageSummary').innerHTML='';
-    document.getElementById('coverageStores').innerHTML='<div class="empty-detail">データなし</div>';
-    document.getElementById('coverageResults').innerHTML='<div class="empty-detail">データなし</div>';
-    document.getElementById('coverageHistory').innerHTML='<div class="empty-detail">データなし</div>';
+    document.getElementById('coverageStores').innerHTML='<div class="empty-detail">データ収集中</div>';
+    document.getElementById('coverageResults').innerHTML='<div class="empty-detail">データ収集中</div>';
+    document.getElementById('coverageHistory').innerHTML='<div class="empty-detail">データ収集中</div>';
     return;
   }
   document.getElementById('coverageSub').textContent='確認済みの開催履歴を、店舗別・時系列で整理しています。';
