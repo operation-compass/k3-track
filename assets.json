@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T20:48:00+09:00",
+  "updated_at": "2026-10-04T21:35:00+09:00",
   "received": true,
   "source_note": "ユーザー提供・使用許可確認済み",
   "items": [
@@ -8,7 +8,7 @@
       "type": "logo",
       "key": "クロウ・スコープ取材",
       "label": "クロウ・スコープ取材ロゴ",
-      "image": "",
+      "image": "./assets/crow-scope.webp",
       "local_name": "IMG_8743.jpeg",
       "planned_path": "./assets/crow-scope.webp",
       "rights": "許可済",
@@ -16,7 +16,8 @@
         "web",
         "sns"
       ],
-      "status": "受領済"
+      "status": "公開反映済",
+      "web_url": "https://k3-track.occompass-info.workers.dev/assets/crow-scope.webp"
     },
     {
       "id": "AST-002",
@@ -53,7 +54,7 @@
       "type": "logo",
       "key": "NUMBER MISSION:0to9",
       "label": "NUMBER MISSION:0to9",
-      "image": "",
+      "image": "./assets/number-mission.webp",
       "local_name": "IMG_8737.jpeg",
       "planned_path": "./assets/number-mission.webp",
       "rights": "許可済",
@@ -61,7 +62,8 @@
         "web",
         "sns"
       ],
-      "status": "受領済"
+      "status": "公開反映済",
+      "web_url": "https://k3-track.occompass-info.workers.dev/assets/number-mission.webp"
     },
     {
       "id": "AST-005",
