@@ -798,5 +798,21 @@
     "start": "2026/08/08",
     "end": "",
     "status": "公開"
+  },
+  {
+    "id": "PUB-RS-20260906-01",
+    "date": "2026/09/06",
+    "order": "50",
+    "type": "結果",
+    "store": "トワーズ叶谷店",
+    "event": "クロウ・スコープ取材",
+    "headline": "09/06 トワーズ叶谷店 結果",
+    "summary": "台別結果投稿を確認",
+    "resultSummary": "67番 番長ZERO +4,400枚 / 61番 カバネリ +3,500枚 ほか",
+    "detailUrl": "./result.html?id=RS-20260906-01",
+    "sourceUrl": "https://x.com/k_777_3_IYSK",
+    "start": "2026/09/06",
+    "end": "",
+    "status": "公開"
   }
 ]
