@@ -50,6 +50,18 @@ function renderResult(items=[]){
   el.innerHTML=`<div class="result-card__top"><div><span class="chip chip--light">RESULT</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div><div class="metrics"><div><small>平均差枚</small><strong>${esc(x.avg_diff||'—')}</strong></div><div><small>勝率</small><strong>${esc(x.win_rate||'—')}</strong></div><div><small>対象台数</small><strong>${esc(x.units||'—')}</strong></div></div><p class="result-card__note">${esc(x.note||'')}</p>`;
 }
 
+function renderStats(s={}){
+  const el=document.getElementById('statsGrid');
+  if(!el) return;
+  el.innerHTML=`<div><strong>${esc(s.events||'--')}</strong><span>登録履歴</span></div><div><strong>${esc(s.stores||'--')}</strong><span>対象店舗</span></div><div><strong>${esc(s.types||'--')}</strong><span>企画種別</span></div><div><strong>${esc(s.period||'--')}</strong><span>収集期間</span></div>`;
+}
+
+function renderArchive(items=[]){
+  const el=document.getElementById('archiveList');
+  if(!el) return;
+  el.innerHTML=items.map(x=>`<article class="archive-item"><time>${esc(x.date||'--/--')}</time><div><h3>${esc(x.store||'')}</h3><p>${esc(x.event||'')}</p></div></article>`).join('');
+}
+
 function renderCoverage(items=[]){
   const el=document.getElementById('coverageList');
   if(!el || !items.length) return;
@@ -59,9 +71,11 @@ function renderCoverage(items=[]){
 fetch('./data.json',{cache:'no-store'})
   .then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed')))
   .then(data=>{
+    renderStats(data.stats||{});
     renderToday(data.today);
     renderSchedule(data.schedule);
     renderResult(data.results);
+    renderArchive(data.archive||[]);
     renderCoverage(data.coverage);
   })
   .catch(()=>{});
