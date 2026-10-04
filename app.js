@@ -38,14 +38,18 @@ function renderFeatured(data={}){
   }
 }
 
-function renderVisualShowcase(items=[]){
+function renderVisualShowcase(items=[],assetData={}){
   const el=document.getElementById('visualShowcaseGrid');
   if(!el) return;
   const picks=['双翼乱舞取材','クロウ・スコープ取材','超団結 / 7店舗共闘','お前の席ねぇから'];
   const rows=picks.map((name,i)=>{
     const coverage=(items||[]).find(x=>x.name===name);
     const desc=coverage?.description||'企画情報・実績を順次追加';
-    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}"><div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div><div class="visual-teaser__body"><small>K3 COVERAGE</small><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
+    const asset=(assetData.items||[]).find(x=>x.key===name && x.image);
+    const art=asset
+      ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}"></div>`
+      : `<div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`;
+    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}">${art}<div class="visual-teaser__body"><small>K3 COVERAGE</small><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
   });
   el.innerHTML=rows.join('');
 }
@@ -148,9 +152,10 @@ function initCoverageFilter(items=[]){
   });
 }
 
-fetch('./data.json',{cache:'no-store'})
-  .then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed')))
-  .then(data=>{
+Promise.all([
+  fetch('./data.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed'))),
+  fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]}))
+]).then(([data,assetData])=>{
     renderStats(data.stats||{});
     renderFeatured(data);
     renderToday(data.today);
@@ -160,7 +165,7 @@ fetch('./data.json',{cache:'no-store'})
     renderStores(data.stores||[]);
     initStoreFilters(data.stores||[]);
     renderCoverage(data.coverage||[]);
-    renderVisualShowcase(data.coverage||[]);
+    renderVisualShowcase(data.coverage||[],assetData);
     initCoverageFilter(data.coverage||[]);
     const updated=document.getElementById('lastUpdated');
     if(updated&&data.updated_at){
