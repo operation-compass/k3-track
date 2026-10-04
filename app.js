@@ -88,16 +88,16 @@ function renderFeatured(data={},todayKey=''){
 function renderVisualShowcase(items=[],assetData={}){
   const el=document.getElementById('visualShowcaseGrid');
   if(!el) return;
-  const picks=['双翼乱舞取材','クロウ・スコープ取材','お前の席ねぇから','V.I.P','ピエロの晩餐会','NUMBER MISSION:0to9'];
+  const picks=['双翼乱舞取材','クロウ・スコープ取材','お前の席ねぇから','超団結 / 7店舗共闘','非公式K3来店'];
   const rows=picks.map((name,i)=>{
     const coverage=(items||[]).find(x=>x.name===name);
-    const desc=coverage?.description||'企画情報・実績を順次追加';
+    const desc=coverage?.description||'確認済みの開催履歴・結果を表示';
     const asset=(assetData.items||[]).find(x=>x.key===name && x.type!=='character' && x.image);
     const fallback=`<div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`;
     const art=asset
       ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" width="1122" height="1402" loading="${i<2?'eager':'lazy'}" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`
       : fallback;
-    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}">${art}<div class="visual-teaser__body"><small>K3 COVERAGE</small><h3>${esc(name)}</h3><span class="coverage-status ${coverage?.status==='実績あり'?'':'is-pending'}">${coverage?.status==='実績あり'?'実績あり':'データ収集中'}</span><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
+    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}">${art}<div class="visual-teaser__body"><small>K3 COVERAGE</small><h3>${esc(name)}</h3><span class="coverage-status ${coverage?.status==='実績あり'?'':'is-pending'}">${coverage?.status==='実績あり'?'実績あり':'確認済み実績なし'}</span><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
   });
   el.innerHTML=rows.join('');
 }
@@ -106,7 +106,7 @@ function renderToday(items=[]){
   const el=document.getElementById('todayCard');
   if(!el) return;
   if(!items.length){
-    el.innerHTML='<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>本日の開催情報は確認中</h3><p>確認済みの公開可能データが入り次第表示します。</p></div><span class="status">確認中</span>';
+    el.innerHTML='<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>本日の公開予定はありません</h3><p>確認済みの予定がある場合のみ表示します。</p></div><span class="status">NO DATA</span>';
     return;
   }
   const x=items[0];
@@ -118,7 +118,7 @@ function renderSchedule(items=[],todayKey=''){
   const el=document.getElementById('scheduleList');
   if(!el) return;
   if(!items.length){
-    el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回予定を確認中</h3><p class="event-name">公開可能な確認済みデータを準備しています</p><p class="event-note">確認済み情報を整理中</p></article>';
+    el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回公開予定はありません</h3><p class="event-name">確認済みの予定がある場合のみ表示します</p><p class="event-note">未確認情報は掲載しません</p></article>';
     return;
   }
   el.innerHTML=items.slice(0,6).map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.label||'K3')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p><p class="event-note">${esc(x.note||'確認済み情報')}</p>${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
@@ -128,7 +128,7 @@ function renderResult(items=[]){
   const el=document.getElementById('resultList');
   if(!el) return;
   if(!items.length){
-    el.innerHTML='<div class="result-card"><h3>結果データ準備中</h3></div>';
+    el.innerHTML='<div class="result-card"><h3>公開できる結果はありません</h3></div>';
     return;
   }
   el.innerHTML=items.slice(0,4).map(x=>`<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(x.date||'')}</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div><div class="metrics"><div><small>平均差枚</small><strong>${esc(x.avg_diff||'—')}</strong></div><div><small>勝率</small><strong>${esc(x.win_rate||'—')}</strong></div><div><small>対象台数</small><strong>${esc(x.units||'—')}</strong></div></div><p class="result-card__note">${esc(x.note||'')}</p><span class="result-detail-cta">詳細を見る →</span></a>`).join('');
@@ -189,7 +189,7 @@ function renderCoverage(items=[],assetData=cachedCoverageAssets){
     const asset=(assetData.items||[]).find(a=>a.key===x.name && a.type!=='character' && a.image);
     const fallback=`<span class="coverage-index">${esc(x.id||'--')}</span>`;
     const thumb=asset?`<div class="coverage-thumb"><img src="${esc(asset.image)}" alt="${esc(asset.label||x.name)}" width="1122" height="1402" loading="lazy" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`:fallback;
-    return `<a class="coverage-entry" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article class="coverage-card">${thumb}<div class="coverage-copy"><div class="coverage-title-row"><h3>${esc(x.name)}</h3><span class="coverage-status ${x.status==='実績あり'?'':'is-pending'}">${x.status==='実績あり'?'実績あり':'データ収集中'}</span></div><p>${esc(x.description||'')}</p></div><b aria-hidden="true">→</b></article></a>`;
+    return `<a class="coverage-entry" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article class="coverage-card">${thumb}<div class="coverage-copy"><div class="coverage-title-row"><h3>${esc(x.name)}</h3><span class="coverage-status ${x.status==='実績あり'?'':'is-pending'}">${x.status==='実績あり'?'実績あり':'確認済み実績なし'}</span></div><p>${esc(x.description||'')}</p></div><b aria-hidden="true">→</b></article></a>`;
   }).join('');
 }
 
