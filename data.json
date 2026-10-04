@@ -301,7 +301,8 @@
       "area": "福岡",
       "count": 7,
       "last": "9/9",
-      "type": "双翼乱舞"
+      "type": "双翼乱舞",
+      "pworld": "https://www.p-world.co.jp/fukuoka/autobahn.htm"
     },
     {
       "name": "トワーズ叶谷店",
@@ -337,7 +338,8 @@
       "area": "愛知",
       "count": 3,
       "last": "8/29",
-      "type": "非公式K3来店"
+      "type": "非公式K3来店",
+      "pworld": "https://www.p-world.co.jp/aichi/playland-heiwaoharu.htm"
     },
     {
       "name": "トワーズ大和店",
@@ -364,28 +366,32 @@
       "area": "宮崎",
       "count": 1,
       "last": "2/7",
-      "type": "K3来店調査"
+      "type": "K3来店調査",
+      "pworld": "https://www.p-world.co.jp/miyazaki/opus-nobe.htm"
     },
     {
       "name": "Dee2",
       "area": "大分",
       "count": 2,
       "last": "8/2",
-      "type": "非公式K3来店"
+      "type": "非公式K3来店",
+      "pworld": "https://www.p-world.co.jp/oita/dee2.htm"
     },
     {
       "name": "アムズガーデンうるま店",
       "area": "沖縄",
       "count": 1,
       "last": "9/10",
-      "type": "お前の席ねぇから"
+      "type": "お前の席ねぇから",
+      "pworld": "https://www.p-world.co.jp/okinawa/ams-uruma.htm"
     },
     {
       "name": "オメガ寺町",
       "area": "京都",
       "count": 1,
       "last": "7/20",
-      "type": "非公式K3来店"
+      "type": "非公式K3来店",
+      "pworld": "https://www.p-world.co.jp/kyoto/omega-ava.htm"
     }
   ]
 }
