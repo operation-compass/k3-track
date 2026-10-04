@@ -64,6 +64,20 @@ function renderArchive(items=[]){
   el.innerHTML=items.map(x=>`<article class="archive-item"><time>${esc(x.date||'--/--')}</time><div><h3>${esc(x.store||'')}</h3><p>${esc(x.event||'')}</p></div></article>`).join('');
 }
 
+function renderStores(items=[]){
+  const el=document.getElementById('storeList');
+  if(!el) return;
+  if(!items.length){
+    el.innerHTML='<p class="event-note">店舗データ準備中</p>';
+    return;
+  }
+  el.innerHTML=items
+    .slice()
+    .sort((a,b)=>(Number(b.count)||0)-(Number(a.count)||0))
+    .map(x=>`<article class="store-row"><div><h3>${esc(x.name)}</h3><p>${esc(x.area||'')}・${esc(x.type||'K3関連')}</p></div><div class="store-meta"><strong>${esc(x.count||0)}回</strong><small>最終 ${esc(x.last||'—')}</small></div></article>`)
+    .join('');
+}
+
 function renderCoverage(items=[]){
   const el=document.getElementById('coverageList');
   if(!el || !items.length) return;
@@ -78,6 +92,7 @@ fetch('./data.json',{cache:'no-store'})
     renderSchedule(data.schedule);
     renderResult(data.results);
     renderArchive(data.archive||[]);
+    renderStores(data.stores||[]);
     renderCoverage(data.coverage);
   })
   .catch(()=>{});
