@@ -483,3 +483,40 @@ body{background:linear-gradient(180deg,#f7f5fb 0%,#f2eff7 100%);color:var(--ink)
   .store-detail-hero h1,.coverage-detail-hero h1,.result-detail-hero h1{font-size:28px}
   .store-summary,.result-facts,.coverage-summary{gap:6px}
 }
+
+/* iPhone final usability pass */
+html,body{max-width:100%;overflow-x:hidden}
+button,a,input,select{touch-action:manipulation}
+button,a{-webkit-tap-highlight-color:transparent}
+@media(max-width:560px){
+  input[type="search"],input[type="text"],select,.filter-input,.filter-select,.finder-search input{
+    font-size:16px!important;
+  }
+  .filter-input,.filter-select,.finder-search{
+    min-height:48px;
+  }
+  .menu-btn{
+    min-width:44px;
+    min-height:44px;
+    display:grid;
+    place-items:center;
+  }
+  .mobile-nav a{
+    min-height:44px;
+    display:flex;
+    align-items:center;
+  }
+  .bottom-nav a{
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .source-link,.text-link,.detail-footer-link,.store-official-links a{
+    min-height:44px;
+    align-items:center;
+  }
+  .article-row,.store-row,.coverage-entry,.result-card--link,.visual-teaser{
+    -webkit-tap-highlight-color:rgba(168,85,247,.10);
+  }
+}
