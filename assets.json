@@ -8,7 +8,7 @@
       "type": "pop",
       "key": "クロウ・スコープ取材",
       "label": "クロウ・スコープ取材｜WEB用高画質画像",
-      "image": "./assets/crow-scope-hq.webp",
+      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/crow-scope-hq.webp",
       "planned_path": "./assets/crow-scope-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -16,7 +16,7 @@
         "sns"
       ],
       "status": "WEB反映",
-      "web_url": "https://k3-track.occompass-info.workers.dev/assets/crow-scope-hq.webp",
+      "web_url": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/crow-scope-hq.webp",
       "width": 1122,
       "height": 1402,
       "note": "DriveのWEB用_取材POPに保存された1122×1402px原本から作成"
@@ -26,7 +26,7 @@
       "type": "pop",
       "key": "ピエロの晩餐会",
       "label": "ピエロの晩餐会｜WEB用高画質画像",
-      "image": "./assets/pierrot-banquet-hq.webp",
+      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/pierrot-banquet-hq.webp",
       "planned_path": "./assets/pierrot-banquet-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -36,7 +36,7 @@
       "status": "WEB反映",
       "width": 1122,
       "height": 1402,
-      "web_url": "https://k3-track.occompass-info.workers.dev/assets/pierrot-banquet-hq.webp",
+      "web_url": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/pierrot-banquet-hq.webp",
       "note": "DriveのWEB用_取材POPに保存された1122×1402px原本から作成"
     },
     {
@@ -44,7 +44,7 @@
       "type": "pop",
       "key": "V.I.P",
       "label": "V.I.P｜WEB用高画質画像",
-      "image": "./assets/vip-hq.webp",
+      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/vip-hq.webp",
       "planned_path": "./assets/vip-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -54,7 +54,7 @@
       "status": "WEB反映",
       "width": 1122,
       "height": 1402,
-      "web_url": "https://k3-track.occompass-info.workers.dev/assets/vip-hq.webp",
+      "web_url": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/vip-hq.webp",
       "note": "DriveのWEB用_取材POPに保存された1122×1402px原本から作成"
     },
     {
@@ -62,7 +62,7 @@
       "type": "pop",
       "key": "NUMBER MISSION:0to9",
       "label": "NUMBER MISSION:0to9｜WEB用高画質画像",
-      "image": "./assets/number-mission-hq.webp",
+      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/number-mission-hq.webp",
       "planned_path": "./assets/number-mission-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -70,7 +70,7 @@
         "sns"
       ],
       "status": "WEB反映",
-      "web_url": "https://k3-track.occompass-info.workers.dev/assets/number-mission-hq.webp",
+      "web_url": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/number-mission-hq.webp",
       "width": 1122,
       "height": 1402,
       "note": "DriveのWEB用_取材POPに保存された1122×1402px原本から作成"
@@ -140,7 +140,7 @@
       "type": "pop",
       "key": "双翼乱舞取材",
       "label": "双翼乱舞取材｜WEB用高画質画像",
-      "image": "./assets/souyoku-ranbu-hq.webp",
+      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/souyoku-ranbu-hq.webp",
       "planned_path": "./assets/souyoku-ranbu-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -149,7 +149,7 @@
       ],
       "status": "WEB反映",
       "note": "DriveのWEB用_取材POPに保存された1122×1402px原本から作成",
-      "web_url": "https://k3-track.occompass-info.workers.dev/assets/souyoku-ranbu-hq.webp",
+      "web_url": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/souyoku-ranbu-hq.webp",
       "width": 1122,
       "height": 1402
     },
@@ -163,12 +163,12 @@
         "sns"
       ],
       "label": "お前の席ねぇから｜WEB用高画質画像",
-      "image": "./assets/omae-seat-hq.webp",
+      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/omae-seat-hq.webp",
       "planned_path": "./assets/omae-seat-hq.webp",
       "width": 1122,
       "height": 1402,
       "status": "WEB反映",
-      "web_url": "https://k3-track.occompass-info.workers.dev/assets/omae-seat-hq.webp",
+      "web_url": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/omae-seat-hq.webp",
       "note": "DriveのWEB用_取材POPに保存された1122×1402px原本から作成"
     }
   ]
