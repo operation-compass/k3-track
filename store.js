@@ -4,13 +4,21 @@ const name=params.get('name')||'';
 const fmtDate=v=>v?String(v).replaceAll('/','-'):'—';
 Promise.all([
   fetch('./store-data.json',{cache:'no-store'}).then(r=>r.json()),
-  fetch('./data.json',{cache:'no-store'}).then(r=>r.json())
-]).then(([historyData,siteData])=>{
+  fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),
+  fetch('./store-visuals.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({stores:{}}))
+]).then(([historyData,siteData,visualData])=>{
   const items=historyData[name]||[];
   const store=(siteData.stores||[]).find(x=>x.name===name);
   document.title=(name?name:'店舗別K3履歴')+'｜K3 TRACK β';
   document.getElementById('storeTitle').textContent=name||'店舗が見つかりません';
   document.getElementById('storeSub').textContent=store?((store.area||'')+'・'+(store.type||'K3関連')):'確認済みのK3関連履歴';
+  const visual=document.getElementById('storeVisual');
+  const vd=(visualData.stores||{})[name]||{};
+  if(visual){
+    visual.innerHTML=vd.image
+      ? `<img src="${esc(vd.image)}" alt="${esc(name)} 店舗ビジュアル">`
+      : `<div class="store-visual__fallback"><small>STORE VISUAL</small><strong>${esc(name||'K3 STORE')}</strong><span>店舗パース連携準備済み</span></div>`;
+  }
   const summary=document.getElementById('storeSummary');
   summary.innerHTML=`<div><small>確認回数</small><strong>${esc(store?.count??items.length)}回</strong></div><div><small>最終実施</small><strong>${esc(store?.last||items[0]?.date||'—')}</strong></div><div><small>エリア</small><strong>${esc(store?.area||items[0]?.area||'—')}</strong></div>`;
   const list=document.getElementById('historyList');
