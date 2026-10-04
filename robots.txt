@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://k3-track.occompass-info.workers.dev/sitemap.xml
