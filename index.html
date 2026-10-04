@@ -21,7 +21,7 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">MENU</button>
     </div>
     <nav class="mobile-nav" id="mobileNav">
-      <a href="#today">今日</a><a href="#schedule">予定</a><a href="#results">結果</a><a href="#coverage">取材一覧</a><a href="#about">このサイトについて</a>
+      <a href="#today">今日</a><a href="#schedule">予定</a><a href="#results">結果</a><a href="#archive">履歴</a><a href="#coverage">取材一覧</a><a href="#about">このサイトについて</a>
     </nav>
   </header>
   <main id="top">
@@ -31,6 +31,15 @@
       <p class="hero__lead">非公式K3の取材・来店・実績を、スマホで素早く確認できるよう整理する情報サイト。</p>
       <div class="hero__badges"><span>β版</span><span>非公式</span><span>モバイル最適化</span></div>
     </div></section>
+
+    <section class="stats-strip">
+      <div class="container stats-grid" id="statsGrid">
+        <div><strong>--</strong><span>登録履歴</span></div>
+        <div><strong>--</strong><span>対象店舗</span></div>
+        <div><strong>--</strong><span>企画種別</span></div>
+        <div><strong>--</strong><span>収集期間</span></div>
+      </div>
+    </section>
 
     <section class="section section--tight" id="today"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker">TODAY</div><h2>今日のK3</h2></div><span class="date-pill" id="todayDate">--/--</span></div>
@@ -55,6 +64,11 @@
         <div class="metrics"><div><small>平均差枚</small><strong>—</strong></div><div><small>勝率</small><strong>—</strong></div><div><small>対象台数</small><strong>—</strong></div></div>
         <p class="result-card__note">結果取得元が確定したら、店舗別・取材別の履歴と傾向を表示します。</p>
       </div>
+    </div></section>
+
+    <section class="section" id="archive"><div class="container">
+      <div class="section-title-row"><div><div class="section-kicker">ARCHIVE</div><h2>最近の開催履歴</h2></div></div>
+      <div class="archive-list" id="archiveList"></div>
     </div></section>
 
     <section class="section" id="coverage"><div class="container">
