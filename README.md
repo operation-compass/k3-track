@@ -23,3 +23,7 @@
 3. 画像・リンク・文言QA
 4. DATA MASTERとWeb表示の整合確認
 5. 営業先に見せられる品質で完成判定
+
+## Cloudflare deployment
+- main branch push triggers GitHub Actions deployment to the k3-track Cloudflare Worker.
+- Required repository/organization secrets: CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID.
