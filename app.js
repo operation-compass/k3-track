@@ -81,7 +81,7 @@ function renderStores(items=[]){
 function renderCoverage(items=[]){
   const el=document.getElementById('coverageList');
   if(!el || !items.length) return;
-  el.innerHTML=items.map(x=>`<article><span>${esc(x.id||'--')}</span><div><h3>${esc(x.name)}</h3><p>${esc(x.description||'')}</p></div></article>`).join('');
+  el.innerHTML=items.map(x=>`<a class="coverage-link" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article><span>${esc(x.id||'--')}</span><div><h3>${esc(x.name)}</h3><p>${esc(x.description||'')}</p></div><b>→</b></article></a>`).join('');
 }
 
 fetch('./data.json',{cache:'no-store'})
