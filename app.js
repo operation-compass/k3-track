@@ -66,7 +66,7 @@ function renderResult(items=[]){
     el.innerHTML='<div class="result-card"><h3>結果データ準備中</h3></div>';
     return;
   }
-  el.innerHTML=items.slice(0,4).map(x=>`<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(x.date||'')}</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score"><small>TOP</small>${esc(x.score||'—')}</div></div><div class="metrics"><div><small>平均差枚</small><strong>${esc(x.avg_diff||'—')}</strong></div><div><small>勝率</small><strong>${esc(x.win_rate||'—')}</strong></div><div><small>対象台数</small><strong>${esc(x.units||'—')}</strong></div></div><p class="result-card__note">${esc(x.note||'')}</p><span class="result-detail-cta">詳細を見る →</span></a>`).join('');
+  el.innerHTML=items.slice(0,4).map(x=>`<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(x.date||'')}</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div><div class="metrics"><div><small>平均差枚</small><strong>${esc(x.avg_diff||'—')}</strong></div><div><small>勝率</small><strong>${esc(x.win_rate||'—')}</strong></div><div><small>対象台数</small><strong>${esc(x.units||'—')}</strong></div></div><p class="result-card__note">${esc(x.note||'')}</p><span class="result-detail-cta">詳細を見る →</span></a>`).join('');
 }
 
 function renderStats(s={}){
