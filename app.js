@@ -38,6 +38,18 @@ function renderFeatured(data={}){
   }
 }
 
+function renderVisualShowcase(items=[]){
+  const el=document.getElementById('visualShowcaseGrid');
+  if(!el) return;
+  const picks=['クロウ・スコープ取材','V.I.P','NUMBER MISSION:0to9','ピエロの晩餐会'];
+  const rows=picks.map((name,i)=>{
+    const coverage=(items||[]).find(x=>x.name===name);
+    const desc=coverage?.description||'企画情報・実績を順次追加';
+    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}"><div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div><div class="visual-teaser__body"><small>K3 COVERAGE</small><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
+  });
+  el.innerHTML=rows.join('');
+}
+
 function renderToday(items=[]){
   const el=document.getElementById('todayCard');
   if(!el) return;
@@ -148,6 +160,7 @@ fetch('./data.json',{cache:'no-store'})
     renderStores(data.stores||[]);
     initStoreFilters(data.stores||[]);
     renderCoverage(data.coverage||[]);
+    renderVisualShowcase(data.coverage||[]);
     initCoverageFilter(data.coverage||[]);
     const updated=document.getElementById('lastUpdated');
     if(updated&&data.updated_at){
