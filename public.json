@@ -398,5 +398,37 @@
     "start": "2026/10/05",
     "end": "",
     "status": "公開"
+  },
+  {
+    "id": "PUB-20261003-02",
+    "date": "2026/10/03",
+    "order": "11",
+    "type": "開催履歴",
+    "store": "トワーズ大和店",
+    "event": "クロウ・スコープ取材",
+    "headline": "10/3 トワーズ大和店 クロウ・スコープ取材",
+    "summary": "店舗公式Xで開催確認",
+    "resultSummary": "",
+    "detailUrl": "./store.html?name=トワーズ大和店",
+    "sourceUrl": "https://x.com/yamatotowars",
+    "start": "2026/10/03",
+    "end": "",
+    "status": "公開"
+  },
+  {
+    "id": "PUB-20261003-03",
+    "date": "2026/10/03",
+    "order": "12",
+    "type": "開催履歴",
+    "store": "トワーズ藤沢店",
+    "event": "クロウ・スコープ取材",
+    "headline": "10/3 トワーズ藤沢店 クロウ・スコープ取材",
+    "summary": "店舗公式Xで開催確認",
+    "resultSummary": "",
+    "detailUrl": "./store.html?name=トワーズ藤沢店",
+    "sourceUrl": "https://x.com/towarsfujisawa",
+    "start": "2026/10/03",
+    "end": "",
+    "status": "公開"
   }
 ]
