@@ -222,5 +222,37 @@
     "start": "2026/09/12",
     "end": "",
     "status": "公開"
+  },
+  {
+    "id": "PUB-RS-20260620-01",
+    "date": "2026/06/20",
+    "order": "62",
+    "type": "結果",
+    "store": "トワーズ麻溝台店",
+    "event": "クロウ・スコープ取材",
+    "headline": "6/20 トワーズ麻溝台店 結果",
+    "summary": "営業後データを確認",
+    "resultSummary": "勝率117/345台 / バイオRE:3 3台 平均+5,790枚",
+    "detailUrl": "./result.html?id=RS-20260620-01",
+    "sourceUrl": "https://min-repo.com/3178954/",
+    "start": "2026/06/20",
+    "end": "",
+    "status": "公開"
+  },
+  {
+    "id": "PUB-RS-20260628-01",
+    "date": "2026/06/28",
+    "order": "58",
+    "type": "結果",
+    "store": "トワーズ西八店",
+    "event": "クロウ・スコープ取材",
+    "headline": "6/28 トワーズ西八店 結果",
+    "summary": "店舗全体の営業後データを確認",
+    "resultSummary": "総差枚+19,370枚 / 平均+153枚 / 勝率44/127台",
+    "detailUrl": "./result.html?id=RS-20260628-01",
+    "sourceUrl": "https://min-repo.com/3194932/",
+    "start": "2026/06/28",
+    "end": "",
+    "status": "公開"
   }
 ]
