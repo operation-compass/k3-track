@@ -288,3 +288,87 @@ body{background:linear-gradient(180deg,#f7f5fb 0%,#f2eff7 100%);color:var(--ink)
     margin-top:9px;
   }
 }
+
+/* K3 finder breathing room v3 */
+.finder-strip{
+  margin-top:-8px;
+  padding:18px 0 22px;
+  background:linear-gradient(180deg,#0d0914 0 24px,transparent 24px);
+}
+.finder-card{
+  padding:20px;
+  border-radius:24px;
+}
+.finder-heading{
+  margin-bottom:16px;
+}
+.finder-heading small{
+  margin-bottom:3px;
+}
+.finder-heading strong{
+  font-size:17px;
+  line-height:1.35;
+}
+.finder-search{
+  min-height:58px;
+  margin-bottom:16px;
+  border-radius:18px;
+  padding:0 14px;
+}
+.finder-search input{
+  min-height:56px;
+  font-size:13px;
+}
+.finder-links{
+  margin-top:0;
+  gap:10px;
+}
+.finder-links a{
+  min-height:54px;
+  border-radius:16px;
+  padding:12px 10px;
+}
+.finder-results{
+  margin:0 0 16px;
+}
+.finder-strip + .media-featured{
+  padding-top:14px;
+}
+@media(max-width:560px){
+  .finder-strip{
+    margin-top:0;
+    padding:18px 0 20px;
+  }
+  .finder-card{
+    padding:18px 16px 17px;
+    border-radius:22px;
+  }
+  .finder-heading{
+    margin-bottom:14px;
+  }
+  .finder-heading strong{
+    font-size:16px;
+  }
+  .finder-search{
+    min-height:56px;
+    margin-bottom:14px;
+    border-radius:18px;
+    padding:0 13px;
+  }
+  .finder-search input{
+    min-height:54px;
+    font-size:13px;
+  }
+  .finder-links{
+    gap:8px;
+  }
+  .finder-links a{
+    min-height:52px;
+    padding:10px 6px;
+    border-radius:15px;
+    font-size:9.5px;
+  }
+  .finder-strip + .media-featured{
+    padding-top:18px;
+  }
+}
