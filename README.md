@@ -25,5 +25,6 @@
 5. 営業先に見せられる品質で完成判定
 
 ## Cloudflare deployment
-- main branch push triggers GitHub Actions deployment to the k3-track Cloudflare Worker.
-- Required repository/organization secrets: CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID.
+- OC/COMPASSと同じく GitHub Actions の手動デプロイ方式を採用。
+- 現時点では自動pushデプロイは使用しない。
+- 次回の大きな更新時に自動化方式への移行を再検討する。
