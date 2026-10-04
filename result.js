@@ -1,0 +1,26 @@
+const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const id=new URLSearchParams(location.search).get('id')||'';
+fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).then(all=>{
+  const d=all[id];
+  if(!d){
+    document.getElementById('resultTitle').textContent='結果が見つかりません';
+    document.getElementById('resultFacts').innerHTML='';
+    return;
+  }
+  document.title=d.store+'｜'+d.date+'｜K3 TRACK β';
+  document.getElementById('resultTitle').textContent=d.store;
+  document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画');
+  document.getElementById('resultFacts').innerHTML=`
+    <div><small>開催日</small><strong>${esc(d.date||'—')}</strong></div>
+    <div><small>企画</small><strong>${esc(d.event||'—')}</strong></div>
+    <div><small>勝率</small><strong>${esc(d.winRate||'—')}</strong></div>
+    <div><small>対象台数</small><strong>${esc(d.units||'—')}</strong></div>`;
+  document.getElementById('summaryBox').innerHTML=`<h3>確認内容</h3><p>${esc(d.note||d.detail||'確認済み結果')}</p>`;
+  const detail=(d.detail||'').split('/').map(s=>s.trim()).filter(Boolean);
+  const machines=(d.machines||'').split('/').map(s=>s.trim()).filter(Boolean);
+  const items=detail.length?detail:machines;
+  document.getElementById('machineList').innerHTML=items.length?items.map(x=>`<article class="machine-card"><strong>${esc(x)}</strong></article>`).join(''):'<div class="empty-detail">詳細機種データは順次追加中です。</div>';
+  document.getElementById('sourceBox').innerHTML=`<p>データ元：${esc(d.source||'—')}</p><p>確認日：${esc(d.checked||'—')}</p>${d.url?`<a href="${esc(d.url)}" target="_blank" rel="noopener">出典を確認する →</a>`:''}`;
+}).catch(()=>{
+  document.getElementById('resultTitle').textContent='読み込みエラー';
+});
