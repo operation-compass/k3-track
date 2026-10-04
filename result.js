@@ -30,6 +30,10 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
   if(trust){
     trust.innerHTML=`<span>確認日 ${esc(d.checked||'—')}</span><span>${esc(d.publish||'確認済み')}</span>`;
   }
+  const related=document.getElementById('relatedLinks');
+  if(related){
+    related.innerHTML=`<a href="./store.html?name=${encodeURIComponent(d.store)}">同じ店舗の履歴 →</a><a href="./coverage.html?name=${encodeURIComponent(d.event)}">同じ企画の履歴 →</a>`;
+  }
   document.getElementById('sourceBox').innerHTML=`<p>データ元：${esc(d.source||'—')}</p><p>確認日：${esc(d.checked||'—')}</p>${d.url?`<a href="${esc(d.url)}" target="_blank" rel="noopener">出典を確認する →</a>`:''}`;
 }).catch(()=>{
   document.getElementById('resultTitle').textContent='読み込みエラー';
