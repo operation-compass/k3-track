@@ -1,0 +1,91 @@
+{
+  "updated_at": "2026-10-04T20:05:00+09:00",
+  "policy": "店舗パースは段階導入。開催頻度・結果データ・代表性を基準に優先順位を決め、権利確認後に公開。",
+  "stores": {
+    "トワーズ西八店": {
+      "priority": "A",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ四谷店": {
+      "priority": "A",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ相模原店": {
+      "priority": "A",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ麻溝台店": {
+      "priority": "A",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "Eスペース600空港店": {
+      "priority": "A",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "アウトバーンブリッツ": {
+      "priority": "A",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "スタジアム2001京都八幡店": {
+      "priority": "B",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ叶谷店": {
+      "priority": "B",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ厚木店": {
+      "priority": "B",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ大和深見店1120": {
+      "priority": "B",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "プレイランド平和大治店": {
+      "priority": "C",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ大和店": {
+      "priority": "B",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "トワーズ藤沢店": {
+      "priority": "B",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "オーパス666延岡店": {
+      "priority": "C",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "ワンダーランド須恵店": {
+      "priority": "C",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "Dee2": {
+      "priority": "C",
+      "image": "",
+      "status": "素材待ち"
+    },
+    "アムズガーデンうるま店": {
+      "priority": "B",
+      "image": "",
+      "status": "素材待ち"
+    }
+  }
+}
