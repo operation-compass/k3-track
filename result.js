@@ -26,6 +26,10 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
   const machines=(d.machines||'').split('/').map(s=>s.trim()).filter(Boolean);
   const items=detail.length?detail:machines;
   document.getElementById('machineList').innerHTML=items.length?items.map(x=>`<article class="machine-card"><strong>${esc(x)}</strong></article>`).join(''):'<div class="empty-detail">詳細機種データは順次追加中です。</div>';
+  const trust=document.getElementById('resultTrust');
+  if(trust){
+    trust.innerHTML=`<span>確認日 ${esc(d.checked||'—')}</span><span>${esc(d.publish||'確認済み')}</span>`;
+  }
   document.getElementById('sourceBox').innerHTML=`<p>データ元：${esc(d.source||'—')}</p><p>確認日：${esc(d.checked||'—')}</p>${d.url?`<a href="${esc(d.url)}" target="_blank" rel="noopener">出典を確認する →</a>`:''}`;
 }).catch(()=>{
   document.getElementById('resultTitle').textContent='読み込みエラー';
