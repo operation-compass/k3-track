@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-04T23:59:00+09:00",
+  "updated_at": "2026-10-05T01:20:00+09:00",
   "today": [],
   "schedule": [
     {
@@ -242,42 +242,56 @@
       "area": "東京",
       "count": 9,
       "last": "10/3",
-      "type": "クロウ・スコープ / 団結"
+      "type": "クロウ・スコープ / 団結",
+      "pworld": "https://www.p-world.co.jp/tokyo/towars-nishihachi.htm",
+      "x": "https://x.com/TOWARSNISIHATI",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "トワーズ四谷店",
       "area": "東京",
       "count": 9,
       "last": "9/22",
-      "type": "クロウ・スコープ / 来店"
+      "type": "クロウ・スコープ / 来店",
+      "pworld": "https://www.p-world.co.jp/tokyo/towars-yotsuya.htm",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "トワーズ相模原店",
       "area": "神奈川",
       "count": 8,
       "last": "9/12",
-      "type": "クロウ・スコープ"
+      "type": "クロウ・スコープ",
+      "pworld": "https://www.p-world.co.jp/kanagawa/towars-sagamihara.htm",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "トワーズ麻溝台店",
       "area": "神奈川",
       "count": 7,
       "last": "9/12",
-      "type": "クロウ・スコープ"
+      "type": "クロウ・スコープ",
+      "pworld": "https://www.p-world.co.jp/kanagawa/towars-asamizodai.htm",
+      "x": "https://x.com/towarsasamizo",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "スタジアム2001京都八幡店",
       "area": "京都",
       "count": 13,
       "last": "8/25",
-      "type": "非公式K3来店"
+      "type": "非公式K3来店",
+      "pworld": "https://www.p-world.co.jp/kyoto/stadium2001kyoto.htm",
+      "x": "https://x.com/stadiumkyoto"
     },
     {
       "name": "Eスペース600空港店",
       "area": "福岡",
       "count": 7,
       "last": "9/9",
-      "type": "双翼乱舞"
+      "type": "双翼乱舞",
+      "pworld": "https://www.p-world.co.jp/fukuoka/espace600kuukouten.htm",
+      "x": "https://x.com/600Kukou"
     },
     {
       "name": "アウトバーンブリッツ",
@@ -291,7 +305,9 @@
       "area": "東京",
       "count": 4,
       "last": "9/6",
-      "type": "クロウ・スコープ"
+      "type": "クロウ・スコープ",
+      "pworld": "https://www.p-world.co.jp/tokyo/towars-kanouya.htm",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "トワーズ厚木店",
