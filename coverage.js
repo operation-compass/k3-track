@@ -2,10 +2,16 @@ const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'
 const params=new URLSearchParams(location.search);
 const name=params.get('name')||'';
 const dateShort=v=>v?String(v).replace(/^\d{4}\//,''):'—';
-fetch('./coverage-data.json',{cache:'no-store'}).then(r=>r.json()).then(all=>{
+Promise.all([fetch('./coverage-data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]}))]).then(([all,assets])=>{
   const d=all[name];
   document.title=(name||'取材・企画別履歴')+'｜K3 TRACK β';
   document.getElementById('coverageTitle').textContent=name||'取材・企画が見つかりません';
+  const visual=document.getElementById('coverageVisual');
+  const asset=(assets.items||[]).find(x=>x.key===name && x.image);
+  if(visual){
+    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||name)}">`:`<div class="detail-visual__fallback"><small>K3 COVERAGE</small><strong>${esc(name||'K3')}</strong><span>公式素材反映準備済み</span></div>`;
+    visual.setAttribute('aria-hidden','false');
+  }
   if(!d){
     document.getElementById('coverageSub').textContent='この取材・企画の確認済みデータはありません。';
     document.getElementById('coverageSummary').innerHTML='';
