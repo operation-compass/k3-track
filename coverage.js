@@ -16,7 +16,7 @@ Promise.all([fetch('./coverage-data.json',{cache:'no-store'}).then(r=>r.json()),
   }
   const badge=document.createElement('span');
   badge.className='coverage-status'+(Number(d?.count)>0?'':' is-pending');
-  badge.textContent=Number(d?.count)>0?'実績あり':'データ収集中';
+  badge.textContent=Number(d?.count)>0?'実績あり':'確認済みデータなし';
   visual?.insertAdjacentElement('beforebegin',badge);
   const character=document.getElementById('coverageCharacter');
   const charAsset=(assets.items||[]).find(x=>x.key===name && x.type==='character' && x.image);
@@ -26,9 +26,9 @@ Promise.all([fetch('./coverage-data.json',{cache:'no-store'}).then(r=>r.json()),
   if(!d){
     document.getElementById('coverageSub').textContent='開催日・店舗・結果データを収集中です。確認でき次第追加します。';
     document.getElementById('coverageSummary').innerHTML='';
-    document.getElementById('coverageStores').innerHTML='<div class="empty-detail">データ収集中</div>';
-    document.getElementById('coverageResults').innerHTML='<div class="empty-detail">データ収集中</div>';
-    document.getElementById('coverageHistory').innerHTML='<div class="empty-detail">データ収集中</div>';
+    document.getElementById('coverageStores').innerHTML='<div class="empty-detail">確認済みデータなし</div>';
+    document.getElementById('coverageResults').innerHTML='<div class="empty-detail">確認済みデータなし</div>';
+    document.getElementById('coverageHistory').innerHTML='<div class="empty-detail">確認済みデータなし</div>';
     return;
   }
   document.getElementById('coverageSub').textContent='確認済みの開催履歴を、店舗別・時系列で整理しています。';
