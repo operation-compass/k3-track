@@ -6,11 +6,11 @@ export default {
     if (
       url.pathname === "/" ||
       url.pathname === "/index.html" ||
-      url.pathname === "/assets/crow-scope-hq.webp"
+      url.pathname === "/assets/k3-track-og-final.jpg"
     ) {
       const headers = new Headers(response.headers);
       headers.set("cache-control", "no-cache, no-store, must-revalidate");
-      headers.set("x-k3-build", "20261005-og-fix");
+      headers.set("x-k3-build", "20261005-og-final");
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
