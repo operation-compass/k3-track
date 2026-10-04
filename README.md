@@ -57,3 +57,31 @@
 3. 中間ランキングは内部検証用。最終結果として公開しない。
 4. 複数ソースの数値を推測で合成しない。店舗全体値・機種値・TOP値は出典単位を維持する。
 5. 公開RESULTは出典URLと確認日を必須とし、PUBLIC経由でWebへ出す。
+
+
+## バックアップと復旧
+
+### 正本
+- 業務データの正本: Google Drive「K3 DATA MASTER」
+- Web表示データ: GitHub `operation-compass/k3-track`
+- 公開環境: Cloudflare Workers / Git連携
+
+### バックアップ
+- Drive: 99_バックアップ配下にDATA MASTERの世代バックアップを保持。
+- GitHub: 大きなUI変更前は退避ブランチを作成する。
+- 2026-10-05時点の主要退避: `backup/pre-ui-finish-20261005` → `4a35b5ac8011c9716dda82fd0f44b5efc93f9d98`
+
+### 復旧手順
+1. データ不整合の場合はDrive正本を優先し、SCHEDULE / RESULTS / STORES / PUBLIC / QAを確認する。
+2. Web JSONだけ壊れた場合はDrive正本から再生成し、GitHub mainへ反映する。
+3. UIやJSの不具合の場合は直前コミットを確認し、必要なら退避ブランチの正常版へ戻す。
+4. Cloudflare表示不具合の場合はGitHub mainの内容を先に確認し、Cloudflare Gitデプロイ履歴を確認する。
+5. 復旧後は DATA_QA の件数・公開NG残存・PUBLIC同期を再監査してから公開完了とする。
+
+### 復旧時に必ず確認するQA
+- SCHEDULE / RESULTS / STORES / PUBLIC 件数
+- EVENT_ID / RESULT_ID 重複
+- 公開RESULTのPUBLIC漏れ
+- 公開NG店舗のWeb残存
+- PUBLIC Web同期
+- STORE_VISUALS同期
