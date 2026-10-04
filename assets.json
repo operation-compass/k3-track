@@ -1,0 +1,88 @@
+{
+  "updated_at": "2026-10-04T19:30:00+09:00",
+  "items": [
+    {
+      "id": "AST-001",
+      "type": "logo",
+      "key": "K3 TRACK / 非公式K3",
+      "label": "K3関連ロゴ",
+      "image": "",
+      "thumb": "",
+      "rights": "許可済",
+      "scope": [
+        "web",
+        "sns"
+      ],
+      "status": "素材待ち"
+    },
+    {
+      "id": "AST-002",
+      "type": "pop",
+      "key": "クロウ・スコープ取材",
+      "label": "クロウ・スコープ取材POP",
+      "image": "",
+      "thumb": "",
+      "rights": "許可済",
+      "scope": [
+        "web",
+        "sns"
+      ],
+      "status": "素材待ち"
+    },
+    {
+      "id": "AST-003",
+      "type": "pop",
+      "key": "双翼乱舞取材",
+      "label": "双翼乱舞取材POP",
+      "image": "",
+      "thumb": "",
+      "rights": "許可済",
+      "scope": [
+        "web",
+        "sns"
+      ],
+      "status": "素材待ち"
+    },
+    {
+      "id": "AST-004",
+      "type": "pop",
+      "key": "超団結 / 7店舗共闘",
+      "label": "超団結POP",
+      "image": "",
+      "thumb": "",
+      "rights": "許可済",
+      "scope": [
+        "web",
+        "sns"
+      ],
+      "status": "素材待ち"
+    },
+    {
+      "id": "AST-005",
+      "type": "pop",
+      "key": "お前の席ねぇから",
+      "label": "お前の席ねぇからPOP",
+      "image": "",
+      "thumb": "",
+      "rights": "許可済",
+      "scope": [
+        "web",
+        "sns"
+      ],
+      "status": "素材待ち"
+    },
+    {
+      "id": "AST-006",
+      "type": "banner",
+      "key": "RESULT",
+      "label": "結果詳細共通バナー",
+      "image": "",
+      "thumb": "",
+      "rights": "許可済",
+      "scope": [
+        "web"
+      ],
+      "status": "作成可"
+    }
+  ]
+}
