@@ -19,6 +19,9 @@ const md=`${d.getMonth()+1}/${d.getDate()}`;
 const todayDate=document.getElementById('todayDate');
 if(todayDate) todayDate.textContent=md;
 
+let cachedStores=[];
+let cachedCoverage=[];
+
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 function renderToday(items=[]){
@@ -68,7 +71,7 @@ function renderStores(items=[]){
   const el=document.getElementById('storeList');
   if(!el) return;
   if(!items.length){
-    el.innerHTML='<p class="event-note">店舗データ準備中</p>';
+    el.innerHTML='<p class="event-note">該当する店舗がありません。</p>';
     return;
   }
   el.innerHTML=items
@@ -78,10 +81,45 @@ function renderStores(items=[]){
     .join('');
 }
 
+function initStoreFilters(items=[]){
+  cachedStores=items.slice();
+  const search=document.getElementById('storeSearch');
+  const area=document.getElementById('storeArea');
+  if(!search||!area) return;
+  [...new Set(items.map(x=>x.area).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ja')).forEach(v=>{
+    const opt=document.createElement('option'); opt.value=v; opt.textContent=v; area.appendChild(opt);
+  });
+  const apply=()=>{
+    const q=search.value.trim().toLowerCase();
+    const av=area.value;
+    const filtered=cachedStores.filter(x=>{
+      const text=[x.name,x.area,x.type].join(' ').toLowerCase();
+      return (!q||text.includes(q))&&(!av||x.area===av);
+    });
+    renderStores(filtered);
+  };
+  search.addEventListener('input',apply);
+  area.addEventListener('change',apply);
+}
+
 function renderCoverage(items=[]){
   const el=document.getElementById('coverageList');
-  if(!el || !items.length) return;
+  if(!el) return;
+  if(!items.length){
+    el.innerHTML='<p class="event-note">該当する取材・企画がありません。</p>';
+    return;
+  }
   el.innerHTML=items.map(x=>`<a class="coverage-link" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article><span>${esc(x.id||'--')}</span><div><h3>${esc(x.name)}</h3><p>${esc(x.description||'')}</p></div><b>→</b></article></a>`).join('');
+}
+
+function initCoverageFilter(items=[]){
+  cachedCoverage=items.slice();
+  const search=document.getElementById('coverageSearch');
+  if(!search) return;
+  search.addEventListener('input',()=>{
+    const q=search.value.trim().toLowerCase();
+    renderCoverage(cachedCoverage.filter(x=>[x.name,x.description].join(' ').toLowerCase().includes(q)));
+  });
 }
 
 fetch('./data.json',{cache:'no-store'})
@@ -93,6 +131,13 @@ fetch('./data.json',{cache:'no-store'})
     renderResult(data.results);
     renderArchive(data.archive||[]);
     renderStores(data.stores||[]);
-    renderCoverage(data.coverage);
+    initStoreFilters(data.stores||[]);
+    renderCoverage(data.coverage||[]);
+    initCoverageFilter(data.coverage||[]);
+    const updated=document.getElementById('lastUpdated');
+    if(updated&&data.updated_at){
+      const t=new Date(data.updated_at);
+      updated.textContent='更新 '+(t.getMonth()+1)+'/'+t.getDate()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+    }
   })
   .catch(()=>{});
