@@ -23,6 +23,16 @@ Promise.all([
   }
   const summary=document.getElementById('storeSummary');
   summary.innerHTML=`<div><small>確認回数</small><strong>${esc(store?.count??items.length)}回</strong></div><div><small>最終実施</small><strong>${esc(store?.last||items[0]?.date||'—')}</strong></div><div><small>エリア</small><strong>${esc(store?.area||items[0]?.area||'—')}</strong></div>`;
+  const officialLinks=document.getElementById('storeOfficialLinks');
+  if(officialLinks && store){
+    const links=[
+      store.pworld?{label:'P-WORLD',url:store.pworld}:null,
+      store.x?{label:'公式X',url:store.x}:null,
+      store.official?{label:'店舗公式',url:store.official}:null
+    ].filter(Boolean);
+    officialLinks.innerHTML=links.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)} <b>↗</b></a>`).join('');
+    officialLinks.hidden=!links.length;
+  }
   const list=document.getElementById('historyList');
   if(!items.length){
     list.innerHTML='<div class="empty-detail">この店舗の確認済み履歴はまだありません。</div>';
