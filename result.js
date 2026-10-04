@@ -8,12 +8,14 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
     return;
   }
   document.title=d.store+'｜'+d.date+'｜K3 TRACK';
+  const canonical=document.querySelector('link[rel="canonical"]');
+  if(canonical) canonical.href=location.origin+location.pathname+'?id='+encodeURIComponent(id);
   document.getElementById('resultTitle').textContent=d.store;
   document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画');
   const visual=document.getElementById('resultVisual');
   const asset=(assets.items||[]).find(x=>x.key===d.event && x.image) || (assets.items||[]).find(x=>x.key==='RESULT' && x.image);
   if(visual){
-    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||d.event||'K3結果') }">`:`<div class="detail-visual__fallback"><small>RESULT REPORT</small><strong>${esc(d.event||'K3 RESULT')}</strong><span>公式POP・ロゴ反映準備済み</span></div>`;
+    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||d.event||'K3結果') }">`:`<div class="detail-visual__fallback"><small>RESULT REPORT</small><strong>${esc(d.event||'K3 RESULT')}</strong><span>確認済み結果データ</span></div>`;
     visual.setAttribute('aria-hidden','false');
   }
   document.getElementById('resultFacts').innerHTML=`
@@ -25,7 +27,7 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
   const detail=(d.detail||'').split('/').map(s=>s.trim()).filter(Boolean);
   const machines=(d.machines||'').split('/').map(s=>s.trim()).filter(Boolean);
   const items=detail.length?detail:machines;
-  document.getElementById('machineList').innerHTML=items.length?items.map(x=>`<article class="machine-card"><strong>${esc(x)}</strong></article>`).join(''):'<div class="empty-detail">詳細機種データは順次追加中です。</div>';
+  document.getElementById('machineList').innerHTML=items.length?items.map(x=>`<article class="machine-card"><strong>${esc(x)}</strong></article>`).join(''):'<div class="empty-detail">確認済みの機種別詳細はありません。</div>';
   const trust=document.getElementById('resultTrust');
   if(trust){
     trust.innerHTML=`<span>確認日 ${esc(d.checked||'—')}</span><span>${esc(d.publish||'確認済み')}</span>`;
