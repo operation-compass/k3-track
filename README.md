@@ -25,6 +25,11 @@
 5. 営業先に見せられる品質で完成判定
 
 ## Cloudflare deployment
-- OC/COMPASSと同じく GitHub Actions の手動デプロイ方式を採用。
-- 現時点では自動pushデプロイは使用しない。
+- OC / COMPASS と同じく Cloudflare Dashboard から GitHub リポジトリを直接接続してデプロイする。
+- Repository: operation-compass/k3-track
+- Deploy command: `npx wrangler deploy`
+- Build command: なし
+- Worker name: `k3-track`
+- workers.dev: enabled
+- GitHub Actions 経由のデプロイは現時点では使用しない。
 - 次回の大きな更新時に自動化方式への移行を再検討する。
