@@ -7,11 +7,6 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "run_worker_first": [
-      "/",
-      "/*.html",
-      "/*.json",
-      "/assets/k3-track-og-final-v2.jpg"
-    ]
+    "run_worker_first": true
   }
 }
