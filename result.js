@@ -7,7 +7,7 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
     document.getElementById('resultFacts').innerHTML='';
     return;
   }
-  document.title=d.store+'｜'+d.date+'｜K3 TRACK β';
+  document.title=d.store+'｜'+d.date+'｜K3 TRACK';
   document.getElementById('resultTitle').textContent=d.store;
   document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画');
   const visual=document.getElementById('resultVisual');
