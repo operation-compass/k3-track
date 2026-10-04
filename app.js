@@ -43,11 +43,13 @@ function renderSchedule(items=[]){
 }
 
 function renderResult(items=[]){
-  const el=document.getElementById('resultCard');
+  const el=document.getElementById('resultList');
   if(!el) return;
-  if(!items.length) return;
-  const x=items[0];
-  el.innerHTML=`<div class="result-card__top"><div><span class="chip chip--light">RESULT</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div><div class="metrics"><div><small>平均差枚</small><strong>${esc(x.avg_diff||'—')}</strong></div><div><small>勝率</small><strong>${esc(x.win_rate||'—')}</strong></div><div><small>対象台数</small><strong>${esc(x.units||'—')}</strong></div></div><p class="result-card__note">${esc(x.note||'')}</p>`;
+  if(!items.length){
+    el.innerHTML='<div class="result-card"><h3>結果データ準備中</h3></div>';
+    return;
+  }
+  el.innerHTML=items.slice(0,4).map(x=>`<div class="result-card"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(x.date||'')}</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div><div class="metrics"><div><small>平均差枚</small><strong>${esc(x.avg_diff||'—')}</strong></div><div><small>勝率</small><strong>${esc(x.win_rate||'—')}</strong></div><div><small>対象台数</small><strong>${esc(x.units||'—')}</strong></div></div><p class="result-card__note">${esc(x.note||'')}</p></div>`).join('');
 }
 
 function renderStats(s={}){
