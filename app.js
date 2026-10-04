@@ -74,7 +74,7 @@ function renderStores(items=[]){
   el.innerHTML=items
     .slice()
     .sort((a,b)=>(Number(b.count)||0)-(Number(a.count)||0))
-    .map(x=>`<article class="store-row"><div><h3>${esc(x.name)}</h3><p>${esc(x.area||'')}・${esc(x.type||'K3関連')}</p></div><div class="store-meta"><strong>${esc(x.count||0)}回</strong><small>最終 ${esc(x.last||'—')}</small></div></article>`)
+    .map(x=>`<a class="store-row" href="./store.html?name=${encodeURIComponent(x.name)}"><div><h3>${esc(x.name)}</h3><p>${esc(x.area||'')}・${esc(x.type||'K3関連')}</p></div><div class="store-meta"><strong>${esc(x.count||0)}回</strong><small>最終 ${esc(x.last||'—')}</small><small>詳細を見る →</small></div></a>`)
     .join('');
 }
 
