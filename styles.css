@@ -452,3 +452,6 @@ body{background:linear-gradient(180deg,#f7f5fb 0%,#f2eff7 100%);color:var(--ink)
 .store-official-links a b{color:#c084fc}
 .store-official-links a:hover{border-color:#7c3aed;background:#241832}
 @media(max-width:560px){.store-official-links{gap:6px}.store-official-links a{padding:8px 10px;font-size:9px}}
+
+.today-source-note{display:block;margin-top:5px;color:#8b8393;font-size:10px;line-height:1.55}
+.today-card .source-link,.event-card .source-link{display:inline-flex;margin-top:9px;color:#7545a5;font-size:10px;font-weight:900}
