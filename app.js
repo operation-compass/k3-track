@@ -81,7 +81,7 @@ function renderFeatured(data={},todayKey=''){
     resultEl.innerHTML=`<a class="featured-link" href="./result.html?id=${encodeURIComponent(r.id||'')}"><div class="featured-thumb"><span>RESULT</span><strong>${esc(r.score||'結果確認')}</strong></div><div class="featured-body"><small>PICK UP</small><h2>${esc(r.store)}</h2><p>${esc(r.date||'')} / ${esc(r.note||'確認済み結果')}</p><b>結果詳細を見る →</b></div></a>`;
   }
   if(nextEl && n){
-    nextEl.innerHTML=`<div class="featured-link"><div class="featured-thumb featured-thumb--next"><span>NEXT</span><strong>${esc(n.date||'確認中')}</strong></div><div class="featured-body"><small>NEXT SCHEDULE</small><h2>${esc(n.store||'次回予定')}</h2><p>${esc(n.event||'K3関連企画')}</p><b>${esc(n.note||'')}</b></div></div>`;
+    nextEl.innerHTML=`<div class="featured-link"><div class="featured-thumb featured-thumb--next"><span>NEXT</span><strong>${esc(n.label||String(n.date||'確認中').replace(/^\d{4}\//,''))}</strong></div><div class="featured-body"><small>NEXT SCHEDULE</small><h2>${esc(n.store||'次回予定')}</h2><p>${esc(n.event||'K3関連企画')}</p><b>${esc(n.note||'')}</b></div></div>`;
   }
 }
 
@@ -131,7 +131,17 @@ function renderResult(items=[]){
     el.innerHTML='<div class="result-card"><h3>公開できる結果はありません</h3></div>';
     return;
   }
-  el.innerHTML=items.slice(0,4).map(x=>`<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(x.date||'')}</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div><div class="metrics"><div><small>平均差枚</small><strong>${esc(x.avg_diff||'—')}</strong></div><div><small>勝率</small><strong>${esc(x.win_rate||'—')}</strong></div><div><small>対象台数</small><strong>${esc(x.units||'—')}</strong></div></div><p class="result-card__note">${esc(x.note||'')}</p><span class="result-detail-cta">詳細を見る →</span></a>`).join('');
+  el.innerHTML=items.slice(0,4).map(x=>{
+    const metricItems=[
+      ['平均差枚',x.avg_diff],
+      ['勝率',x.win_rate],
+      ['対象台数',x.units]
+    ].filter(([,v])=>v && v!=='—' && v!=='-');
+    const metrics=metricItems.length
+      ? `<div class="metrics metrics--${metricItems.length}">${metricItems.map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div>`
+      : '';
+    return `<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(x.date||'')}</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div>${metrics}<p class="result-card__note">${esc(x.note||'')}</p><span class="result-detail-cta">詳細を見る →</span></a>`;
+  }).join('');
 }
 
 function renderStats(s={}){
