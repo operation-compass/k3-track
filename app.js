@@ -179,7 +179,7 @@ function initStoreFilters(items=[]){
   area.addEventListener('change',apply);
 }
 
-function renderCoverage(items=[]){
+function renderCoverage(items=[],assetData={}){
   const el=document.getElementById('coverageList');
   if(!el) return;
   if(!items.length){
@@ -211,7 +211,7 @@ Promise.all([
     renderArchive(data.archive||[]);
     renderStores(data.stores||[]);
     initStoreFilters(data.stores||[]);
-    renderCoverage(data.coverage||[]);
+    renderCoverage(data.coverage||[],assetData);
     renderVisualShowcase(data.coverage||[],assetData);
     initCoverageFilter(data.coverage||[]);
     initGlobalSearch(data.stores||[],data.coverage||[]);
