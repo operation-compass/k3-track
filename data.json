@@ -263,7 +263,8 @@
       "last": "9/12",
       "type": "クロウ・スコープ",
       "pworld": "https://www.p-world.co.jp/kanagawa/towars-sagamihara.htm",
-      "official": "https://www.towars.com/"
+      "official": "https://www.towars.com/",
+      "x": "https://x.com/towarssagami"
     },
     {
       "name": "トワーズ麻溝台店",
@@ -314,14 +315,20 @@
       "area": "神奈川",
       "count": 3,
       "last": "9/12",
-      "type": "クロウ・スコープ"
+      "type": "クロウ・スコープ",
+      "pworld": "https://www.p-world.co.jp/kanagawa/towars-atsugi.htm",
+      "x": "https://x.com/TowarsAtsugi",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "トワーズ大和深見店1120",
       "area": "神奈川",
       "count": 3,
       "last": "9/12",
-      "type": "クロウ・スコープ"
+      "type": "クロウ・スコープ",
+      "pworld": "https://www.p-world.co.jp/kanagawa/towars-yamatofukami.htm",
+      "x": "https://x.com/Towars_fukami",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "プレイランド平和大治店",
@@ -335,14 +342,20 @@
       "area": "神奈川",
       "count": 2,
       "last": "9/12",
-      "type": "クロウ・スコープ"
+      "type": "クロウ・スコープ",
+      "pworld": "https://www.p-world.co.jp/kanagawa/towars-yamato.htm",
+      "x": "https://x.com/yamatotowars",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "トワーズ藤沢店",
       "area": "神奈川",
       "count": 2,
       "last": "9/12",
-      "type": "クロウ・スコープ"
+      "type": "クロウ・スコープ",
+      "pworld": "https://www.p-world.co.jp/kanagawa/towars-fujisawa.htm",
+      "x": "https://x.com/towarsfujisawa",
+      "official": "https://www.towars.com/"
     },
     {
       "name": "オーパス666延岡店",
