@@ -455,3 +455,31 @@ body{background:linear-gradient(180deg,#f7f5fb 0%,#f2eff7 100%);color:var(--ink)
 
 .today-source-note{display:block;margin-top:5px;color:#8b8393;font-size:10px;line-height:1.55}
 .today-card .source-link,.event-card .source-link{display:inline-flex;margin-top:9px;color:#7545a5;font-size:10px;font-weight:900}
+
+/* Final K3 brand unification */
+:root{
+  --accent:#a855f7;
+  --accent-2:#7c3aed;
+  --accent-soft:#ede9fe;
+  --accent-ink:#6d28d9;
+}
+.brand__mark{background:linear-gradient(145deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 22px rgba(124,58,237,.28)}
+.hero h1 span,.score,.stats-grid strong{color:#c084fc}
+.chip--accent{background:#ede9fe;color:#6d28d9}
+.archive-item time,.history-card time,.store-meta strong{color:#7c3aed}
+.coverage-list article>span{color:#7c3aed}
+.today-card__date{background:linear-gradient(145deg,var(--accent),var(--accent-2))}
+.text-link{color:#6f4d98}
+.result-card{border-color:#39284a}
+.result-card:hover{border-color:#7c3aed}
+.date-pill{background:#1d1527;border:1px solid #3b2851}
+@media(max-width:560px){
+  .topbar{padding-top:env(safe-area-inset-top)}
+  .bottom-nav{padding-bottom:max(7px,env(safe-area-inset-bottom))}
+  .section h2{font-size:25px}
+  .result-card{padding:18px}
+  .result-card__top{gap:12px}
+  .score{font-size:32px}
+  .store-detail-hero h1,.coverage-detail-hero h1,.result-detail-hero h1{font-size:28px}
+  .store-summary,.result-facts,.coverage-summary{gap:6px}
+}
