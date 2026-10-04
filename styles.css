@@ -445,3 +445,10 @@ body{background:linear-gradient(180deg,#f7f5fb 0%,#f2eff7 100%);color:var(--ink)
   .visual-teaser__body b{font-size:9px}
   .footer{padding-bottom:24px}
 }
+
+.store-official-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.store-official-links[hidden]{display:none}
+.store-official-links a{display:inline-flex;align-items:center;gap:8px;border:1px solid #40304f;background:#1c1525;color:#eee7f7;border-radius:999px;padding:9px 12px;font-size:10px;font-weight:900}
+.store-official-links a b{color:#c084fc}
+.store-official-links a:hover{border-color:#7c3aed;background:#241832}
+@media(max-width:560px){.store-official-links{gap:6px}.store-official-links a{padding:8px 10px;font-size:9px}}
