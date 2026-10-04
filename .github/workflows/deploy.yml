@@ -1,10 +1,17 @@
-name: Manual Deploy K3 Worker
+name: Deploy K3 Worker
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: k3-worker-production
+  cancel-in-progress: true
 
 jobs:
   deploy:
