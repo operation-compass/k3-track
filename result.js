@@ -1,6 +1,6 @@
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const id=new URLSearchParams(location.search).get('id')||'';
-fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).then(all=>{
+Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]}))]).then(([all,assets])=>{
   const d=all[id];
   if(!d){
     document.getElementById('resultTitle').textContent='結果が見つかりません';
@@ -10,6 +10,12 @@ fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).then(all=>{
   document.title=d.store+'｜'+d.date+'｜K3 TRACK β';
   document.getElementById('resultTitle').textContent=d.store;
   document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画');
+  const visual=document.getElementById('resultVisual');
+  const asset=(assets.items||[]).find(x=>x.key===d.event && x.image) || (assets.items||[]).find(x=>x.key==='RESULT' && x.image);
+  if(visual){
+    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||d.event||'K3結果') }">`:`<div class="detail-visual__fallback"><small>RESULT REPORT</small><strong>${esc(d.event||'K3 RESULT')}</strong><span>公式POP・ロゴ反映準備済み</span></div>`;
+    visual.setAttribute('aria-hidden','false');
+  }
   document.getElementById('resultFacts').innerHTML=`
     <div><small>開催日</small><strong>${esc(d.date||'—')}</strong></div>
     <div><small>企画</small><strong>${esc(d.event||'—')}</strong></div>
