@@ -33,8 +33,8 @@
     <section class="media-hero"><div class="container media-hero__inner">
       <div>
         <div class="eyebrow">K3 REPORT / SCHEDULE / RESULT</div>
-        <h1>K3の予定と結果を<br><span>1ページで追える。</span></h1>
-        <p class="hero__lead">今日の開催、次回予定、過去結果、店舗別履歴まで。確認できた情報を出典付きで整理。</p>
+        <h1>今日どこ？ 次はどこ？<br><span>前回どうだった？</span></h1>
+        <p class="hero__lead">K3関連の開催・結果・店舗履歴を、確認済みデータから最短で探せる非公式データハブ。</p>
         <div class="hero__badges"><span>β版</span><span>非公式</span><span>モバイル最適化</span><span id="lastUpdated">更新 --</span></div>
       </div>
       <div class="hero-panel">
@@ -43,6 +43,26 @@
         <a href="#schedule">次回予定 <b>→</b></a>
         <a href="#results">最新結果 <b>→</b></a>
         <a href="#stores">店舗別履歴 <b>→</b></a>
+      </div>
+    </div></section>
+
+    <section class="finder-strip"><div class="container">
+      <div class="finder-card">
+        <div class="finder-heading">
+          <div><small>QUICK FIND</small><strong>探したい情報へ最短で</strong></div>
+          <span>店舗・取材を横断検索</span>
+        </div>
+        <div class="finder-search">
+          <span class="finder-icon" aria-hidden="true">⌕</span>
+          <input id="globalSearch" type="search" placeholder="店舗名・エリア・取材名で検索" autocomplete="off" aria-label="店舗・取材を検索">
+          <button id="globalSearchClear" type="button" aria-label="検索をクリア">×</button>
+        </div>
+        <div class="finder-results" id="globalSearchResults" hidden></div>
+        <div class="finder-links">
+          <a href="./schedule.html"><span>開催履歴</span><b>→</b></a>
+          <a href="./results.html"><span>結果一覧</span><b>→</b></a>
+          <a href="./guide.html"><span>情報の見方</span><b>→</b></a>
+        </div>
       </div>
     </div></section>
 
@@ -60,7 +80,7 @@
     </div></section>
 
     <section class="visual-showcase" id="visualShowcase"><div class="container">
-      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">FEATURED COVERAGE</div><h2>注目企画</h2></div><span class="store-note">VISUAL × DATA</span></div>
+      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">FEATURED COVERAGE</div><h2>注目の取材・企画</h2></div><span class="store-note">POP × RESULT</span></div>
       <div class="visual-showcase__grid" id="visualShowcaseGrid"></div>
     </div></section>
     <section class="stats-strip">
