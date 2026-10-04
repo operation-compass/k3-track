@@ -88,7 +88,7 @@ function renderResult(items=[]){
 function renderStats(s={}){
   const el=document.getElementById('statsGrid');
   if(!el) return;
-  el.innerHTML=`<div><strong>${esc(s.events||'--')}</strong><span>登録履歴</span></div><div><strong>${esc(s.stores||'--')}</strong><span>対象店舗</span></div><div><strong>${esc(s.types||'--')}</strong><span>企画種別</span></div><div><strong>${esc(s.period||'--')}</strong><span>収集期間</span></div>`;
+  el.innerHTML=`<div><strong>${esc(s.events||'--')}</strong><span>開催履歴</span></div><div><strong>${esc(s.results||'--')}</strong><span>結果データ</span></div><div><strong>${esc(s.stores||'--')}</strong><span>対象店舗</span></div><div><strong>${esc(s.period||'--')}</strong><span>収集期間</span></div>`;
 }
 
 function renderArchive(items=[]){
