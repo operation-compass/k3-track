@@ -24,6 +24,52 @@ let cachedCoverage=[];
 
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
+function initGlobalSearch(stores=[],coverage=[]){
+  const input=document.getElementById('globalSearch');
+  const box=document.getElementById('globalSearchResults');
+  const clear=document.getElementById('globalSearchClear');
+  if(!input||!box) return;
+
+  const draw=()=>{
+    const q=input.value.trim().toLowerCase();
+    if(!q){
+      box.hidden=true;
+      box.innerHTML='';
+      clear?.classList.remove('is-visible');
+      return;
+    }
+    clear?.classList.add('is-visible');
+
+    const storeHits=stores.filter(x=>[x.name,x.area,x.type].join(' ').toLowerCase().includes(q)).slice(0,5);
+    const coverageHits=coverage.filter(x=>[x.name,x.description].join(' ').toLowerCase().includes(q)).slice(0,5);
+
+    const rows=[
+      ...storeHits.map(x=>`<a href="./store.html?name=${encodeURIComponent(x.name)}"><span class="finder-result__type">STORE</span><div><strong>${esc(x.name)}</strong><small>${esc(x.area||'')}・${esc(x.count||0)}回</small></div><b>→</b></a>`),
+      ...coverageHits.map(x=>`<a href="./coverage.html?name=${encodeURIComponent(x.name)}"><span class="finder-result__type">COVERAGE</span><div><strong>${esc(x.name)}</strong><small>${esc(x.description||'')}</small></div><b>→</b></a>`)
+    ];
+
+    box.innerHTML=rows.length?rows.join(''):'<p>該当する店舗・企画はありません。</p>';
+    box.hidden=false;
+  };
+
+  input.addEventListener('input',draw);
+  clear?.addEventListener('click',()=>{input.value='';draw();input.focus();});
+}
+
+function initSectionNav(){
+  const links=[...document.querySelectorAll('.bottom-nav a[href^="#"]')];
+  const pairs=links.map(a=>({a,section:document.querySelector(a.getAttribute('href'))})).filter(x=>x.section);
+  if(!pairs.length||!('IntersectionObserver' in window)) return;
+  const observer=new IntersectionObserver(entries=>{
+    const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+    if(!visible) return;
+    links.forEach(a=>a.classList.remove('is-active'));
+    const target=links.find(a=>a.getAttribute('href')==='#'+visible.target.id);
+    target?.classList.add('is-active');
+  },{rootMargin:'-25% 0px -60% 0px',threshold:[0,.1,.25,.5]});
+  pairs.forEach(x=>observer.observe(x.section));
+}
+
 function renderFeatured(data={}){
   const resultEl=document.getElementById('featuredResult');
   const nextEl=document.getElementById('featuredNext');
@@ -168,6 +214,8 @@ Promise.all([
     renderCoverage(data.coverage||[]);
     renderVisualShowcase(data.coverage||[],assetData);
     initCoverageFilter(data.coverage||[]);
+    initGlobalSearch(data.stores||[],data.coverage||[]);
+    initSectionNav();
     const updated=document.getElementById('lastUpdated');
     if(updated&&data.updated_at){
       const t=new Date(data.updated_at);
