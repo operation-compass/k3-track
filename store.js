@@ -11,7 +11,7 @@ Promise.all([
 ]).then(([historyData,siteData,visualData])=>{
   const items=historyData[name]||[];
   const store=(siteData.stores||[]).find(x=>x.name===name);
-  document.title=(name?name:'店舗別K3履歴')+'｜K3 TRACK β';
+  document.title=(name?name:'店舗別K3履歴')+'｜K3 TRACK';
   document.getElementById('storeTitle').textContent=name||'店舗が見つかりません';
   document.getElementById('storeSub').textContent=store?((store.area||'')+'・'+(store.type||'K3関連')):'確認済みのK3関連履歴';
   const visual=document.getElementById('storeVisual');
