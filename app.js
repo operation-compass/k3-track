@@ -41,7 +41,7 @@ function renderFeatured(data={}){
 function renderVisualShowcase(items=[]){
   const el=document.getElementById('visualShowcaseGrid');
   if(!el) return;
-  const picks=['クロウ・スコープ取材','V.I.P','NUMBER MISSION:0to9','ピエロの晩餐会'];
+  const picks=['双翼乱舞取材','クロウ・スコープ取材','超団結 / 7店舗共闘','お前の席ねぇから'];
   const rows=picks.map((name,i)=>{
     const coverage=(items||[]).find(x=>x.name===name);
     const desc=coverage?.description||'企画情報・実績を順次追加';
