@@ -30,11 +30,33 @@
     </nav>
   </header>
   <main id="top">
-    <section class="hero"><div class="container">
-      <div class="eyebrow">K3 REPORT / SCHEDULE / RESULT</div>
-      <h1>今日どこ？<br><span>次はどこ？</span><br>前回どうだった？</h1>
-      <p class="hero__lead">非公式K3の取材・来店・実績を、スマホで素早く確認できるよう整理する情報サイト。</p>
-      <div class="hero__badges"><span>β版</span><span>非公式</span><span>モバイル最適化</span><span id="lastUpdated">更新 --</span></div>
+    <section class="media-hero"><div class="container media-hero__inner">
+      <div>
+        <div class="eyebrow">K3 REPORT / SCHEDULE / RESULT</div>
+        <h1>K3の予定と結果を<br><span>1ページで追える。</span></h1>
+        <p class="hero__lead">今日の開催、次回予定、過去結果、店舗別履歴まで。確認できた情報を出典付きで整理。</p>
+        <div class="hero__badges"><span>β版</span><span>非公式</span><span>モバイル最適化</span><span id="lastUpdated">更新 --</span></div>
+      </div>
+      <div class="hero-panel">
+        <small>QUICK ACCESS</small>
+        <a href="#today">今日のK3 <b>→</b></a>
+        <a href="#schedule">次回予定 <b>→</b></a>
+        <a href="#results">最新結果 <b>→</b></a>
+        <a href="#stores">店舗別履歴 <b>→</b></a>
+      </div>
+    </div></section>
+
+    <section class="media-featured"><div class="container">
+      <div class="featured-grid">
+        <article class="featured-card featured-card--result" id="featuredResult">
+          <div class="featured-thumb"><span>RESULT</span></div>
+          <div class="featured-body"><small>PICK UP</small><h2>最新結果を読み込み中</h2><p>確認済みの結果を表示します。</p></div>
+        </article>
+        <article class="featured-card" id="featuredNext">
+          <div class="featured-thumb featured-thumb--next"><span>NEXT</span></div>
+          <div class="featured-body"><small>NEXT SCHEDULE</small><h2>次回予定を確認中</h2><p>公開可能な予定を表示します。</p></div>
+        </article>
+      </div>
     </div></section>
 
     <section class="stats-strip">
@@ -63,7 +85,7 @@
     </div></section>
 
     <section class="section section--dark" id="results"><div class="container">
-      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">LATEST RESULTS</div><h2>直近結果</h2></div></div>
+      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">LATEST RESULTS</div><h2>最新結果</h2></div><a class="text-link text-link--light" href="#archive">開催履歴を見る →</a></div>
       <div class="result-list" id="resultList"><div class="result-card">
         <div class="result-card__top"><div><span class="chip chip--light">RESULT</span><h3>結果データ準備中</h3></div><div class="score">—</div></div>
         <div class="metrics"><div><small>平均差枚</small><strong>—</strong></div><div><small>勝率</small><strong>—</strong></div><div><small>対象台数</small><strong>—</strong></div></div>
