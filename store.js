@@ -1,3 +1,5 @@
+const rankOf=v=>{const s=String(v||''); if(/^A[:：]?/.test(s)) return 'A'; if(/^B[:：]?/.test(s)) return 'B'; if(/^C[:：]?/.test(s)) return 'C'; return '';};
+const trustBadge=v=>{const r=rankOf(v); return r?`<span class="trust-badge trust-${r.toLowerCase()}">${r}</span>`:'';};
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const params=new URLSearchParams(location.search);
 const name=params.get('name')||'';
@@ -26,7 +28,7 @@ Promise.all([
     list.innerHTML='<div class="empty-detail">この店舗の確認済み履歴はまだありません。</div>';
     return;
   }
-  list.innerHTML=items.map(x=>`<article class="history-card"><div class="history-card__top"><time>${esc(fmtDate(x.date))}</time><span class="chip">${esc(x.kind||'K3')}</span></div><h3>${esc(x.event||'K3関連企画')}</h3><p>${esc(x.memo||x.k3name||'確認済み情報')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
+  list.innerHTML=items.map(x=>`<article class="history-card"><div class="history-card__top"><time>${esc(fmtDate(x.date))}</time><div class="history-badges">${trustBadge(x.confidence)}<span class="chip">${esc(x.kind||'K3')}</span></div></div><h3>${esc(x.event||'K3関連企画')}</h3><p>${esc(x.memo||x.k3name||'確認済み情報')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
 }).catch(()=>{
   document.getElementById('storeTitle').textContent='読み込みエラー';
   document.getElementById('historyList').innerHTML='<div class="empty-detail">データを読み込めませんでした。</div>';
