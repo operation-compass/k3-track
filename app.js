@@ -21,6 +21,7 @@ if(todayDate) todayDate.textContent=md;
 
 let cachedStores=[];
 let cachedCoverage=[];
+let cachedCoverageAssets={items:[]};
 
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -87,16 +88,16 @@ function renderFeatured(data={}){
 function renderVisualShowcase(items=[],assetData={}){
   const el=document.getElementById('visualShowcaseGrid');
   if(!el) return;
-  const picks=['双翼乱舞取材','クロウ・スコープ取材','超団結 / 7店舗共闘','お前の席ねぇから'];
+  const picks=['双翼乱舞取材','クロウ・スコープ取材','お前の席ねぇから','V.I.P','ピエロの晩餐会','NUMBER MISSION:0to9'];
   const rows=picks.map((name,i)=>{
     const coverage=(items||[]).find(x=>x.name===name);
     const desc=coverage?.description||'企画情報・実績を順次追加';
-    const asset=(assetData.items||[]).find(x=>x.key===name && x.image);
+    const asset=(assetData.items||[]).find(x=>x.key===name && x.type!=='character' && x.image);
     const fallback=`<div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`;
     const art=asset
-      ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`
+      ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" width="1122" height="1402" loading="${i<2?'eager':'lazy'}" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`
       : fallback;
-    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}">${art}<div class="visual-teaser__body"><small>K3 COVERAGE</small><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
+    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}">${art}<div class="visual-teaser__body"><small>K3 COVERAGE</small><h3>${esc(name)}</h3><span class="coverage-status ${coverage?.status==='実績あり'?'':'is-pending'}">${coverage?.status==='実績あり'?'実績あり':'データ収集中'}</span><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
   });
   el.innerHTML=rows.join('');
 }
@@ -179,14 +180,16 @@ function initStoreFilters(items=[]){
   area.addEventListener('change',apply);
 }
 
-function renderCoverage(items=[],assetData={}){
+function renderCoverage(items=[],assetData=cachedCoverageAssets){
   const el=document.getElementById('coverageList');
   if(!el) return;
-  if(!items.length){
-    el.innerHTML='<p class="event-note">該当する取材・企画がありません。</p>';
-    return;
-  }
-  el.innerHTML=items.map(x=>`<a class="coverage-link" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article><span>${esc(x.id||'--')}</span><div><h3>${esc(x.name)}</h3><p>${esc(x.description||'')}</p></div><b>→</b></article></a>`).join('');
+  if(!items.length){el.innerHTML='<p class="event-note">該当する取材・企画がありません。</p>';return;}
+  el.innerHTML=items.map(x=>{
+    const asset=(assetData.items||[]).find(a=>a.key===x.name && a.type!=='character' && a.image);
+    const fallback=`<span class="coverage-index">${esc(x.id||'--')}</span>`;
+    const thumb=asset?`<div class="coverage-thumb"><img src="${esc(asset.image)}" alt="${esc(asset.label||x.name)}" width="1122" height="1402" loading="lazy" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`:fallback;
+    return `<a class="coverage-entry" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article class="coverage-card">${thumb}<div class="coverage-copy"><div class="coverage-title-row"><h3>${esc(x.name)}</h3><span class="coverage-status ${x.status==='実績あり'?'':'is-pending'}">${x.status==='実績あり'?'実績あり':'データ収集中'}</span></div><p>${esc(x.description||'')}</p></div><b aria-hidden="true">→</b></article></a>`;
+  }).join('');
 }
 
 function initCoverageFilter(items=[]){
@@ -203,6 +206,7 @@ Promise.all([
   fetch('./data.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed'))),
   fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]}))
 ]).then(([data,assetData])=>{
+    cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
     renderFeatured(data);
     renderToday(data.today);

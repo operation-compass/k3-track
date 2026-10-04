@@ -394,3 +394,24 @@ body{background:linear-gradient(180deg,#f7f5fb 0%,#f2eff7 100%);color:var(--ink)
   .coverage-title-row{gap:6px}
   .coverage-title-row h3{font-size:14px}
 }
+
+/* Portrait artwork from the Drive originals; preserve the existing page design. */
+.visual-teaser{display:flex;flex-direction:column;min-width:0}
+.visual-teaser__image{aspect-ratio:1122/1402;flex:none}
+.visual-teaser__image img{object-fit:contain;object-position:center;width:100%;height:100%}
+.visual-teaser:hover .visual-teaser__image img{transform:none}
+.visual-teaser__body{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.visual-teaser__body h3{font-size:14px;line-height:1.5;margin:0;overflow-wrap:anywhere}
+.visual-teaser__body p{margin:0}
+.visual-teaser__body b{margin-top:auto;padding-top:6px}
+.coverage-entry{display:block;min-width:0}
+.coverage-entry .coverage-card{grid-template-columns:88px minmax(0,1fr) 24px!important;gap:0}
+.coverage-thumb{height:110px;min-height:110px;border-right-color:#3c2a50}
+.coverage-thumb img{width:88px;height:110px;object-fit:contain;padding:0}
+.coverage-copy{padding:12px;min-width:0;overflow-wrap:anywhere}
+.coverage-entry b{color:#a855f7}
+.coverage-status{font-size:10px}
+.coverage-detail-hero .detail-visual img{display:block;width:min(100%,560px);height:auto;max-height:none;object-fit:contain;margin-inline:auto}
+.media-hero{overflow:hidden}
+@media(max-width:560px){.coverage-entry .coverage-card{grid-template-columns:74px minmax(0,1fr) 18px!important}.coverage-thumb{height:93px;min-height:93px}.coverage-thumb img{width:74px;height:93px}.coverage-title-row h3{font-size:14px}.visual-teaser__body h3{font-size:13px}}
+.visual-teaser__body h3{min-height:3em}
