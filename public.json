@@ -526,5 +526,21 @@
     "start": "2026/08/22",
     "end": "",
     "status": "公開"
+  },
+  {
+    "id": "PUB-RS-20260811-01",
+    "date": "2026/08/11",
+    "order": "50",
+    "type": "結果",
+    "store": "トワーズ麻溝台店",
+    "event": "クロウ・スコープ取材",
+    "headline": "08/11 トワーズ麻溝台店 結果",
+    "summary": "勝率128/345台",
+    "resultSummary": "平均G数4,035G / 新鬼武者3 4台 平均+2,763枚 ほか",
+    "detailUrl": "./result.html?id=RS-20260811-01",
+    "sourceUrl": "https://min-repo.com/3282418/",
+    "start": "2026/08/11",
+    "end": "",
+    "status": "公開"
   }
 ]
