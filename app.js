@@ -71,11 +71,11 @@ function initSectionNav(){
   pairs.forEach(x=>observer.observe(x.section));
 }
 
-function renderFeatured(data={}){
+function renderFeatured(data={},todayKey=''){
   const resultEl=document.getElementById('featuredResult');
   const nextEl=document.getElementById('featuredNext');
   const r=(data.results||[])[0];
-  const n=(data.schedule||[])[0];
+  const n=(data.schedule||[]).find(x=>x.date!==todayKey)||(data.schedule||[])[0];
 
   if(resultEl && r){
     resultEl.innerHTML=`<a class="featured-link" href="./result.html?id=${encodeURIComponent(r.id||'')}"><div class="featured-thumb"><span>RESULT</span><strong>${esc(r.score||'結果確認')}</strong></div><div class="featured-body"><small>PICK UP</small><h2>${esc(r.store)}</h2><p>${esc(r.date||'')} / ${esc(r.note||'確認済み結果')}</p><b>結果詳細を見る →</b></div></a>`;
@@ -113,11 +113,12 @@ function renderToday(items=[]){
   el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>${esc(x.store)}</h3><p>${esc(x.event||'K3関連企画')}</p></div><span class="status">${esc(x.status||'開催')}</span>`;
 }
 
-function renderSchedule(items=[]){
+function renderSchedule(items=[],todayKey=''){
+  items=(items||[]).filter(x=>x.date!==todayKey);
   const el=document.getElementById('scheduleList');
   if(!el) return;
   if(!items.length){
-    el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回予定を確認中</h3><p class="event-name">公開可能な確認済みデータを準備しています</p><p class="event-note">K3 DATA MASTER連携準備中</p></article>';
+    el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回予定を確認中</h3><p class="event-name">公開可能な確認済みデータを準備しています</p><p class="event-note">確認済み情報を整理中</p></article>';
     return;
   }
   el.innerHTML=items.slice(0,6).map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.label||'K3')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p><p class="event-note">${esc(x.note||'確認済み情報')}</p></article>`).join('');
