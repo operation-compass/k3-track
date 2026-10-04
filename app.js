@@ -209,9 +209,12 @@ Promise.all([
 ]).then(([data,assetData])=>{
     cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
-    renderFeatured(data);
-    renderToday(data.today);
-    renderSchedule(data.schedule);
+    const now=new Date();
+    const todayKey=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
+    const todayItems=(data.today&&data.today.length)?data.today:(data.schedule||[]).filter(x=>x.date===todayKey);
+    renderFeatured(data,todayKey);
+    renderToday(todayItems);
+    renderSchedule(data.schedule,todayKey);
     renderResult(data.results);
     renderArchive(data.archive||[]);
     renderStores(data.stores||[]);
