@@ -110,7 +110,7 @@ function renderToday(items=[]){
     return;
   }
   const x=items[0];
-  el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>${esc(x.store)}</h3><p>${esc(x.event||'K3関連企画')}</p></div><span class="status">${esc(x.status||'開催')}</span>`;
+  el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>${esc(x.store)}</h3><p>${esc(x.event||'K3関連企画')}</p>${x.note?`<small class="today-source-note">${esc(x.note)}</small>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</div><span class="status">${esc(x.status||'確認済')}</span>`;
 }
 
 function renderSchedule(items=[],todayKey=''){
@@ -121,7 +121,7 @@ function renderSchedule(items=[],todayKey=''){
     el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回予定を確認中</h3><p class="event-name">公開可能な確認済みデータを準備しています</p><p class="event-note">確認済み情報を整理中</p></article>';
     return;
   }
-  el.innerHTML=items.slice(0,6).map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.label||'K3')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p><p class="event-note">${esc(x.note||'確認済み情報')}</p></article>`).join('');
+  el.innerHTML=items.slice(0,6).map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.label||'K3')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p><p class="event-note">${esc(x.note||'確認済み情報')}</p>${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
 }
 
 function renderResult(items=[]){
