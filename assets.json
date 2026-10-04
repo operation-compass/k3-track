@@ -1,14 +1,14 @@
 {
-  "updated_at": "2026-10-04T21:35:00+09:00",
+  "updated_at": "2026-10-05T01:20:00+09:00",
   "received": true,
-  "source_note": "ユーザー提供・使用許可確認済み",
+  "source_note": "使用許可確認済み素材。公開画像は同一サイト内 assets/ を参照",
   "items": [
     {
       "id": "AST-001",
       "type": "pop",
       "key": "クロウ・スコープ取材",
       "label": "クロウ・スコープ取材｜WEB用高画質画像",
-      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/crow-scope-hq.webp",
+      "image": "./assets/crow-scope-hq.webp",
       "planned_path": "./assets/crow-scope-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -26,7 +26,7 @@
       "type": "pop",
       "key": "ピエロの晩餐会",
       "label": "ピエロの晩餐会｜WEB用高画質画像",
-      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/pierrot-banquet-hq.webp",
+      "image": "./assets/pierrot-banquet-hq.webp",
       "planned_path": "./assets/pierrot-banquet-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -44,7 +44,7 @@
       "type": "pop",
       "key": "V.I.P",
       "label": "V.I.P｜WEB用高画質画像",
-      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/vip-hq.webp",
+      "image": "./assets/vip-hq.webp",
       "planned_path": "./assets/vip-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -62,7 +62,7 @@
       "type": "pop",
       "key": "NUMBER MISSION:0to9",
       "label": "NUMBER MISSION:0to9｜WEB用高画質画像",
-      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/number-mission-hq.webp",
+      "image": "./assets/number-mission-hq.webp",
       "planned_path": "./assets/number-mission-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -140,7 +140,7 @@
       "type": "pop",
       "key": "双翼乱舞取材",
       "label": "双翼乱舞取材｜WEB用高画質画像",
-      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/souyoku-ranbu-hq.webp",
+      "image": "./assets/souyoku-ranbu-hq.webp",
       "planned_path": "./assets/souyoku-ranbu-hq.webp",
       "rights": "許可済",
       "scope": [
@@ -163,7 +163,7 @@
         "sns"
       ],
       "label": "お前の席ねぇから｜WEB用高画質画像",
-      "image": "https://raw.githubusercontent.com/operation-compass/k3-track/5bdf68ce908b9d40367996d375c94768acd441fc/assets/omae-seat-hq.webp",
+      "image": "./assets/omae-seat-hq.webp",
       "planned_path": "./assets/omae-seat-hq.webp",
       "width": 1122,
       "height": 1402,
