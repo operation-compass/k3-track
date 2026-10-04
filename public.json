@@ -590,5 +590,21 @@
     "start": "2026/04/18",
     "end": "",
     "status": "公開"
+  },
+  {
+    "id": "PUB-RS-20260506-02",
+    "date": "2026/05/06",
+    "order": "50",
+    "type": "結果",
+    "store": "トワーズ麻溝台店",
+    "event": "クロウ・スコープ取材",
+    "headline": "05/06 トワーズ麻溝台店 結果",
+    "summary": "東京喰種10台 平均+2,017枚",
+    "resultSummary": "ミリオンゴッド4台 平均+1,523枚 / 店舗平均G数4,081G",
+    "detailUrl": "./result.html?id=RS-20260506-02",
+    "sourceUrl": "https://hall-navi.com/hole_view?hid=252032800000820300&k=2%E3%81%AE%E3%81%A4%E3%81%8F%E6%97%A5",
+    "start": "2026/05/06",
+    "end": "",
+    "status": "公開"
   }
 ]
