@@ -75,7 +75,7 @@ function renderFeatured(data={},todayKey=''){
   const resultEl=document.getElementById('featuredResult');
   const nextEl=document.getElementById('featuredNext');
   const r=(data.results||[])[0];
-  const n=(data.schedule||[]).find(x=>x.date!==todayKey)||(data.schedule||[])[0];
+  const n=(data.schedule||[]).filter(x=>x.date>todayKey).sort((a,b)=>String(a.date).localeCompare(String(b.date)))[0];
 
   if(resultEl && r){
     resultEl.innerHTML=`<a class="featured-link" href="./result.html?id=${encodeURIComponent(r.id||'')}"><div class="featured-thumb"><span>RESULT</span><strong>${esc(r.score||'結果確認')}</strong></div><div class="featured-body"><small>PICK UP</small><h2>${esc(r.store)}</h2><p>${esc(r.date||'')} / ${esc(r.note||'確認済み結果')}</p><b>結果詳細を見る →</b></div></a>`;
@@ -114,7 +114,7 @@ function renderToday(items=[]){
 }
 
 function renderSchedule(items=[],todayKey=''){
-  items=(items||[]).filter(x=>x.date!==todayKey);
+  items=(items||[]).filter(x=>x.date>todayKey).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
   const el=document.getElementById('scheduleList');
   if(!el) return;
   if(!items.length){
@@ -221,7 +221,7 @@ Promise.all([
     renderStats(data.stats||{});
     const now=new Date();
     const todayKey=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
-    const todayItems=(data.today&&data.today.length)?data.today:(data.schedule||[]).filter(x=>x.date===todayKey);
+    const todayItems=[...(data.today||[]),...(data.schedule||[])].filter((x,i,arr)=>x.date===todayKey && arr.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i);
     renderFeatured(data,todayKey);
     renderToday(todayItems);
     renderSchedule(data.schedule,todayKey);
