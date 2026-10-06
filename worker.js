@@ -7,12 +7,13 @@ export default {
       url.pathname === "/" ||
       url.pathname.endsWith(".html") ||
       url.pathname.endsWith(".json") ||
-      url.pathname === "/assets/k3-track-og-final-v2.jpg";
+      url.pathname === "/assets/k3-track-og-final-v2.jpg" ||
+      url.pathname === "/assets/k3-track-og-20261006.jpg";
 
     if (fresh) {
       const headers = new Headers(response.headers);
       headers.set("cache-control", "no-cache, no-store, must-revalidate");
-      headers.set("x-k3-build", "20261005-final-audit");
+      headers.set("x-k3-build", "20261006-og-refresh");
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
