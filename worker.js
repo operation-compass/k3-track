@@ -8,13 +8,14 @@ export default {
       url.pathname.endsWith(".html") ||
       url.pathname.endsWith(".json") ||
       url.pathname === "/assets/k3-track-og-final-v2.jpg" ||
+      url.pathname === "/assets/k3-track-og-sakura-final-20261006-v3.jpg" ||
       url.pathname === "/assets/k3-track-og-20261006.jpg" ||
       url.pathname === "/assets/k3-track-og-sakura-20261006.jpg";
 
     if (fresh) {
       const headers = new Headers(response.headers);
       headers.set("cache-control", "no-cache, no-store, must-revalidate");
-      headers.set("x-k3-build", "20261006-og-sakura");
+      headers.set("x-k3-build", "20261006-og-v3");
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
