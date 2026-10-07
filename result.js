@@ -10,8 +10,10 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
   document.title=d.store+'｜'+d.date+'｜K3 TRACK';
   const canonical=document.querySelector('link[rel="canonical"]');
   if(canonical) canonical.href=location.origin+location.pathname+'?id='+encodeURIComponent(id);
+  const hasWholeStore=Boolean(d.total||d.avg||d.winRate);
+  const resultMode=hasWholeStore?'店舗全体数値あり':'部分結果';
   document.getElementById('resultTitle').textContent=d.store;
-  document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画');
+  document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画')+'・'+resultMode;
   const visual=document.getElementById('resultVisual');
   const asset=(assets.items||[]).find(x=>x.key===d.event && x.image) || (assets.items||[]).find(x=>x.key==='RESULT' && x.image);
   if(visual){
@@ -34,7 +36,7 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
   document.getElementById('machineList').innerHTML=items.length?items.map(x=>`<article class="machine-card"><strong>${esc(x)}</strong></article>`).join(''):'<div class="empty-detail">確認済みの機種別詳細はありません。</div>';
   const trust=document.getElementById('resultTrust');
   if(trust){
-    trust.innerHTML=`<span>確認日 ${esc(d.checked||'—')}</span><span>${esc(d.publish||'確認済み')}</span>`;
+    trust.innerHTML=`<span>確認日 ${esc(d.checked||'—')}</span><span>${esc(resultMode)}</span><span>${esc(d.publish||'確認済み')}</span>`;
   }
   const related=document.getElementById('relatedLinks');
   if(related){
