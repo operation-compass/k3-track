@@ -16,7 +16,9 @@ function render(){
  count.textContent=`${rows.length}件${upcoming?`（今後 ${upcoming}件）`:''}`;
  list.innerHTML=rows.length?rows.map(x=>{
    const future=(x.date||'')>=todayKey;
-   return `<a class="article-row ${future?'article-row--upcoming':''}" href="./store.html?name=${encodeURIComponent(x.store)}"><div><time>${esc(x.date||'—')}</time><span class="chip ${future?'chip--accent':''}">${esc(future?(x.status||'予定'):(x.kind||'K3'))}</span></div><h2>${esc(x.store)}</h2><p><strong>${esc(x.event||'K3関連企画')}</strong><br>${esc(x.note||x.memo||'')}</p><b>${future?'予定の出典を確認':'店舗履歴を見る'} →</b></a>`;
+   const href=future&&x.sourceUrl?x.sourceUrl:`./store.html?name=${encodeURIComponent(x.store)}`;
+   const external=future&&x.sourceUrl?' target="_blank" rel="noopener"':'';
+   return `<a class="article-row ${future?'article-row--upcoming':''}" href="${esc(href)}"${external}><div><time>${esc(x.date||'—')}</time><span class="chip ${future?'chip--accent':''}">${esc(future?(x.status||'予定'):(x.kind||'K3'))}</span></div><h2>${esc(x.store)}</h2><p><strong>${esc(x.event||'K3関連企画')}</strong><br>${esc(x.note||x.memo||'')}</p><b>${future&&x.sourceUrl?'出典を見る':'店舗履歴を見る'} →</b></a>`;
  }).join(''):'<div class="empty-detail">該当する予定・開催履歴はありません。</div>';
 }
 
