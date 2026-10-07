@@ -1,16 +1,6 @@
 {
-  "updated_at": "2026-10-07T19:45:00+09:00",
-  "today": [
-    {
-      "label": "10/05",
-      "date": "2026/10/05",
-      "store": "スタジアム2001京都八幡店",
-      "event": "非公式K3来店＋ライブ配信",
-      "note": "本人Xで来店＆ライブ配信を確認。同日『ランプの魔法取材』開催。",
-      "sourceUrl": "https://x.com/k_777_3/status/2040357193552388467",
-      "status": "本人発信確認"
-    }
-  ],
+  "updated_at": "2026-10-07T20:00:00+09:00",
+  "today": [],
   "schedule": [
     {
       "label": "10/05",
@@ -28,7 +18,8 @@
       "event": "K3取材",
       "note": "P-WORLDで10/10(土)10:00〜『◆◆K3取材◆◆』掲載を再確認（2026/10/07）。掲載名のまま表示。",
       "sourceUrl": "https://www.p-world.co.jp/hall/interviews/prefs/fukuoka?city_cd=40048",
-      "status": "P-WORLD確認"
+      "status": "P-WORLD確認",
+      "area": "福岡県"
     }
   ],
   "results": [
