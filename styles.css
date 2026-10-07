@@ -609,3 +609,28 @@ button,a{-webkit-tap-highlight-color:transparent}
 .result-archive-metrics small{font-size:10px;opacity:.58}
 .result-archive-metrics strong{font-size:14px}
 .detail-note{display:block;margin-top:10px;line-height:1.7;opacity:.66}
+
+
+/* Result profile panels */
+.performance-panel{margin-top:22px;padding:18px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.035)}
+.performance-panel__head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}
+.performance-panel__head div{display:grid;gap:3px}
+.performance-panel__head small{font-size:10px;letter-spacing:.16em;opacity:.56}
+.performance-panel__head strong{font-size:18px}
+.performance-panel__head>span{font-size:12px;opacity:.6}
+.performance-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.performance-grid>div{padding:12px;border-radius:12px;background:rgba(255,255,255,.045)}
+.performance-grid small{display:block;font-size:10px;opacity:.58;margin-bottom:4px}
+.performance-grid strong{font-size:16px}
+.performance-note{margin:12px 0 0;font-size:11px;line-height:1.7;opacity:.64}
+.performance-latest{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);text-decoration:none;color:inherit}
+.performance-latest span{font-size:13px}
+.performance-latest b{font-size:12px}
+.hero__badges .is-stale{outline:1px solid rgba(255,255,255,.32);font-weight:700}
+
+@media (max-width:720px){
+  .performance-panel{padding:15px;border-radius:15px}
+  .performance-grid{grid-template-columns:1fr 1fr}
+  .performance-panel__head strong{font-size:16px}
+  .performance-grid>div{min-height:64px}
+}
