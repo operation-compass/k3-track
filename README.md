@@ -85,3 +85,26 @@
 - 公開NG店舗のWeb残存
 - PUBLIC Web同期
 - STORE_VISUALS同期
+
+
+## Production deployment
+
+The production Worker is deployed from `main` with GitHub Actions.
+
+Required repository secrets:
+
+- `CLOUDFLARE_API_TOKEN`: Cloudflare API token with Workers Scripts edit permission for the target account.
+- `CLOUDFLARE_ACCOUNT_ID`: Cloudflare account ID that owns the `k3-track` Worker.
+
+Workflow: `.github/workflows/deploy.yml`
+
+If either secret is missing, deployment intentionally fails before Wrangler runs. This prevents edits from appearing "successful" in GitHub while production remains stale.
+
+### Publishing rule
+
+1. Update source/data on `main`.
+2. Confirm the `Deploy K3 Worker` workflow succeeds.
+3. Verify the production page response/header and the visible change.
+4. Only then treat the update as published.
+
+The site Worker disables caching for HTML, JSON, CSS, JS, and K3 OG images to reduce stale UI/OG previews after deployment.
