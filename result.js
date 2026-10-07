@@ -18,12 +18,16 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
     visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||d.event||'K3結果') }">`:`<div class="detail-visual__fallback"><small>RESULT REPORT</small><strong>${esc(d.event||'K3 RESULT')}</strong><span>確認済み結果データ</span></div>`;
     visual.setAttribute('aria-hidden','false');
   }
-  document.getElementById('resultFacts').innerHTML=`
-    <div><small>開催日</small><strong>${esc(d.date||'—')}</strong></div>
-    <div><small>企画</small><strong>${esc(d.event||'—')}</strong></div>
-    <div><small>勝率</small><strong>${esc(d.winRate||'—')}</strong></div>
-    <div><small>対象台数</small><strong>${esc(d.units||'—')}</strong></div>`;
-  document.getElementById('summaryBox').innerHTML=`<h3>確認内容</h3><p>${esc(d.note||d.detail||'確認済み結果')}</p>`;
+  const factRows=[
+    ['開催日',d.date],
+    ['企画',d.event],
+    ['総差枚',d.total],
+    ['平均差枚',d.avg],
+    ['勝率',d.winRate],
+    ['対象台数',d.units]
+  ].filter(([,v])=>v && v!=='—' && v!=='-');
+  document.getElementById('resultFacts').innerHTML=factRows.map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('');
+  document.getElementById('summaryBox').innerHTML=`<h3>結果サマリー</h3><p>${esc(d.detail||d.note||'確認済み結果')}</p>${d.note&&d.detail?`<small class="detail-note">${esc(d.note)}</small>`:''}`;
   const detail=(d.detail||'').split('/').map(s=>s.trim()).filter(Boolean);
   const machines=(d.machines||'').split('/').map(s=>s.trim()).filter(Boolean);
   const items=detail.length?detail:machines;
