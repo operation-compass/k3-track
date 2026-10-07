@@ -13,7 +13,10 @@ function render(){
    return (!q||txt.includes(q))&&(!ev||x.event===ev)&&(!mo||(x.date||'').startsWith(mo));
  }).sort((a,b)=>(b.date||'').localeCompare(a.date||''));
  count.textContent=rows.length+'件';
- list.innerHTML=rows.length?rows.map(x=>`<a class="article-row" href="./result.html?id=${encodeURIComponent(x.id)}"><div><time>${esc(x.date||'—')}</time><span class="chip">${esc(x.event||'K3')}</span></div><h2>${esc(x.store)}</h2><p>${esc(x.note||x.detail||'確認済み結果')}</p><b>結果詳細を見る →</b></a>`).join(''):'<div class="empty-detail">該当する結果はありません。</div>';
+ list.innerHTML=rows.length?rows.map(x=>{
+   const metrics=[['総差枚',x.total],['平均差枚',x.avg],['勝率',x.winRate]].filter(([,v])=>v&&v!=='—'&&v!=='-');
+   return `<a class="article-row result-archive-row" href="./result.html?id=${encodeURIComponent(x.id)}"><div><time>${esc(x.date||'—')}</time><span class="chip">${esc(x.event||'K3')}</span></div><h2>${esc(x.store)}</h2>${metrics.length?`<div class="result-archive-metrics">${metrics.map(([k,v])=>`<span><small>${esc(k)}</small><strong>${esc(v)}</strong></span>`).join('')}</div>`:''}<p>${esc(x.note||x.detail||'確認済み結果')}</p><b>結果詳細を見る →</b></a>`;
+ }).join(''):'<div class="empty-detail">該当する結果はありません。</div>';
 }
 fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
  all=Object.values(data).filter(x=>x.publish==='公開'||!x.publish);
