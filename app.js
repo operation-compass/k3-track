@@ -222,6 +222,10 @@ Promise.all([
     const now=new Date();
     const todayKey=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
     const todayItems=[...(data.today||[]),...(data.schedule||[])].filter((x,i,arr)=>x.date===todayKey && arr.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i);
+    const detailedResults=Object.values(resultData||{})
+      .filter(x=>x.publish==='公開'||!x.publish)
+      .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
+    if(detailedResults.length) data.results=detailedResults;
     renderFeatured(data,todayKey);
     renderToday(todayItems);
     renderSchedule(data.schedule,todayKey);
