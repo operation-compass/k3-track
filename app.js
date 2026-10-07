@@ -106,22 +106,26 @@ function renderToday(items=[]){
   const el=document.getElementById('todayCard');
   if(!el) return;
   if(!items.length){
+    el.classList.add('empty-state');
     el.innerHTML='<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>本日の公開予定はありません</h3><p>確認済みの予定がある場合のみ表示します。</p></div><span class="status">NO DATA</span>';
     return;
   }
-  const x=items[0];
-  el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>${esc(x.store)}</h3><p>${esc(x.event||'K3関連企画')}</p>${x.note?`<small class="today-source-note">${esc(x.note)}</small>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</div><span class="status">${esc(x.status||'確認済')}</span>`;
+  el.classList.remove('empty-state');
+  el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-list">${items.map(x=>`<article class="today-item"><div class="today-card__content"><div class="today-item__head"><h3>${esc(x.store)}</h3><span class="status">${esc(x.status||'確認済')}</span></div><p>${esc(x.event||'K3関連企画')}</p>${x.note?`<small class="today-source-note">${esc(x.note)}</small>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</div></article>`).join('')}</div>`;
 }
 
 function renderSchedule(items=[],todayKey=''){
-  items=(items||[]).filter(x=>x.date>todayKey).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+  items=(items||[]).filter(x=>x.date>todayKey).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.store).localeCompare(String(b.store),'ja'));
   const el=document.getElementById('scheduleList');
   if(!el) return;
   if(!items.length){
     el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回公開予定はありません</h3><p class="event-name">確認済みの予定がある場合のみ表示します</p><p class="event-note">未確認情報は掲載しません</p></article>';
     return;
   }
-  el.innerHTML=items.slice(0,6).map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.label||'K3')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p><p class="event-note">${esc(x.note||'確認済み情報')}</p>${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
+  const visible=items.slice(0,8);
+  const grouped=new Map();
+  visible.forEach(x=>{if(!grouped.has(x.date)) grouped.set(x.date,[]);grouped.get(x.date).push(x);});
+  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\\d{4}\\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
 }
 
 function renderResult(items=[]){
@@ -131,16 +135,29 @@ function renderResult(items=[]){
     el.innerHTML='<div class="result-card"><h3>公開できる結果はありません</h3></div>';
     return;
   }
-  el.innerHTML=items.slice(0,4).map(x=>{
+  const selected=[];
+  const groupCount=new Map();
+  for(const x of items){
+    const key=`${x.date||''}|${x.event||''}`;
+    const n=groupCount.get(key)||0;
+    if(n>=2) continue;
+    selected.push(x);
+    groupCount.set(key,n+1);
+    if(selected.length>=6) break;
+  }
+  el.innerHTML=selected.map(x=>{
     const metricItems=[
-      ['平均差枚',x.avg_diff],
-      ['勝率',x.win_rate],
+      ['総差枚',x.total||x.total_diff],
+      ['平均差枚',x.avg||x.avg_diff],
+      ['勝率',x.winRate||x.win_rate],
       ['対象台数',x.units]
     ].filter(([,v])=>v && v!=='—' && v!=='-');
     const metrics=metricItems.length
-      ? `<div class="metrics metrics--${metricItems.length}">${metricItems.map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div>`
-      : '';
-    return `<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(x.date||'')}</span><h3>${esc(x.store||'直近結果')}</h3></div><div class="score">${esc(x.score||'—')}</div></div>${metrics}<p class="result-card__note">${esc(x.note||'')}</p><span class="result-detail-cta">詳細を見る →</span></a>`;
+      ? `<div class="metrics metrics--${Math.min(metricItems.length,4)}">${metricItems.slice(0,4).map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div>`
+      : '<div class="result-evidence">数値未掲載・内容確認済み</div>';
+    const score=x.score||x.total||x.avg||'結果確認';
+    const date=String(x.date||'').replace(/^\\d{4}\\//,'');
+    return `<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(date)}</span><h3>${esc(x.store||'直近結果')}</h3><small class="result-event">${esc(x.event||'K3関連企画')}</small></div><div class="score">${esc(score)}</div></div>${metrics}<p class="result-card__note">${esc(x.note||x.detail||'確認済み結果')}</p><div class="result-card__foot"><span>${x.checked?`確認 ${esc(x.checked)}`:'出典確認済み'}</span><b>詳細を見る →</b></div></a>`;
   }).join('');
 }
 
