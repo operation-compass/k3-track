@@ -125,7 +125,7 @@ function renderSchedule(items=[],todayKey=''){
   const visible=items.slice(0,8);
   const grouped=new Map();
   visible.forEach(x=>{if(!grouped.has(x.date)) grouped.set(x.date,[]);grouped.get(x.date).push(x);});
-  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\\d{4}\\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
+  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
 }
 
 function renderResult(items=[]){
@@ -156,7 +156,7 @@ function renderResult(items=[]){
       ? `<div class="metrics metrics--${Math.min(metricItems.length,4)}">${metricItems.slice(0,4).map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div>`
       : '<div class="result-evidence">数値未掲載・内容確認済み</div>';
     const score=x.score||x.total||x.avg||'結果確認';
-    const date=String(x.date||'').replace(/^\\d{4}\\//,'');
+    const date=String(x.date||'').replace(/^\d{4}\//,'');
     return `<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(date)}</span><h3>${esc(x.store||'直近結果')}</h3><small class="result-event">${esc(x.event||'K3関連企画')}</small></div><div class="score">${esc(score)}</div></div>${metrics}<p class="result-card__note">${esc(x.note||x.detail||'確認済み結果')}</p><div class="result-card__foot"><span>${x.checked?`確認 ${esc(x.checked)}`:'出典確認済み'}</span><b>詳細を見る →</b></div></a>`;
   }).join('');
 }
@@ -232,8 +232,9 @@ function initCoverageFilter(items=[]){
 
 Promise.all([
   fetch('./data.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed'))),
-  fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]}))
-]).then(([data,assetData])=>{
+  fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]})),
+  fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({}))
+]).then(([data,assetData,resultData])=>{
     cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
     const now=new Date();
@@ -259,6 +260,10 @@ Promise.all([
     if(updated&&data.updated_at){
       const t=new Date(data.updated_at);
       updated.textContent='更新 '+(t.getMonth()+1)+'/'+t.getDate()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+      if(Date.now()-t.getTime()>48*60*60*1000){
+        updated.classList.add('is-stale');
+        updated.title='最終更新から48時間以上経過しています';
+      }
     }
   })
   .catch(()=>{});
