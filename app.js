@@ -7,6 +7,7 @@ if(menuBtn){
     menuBtn.setAttribute('aria-expanded',open?'true':'false');
   });
 }
+document.addEventListener('keydown',event=>{if(event.key==='Escape' && mobileNav?.classList.contains('is-open')){mobileNav.classList.remove('is-open');menuBtn?.setAttribute('aria-expanded','false');menuBtn?.focus();}});
 document.querySelectorAll('#mobileNav a').forEach(link=>{
   link.addEventListener('click',()=>{
     mobileNav.classList.remove('is-open');
@@ -14,8 +15,9 @@ document.querySelectorAll('#mobileNav a').forEach(link=>{
   });
 });
 
+const japanDate=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()).replaceAll('-','/');
 const d=new Date();
-const md=`${d.getMonth()+1}/${d.getDate()}`;
+const md=japanDate().slice(5).replace(/^0/,'').replace('/0','/');
 const todayDate=document.getElementById('todayDate');
 if(todayDate) todayDate.textContent=md;
 
@@ -45,8 +47,8 @@ function initGlobalSearch(stores=[],coverage=[]){
     const coverageHits=coverage.filter(x=>[x.name,x.description].join(' ').toLowerCase().includes(q)).slice(0,5);
 
     const rows=[
-      ...storeHits.map(x=>`<a href="./store.html?name=${encodeURIComponent(x.name)}"><span class="finder-result__type">STORE</span><div><strong>${esc(x.name)}</strong><small>${esc(x.area||'')}・${esc(x.count||0)}回</small></div><b>→</b></a>`),
-      ...coverageHits.map(x=>`<a href="./coverage.html?name=${encodeURIComponent(x.name)}"><span class="finder-result__type">COVERAGE</span><div><strong>${esc(x.name)}</strong><small>${esc(x.description||'')}</small></div><b>→</b></a>`)
+      ...storeHits.map(x=>`<a href="./store.html?name=${encodeURIComponent(x.name)}"><span class="finder-result__type">店舗</span><div><strong>${esc(x.name)}</strong><small>${esc(x.area||'')}・${esc(x.count||0)}回</small></div><b>→</b></a>`),
+      ...coverageHits.map(x=>`<a href="./coverage.html?name=${encodeURIComponent(x.name)}"><span class="finder-result__type">企画</span><div><strong>${esc(x.name)}</strong><small>${esc(x.description||'')}</small></div><b>→</b></a>`)
     ];
 
     box.innerHTML=rows.length?rows.join(''):'<p>該当する店舗・企画はありません。</p>';
@@ -107,7 +109,7 @@ function renderToday(items=[]){
   if(!el) return;
   if(!items.length){
     el.classList.add('empty-state');
-    el.innerHTML='<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>本日の公開予定はありません</h3><p>確認済みの予定がある場合のみ表示します。</p></div><span class="status">NO DATA</span>';
+    el.innerHTML='<div class="today-card__date">TODAY</div><div class="today-card__content"><h3>本日の確認済み予定はありません</h3><p>予定が確認でき次第、ここに掲載します。</p><a class="empty-next-link" href="#schedule">次回予定を見る →</a></div><span class="status">未掲載</span>';
     return;
   }
   el.classList.remove('empty-state');
@@ -125,7 +127,7 @@ function renderSchedule(items=[],todayKey=''){
   const visible=items.slice(0,8);
   const grouped=new Map();
   visible.forEach(x=>{if(!grouped.has(x.date)) grouped.set(x.date,[]);grouped.get(x.date).push(x);});
-  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
+  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3><a class="event-store-link" href="./store.html?name=${encodeURIComponent(x.store)}">${esc(x.store)} <span aria-hidden="true">→</span></a></h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
 }
 
 function renderResult(items=[]){
@@ -143,7 +145,7 @@ function renderResult(items=[]){
     if(n>=2) continue;
     selected.push(x);
     groupCount.set(key,n+1);
-    if(selected.length>=6) break;
+    if(selected.length>=4) break;
   }
   el.innerHTML=selected.map(x=>{
     const metricItems=[
@@ -176,8 +178,10 @@ function renderArchive(items=[]){
 function renderStores(items=[]){
   const el=document.getElementById('storeList');
   if(!el) return;
+  const count=document.getElementById('storeCount');
+  if(count) count.textContent=`${items.length}店舗${cachedStores.length?' / 全'+cachedStores.length+'店舗':''}`;
   if(!items.length){
-    el.innerHTML='<p class="event-note">該当する店舗がありません。</p>';
+    el.innerHTML='<p class="event-note">該当する店舗がありません。検索語やエリアを変更してください。</p>';
     return;
   }
   el.innerHTML=items
@@ -237,8 +241,7 @@ Promise.all([
 ]).then(([data,assetData,resultData])=>{
     cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
-    const now=new Date();
-    const todayKey=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
+    const todayKey=japanDate();
     const todayItems=[...(data.today||[]),...(data.schedule||[])].filter((x,i,arr)=>x.date===todayKey && arr.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i);
     const detailedResults=Object.values(resultData||{})
       .filter(x=>x.publish==='公開'||!x.publish)
@@ -266,4 +269,10 @@ Promise.all([
       }
     }
   })
-  .catch(()=>{});
+  .catch(()=>{
+    const card=document.getElementById('todayCard');
+    if(card) card.innerHTML='<div class="today-card__content"><h3>情報を読み込めませんでした</h3><p>通信状態を確認して、再読み込みしてください。</p><button class="retry-button" id="retryData" type="button">再読み込み</button></div>';
+    document.getElementById('retryData')?.addEventListener('click',()=>location.reload());
+    const updated=document.getElementById('lastUpdated');
+    if(updated) updated.textContent='読み込みエラー';
+  });
