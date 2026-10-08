@@ -120,7 +120,7 @@ function renderDailyPlan(plan){
   if(!section) return;
   const available=plan.items.length>0;
   section.hidden=!available;
-  document.querySelectorAll('a[href="#today"]').forEach(link=>{
+  document.querySelectorAll('a[href="#today"], .skip-link').forEach(link=>{
     if(link.classList.contains('skip-link')){
       link.href=available?'#today':'#schedule';
       link.textContent=available?plan.label+'の予定へ進む':'次回予定へ進む';
@@ -267,6 +267,31 @@ function initCoverageFilter(items=[]){
   });
 }
 
+function startDailyRefresh(data){
+  let displayedDate='';
+  let timer;
+  const refresh=()=>{
+    const date=japanDate();
+    if(date===displayedDate) return;
+    displayedDate=date;
+    renderDailyPlan(selectDailyPlan([...(data.today||[]),...(data.schedule||[])],date));
+    renderSchedule(data.schedule,date);
+  };
+  const schedule=()=>{
+    clearTimeout(timer);
+    const day=86400000;
+    const japanNow=Date.now()+9*3600000;
+    timer=setTimeout(()=>{refresh();schedule();},day-(japanNow%day)+100);
+  };
+  refresh();
+  schedule();
+  // Sleeping tabs catch up immediately when the user returns.
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden){refresh();schedule();}
+  });
+  window.addEventListener('pageshow',()=>{refresh();schedule();});
+}
+
 Promise.all([
   fetch('./data.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed'))),
   fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]})),
@@ -274,15 +299,11 @@ Promise.all([
 ]).then(([data,assetData,resultData])=>{
     cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
-    const todayKey=japanDate();
-    const dailyPlan=selectDailyPlan([...(data.today||[]),...(data.schedule||[])],todayKey);
     const detailedResults=Object.values(resultData||{})
       .filter(x=>x.publish==='公開'||!x.publish)
       .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
     if(detailedResults.length) data.results=detailedResults;
-    renderFeatured(data,todayKey);
-    renderDailyPlan(dailyPlan);
-    renderSchedule(data.schedule,todayKey);
+    startDailyRefresh(data);
     renderResult(data.results);
     renderArchive(data.archive||[]);
     renderStores(data.stores||[]);
@@ -295,7 +316,7 @@ Promise.all([
     const updated=document.getElementById('lastUpdated');
     if(updated&&data.updated_at){
       const t=new Date(data.updated_at);
-      updated.textContent='更新 '+(t.getMonth()+1)+'/'+t.getDate()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+      updated.textContent='情報更新 '+new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(t);
       if(Date.now()-t.getTime()>48*60*60*1000){
         updated.classList.add('is-stale');
         updated.title='最終更新から48時間以上経過しています';
@@ -309,3 +330,4 @@ Promise.all([
     const updated=document.getElementById('lastUpdated');
     if(updated) updated.textContent='読み込みエラー';
   });
+
