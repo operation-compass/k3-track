@@ -104,7 +104,40 @@ function renderVisualShowcase(items=[],assetData={}){
   el.innerHTML=rows.join('');
 }
 
-function renderToday(items=[]){
+function selectDailyPlan(items=[],todayKey=''){
+  const nextDate=new Date(todayKey.replaceAll('/','-')+'T00:00:00+09:00');
+  nextDate.setUTCDate(nextDate.getUTCDate()+1);
+  const tomorrowKey=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(nextDate).replaceAll('-','/');
+  const unique=items.filter((x,i,arr)=>arr.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i);
+  const today=unique.filter(x=>x.date===todayKey);
+  if(today.length) return {items:today,date:todayKey,label:'今日',kicker:'TODAY'};
+  const tomorrow=unique.filter(x=>x.date===tomorrowKey);
+  return {items:tomorrow,date:tomorrowKey,label:'明日',kicker:'TOMORROW'};
+}
+
+function renderDailyPlan(plan){
+  const section=document.getElementById('today');
+  if(!section) return;
+  const available=plan.items.length>0;
+  section.hidden=!available;
+  document.querySelectorAll('a[href="#today"]').forEach(link=>{
+    if(link.classList.contains('skip-link')){
+      link.href=available?'#today':'#schedule';
+      link.textContent=available?plan.label+'の予定へ進む':'次回予定へ進む';
+    }else{
+      link.hidden=!available;
+      const label=link.querySelector('span')||link;
+      label.textContent=plan.label;
+    }
+  });
+  if(!available) return;
+  section.querySelector('h2').textContent=plan.label+'のK3';
+  section.querySelector('.section-kicker').textContent=plan.kicker;
+  document.getElementById('todayDate').textContent=plan.date.slice(5).replace(/^0/,'').replace('/0','/');
+  renderToday(plan.items,plan.kicker);
+}
+
+function renderToday(items=[],kicker='TODAY'){
   const el=document.getElementById('todayCard');
   if(!el) return;
   if(!items.length){
@@ -113,7 +146,7 @@ function renderToday(items=[]){
     return;
   }
   el.classList.remove('empty-state');
-  el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-list">${items.map(x=>`<article class="today-item"><div class="today-card__content"><div class="today-item__head"><h3>${esc(x.store)}</h3><span class="status">${esc(x.status||'確認済')}</span></div><p>${esc(x.event||'K3関連企画')}</p>${x.note?`<small class="today-source-note">${esc(x.note)}</small>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</div></article>`).join('')}</div>`;
+  el.innerHTML=`<div class="today-card__date">${esc(kicker)}</div><div class="today-list">${items.map(x=>`<article class="today-item"><div class="today-card__content"><div class="today-item__head"><h3>${esc(x.store)}</h3><span class="status">${esc(x.status||'確認済')}</span></div><p>${esc(x.event||'K3関連企画')}</p>${x.note?`<small class="today-source-note">${esc(x.note)}</small>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</div></article>`).join('')}</div>`;
 }
 
 function renderSchedule(items=[],todayKey=''){
@@ -242,13 +275,13 @@ Promise.all([
     cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
     const todayKey=japanDate();
-    const todayItems=[...(data.today||[]),...(data.schedule||[])].filter((x,i,arr)=>x.date===todayKey && arr.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i);
+    const dailyPlan=selectDailyPlan([...(data.today||[]),...(data.schedule||[])],todayKey);
     const detailedResults=Object.values(resultData||{})
       .filter(x=>x.publish==='公開'||!x.publish)
       .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
     if(detailedResults.length) data.results=detailedResults;
     renderFeatured(data,todayKey);
-    renderToday(todayItems);
+    renderDailyPlan(dailyPlan);
     renderSchedule(data.schedule,todayKey);
     renderResult(data.results);
     renderArchive(data.archive||[]);
