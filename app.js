@@ -154,7 +154,7 @@ function renderResult(items=[]){
     ].filter(([,v])=>v && v!=='—' && v!=='-');
     const metrics=metricItems.length
       ? `<div class="metrics metrics--${Math.min(metricItems.length,4)}">${metricItems.slice(0,4).map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div>`
-      : '<div class="result-evidence">数値未掲載・内容確認済み</div>';
+      : `<div class="result-evidence">${x.provisional?'速報・最終数値未確認':'数値未掲載・内容確認済み'}</div>`;
     const score=x.provisional?'速報・最終結果未確認':x.score||x.total||x.avg||'結果確認';
     const date=String(x.date||'').replace(/^\d{4}\//,'');
     return `<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(date)}</span><h3>${esc(x.store||'直近結果')}</h3><small class="result-event">${esc(x.event||'K3関連企画')}</small></div><div class="score">${esc(score)}</div></div>${metrics}<p class="result-card__note">${esc(x.note||x.detail||'確認済み結果')}</p><div class="result-card__foot"><span>${x.checked?`確認 ${esc(x.checked)}`:'出典確認済み'}</span><b>詳細を見る →</b></div></a>`;

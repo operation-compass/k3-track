@@ -1,8 +1,6 @@
-name: Deploy K3 Worker
+name: Manually deploy K3 Worker (backup)
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

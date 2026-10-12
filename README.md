@@ -54,7 +54,7 @@
 ### 結果データの取得ルール
 1. 本人・取材公式・店舗公式の最終結果投稿を最優先。
 2. 公式最終値がない場合、みんレポ / アナスロ / スロナビ / パチスロ店道しるべ等の営業後データを補完に使用。
-3. 中間ランキングは内部検証用。最終結果として公開しない。
+3. 中間・当日速報を公開する場合はPUBLICの公開対象であることを確認し、『速報・最終結果未確認』を一覧・詳細に明示する。最終結果として表示・集計しない。
 4. 複数ソースの数値を推測で合成しない。店舗全体値・機種値・TOP値は出典単位を維持する。
 5. 公開RESULTは出典URLと確認日を必須とし、PUBLIC経由でWebへ出す。
 
@@ -89,22 +89,24 @@
 
 ## Production deployment
 
-The production Worker is deployed from `main` with GitHub Actions.
+本番は Cloudflare Workers Builds の GitHub直接連携で公開する。
 
-Required repository secrets:
+- Repository: `operation-compass/k3-track`
+- Production branch: `main`
+- Worker: `k3-track`
+- Public URL: https://k3-track.occompass-info.workers.dev/
+- Deploy command: `npx wrangler deploy`
+- Build command: なし
 
-- `CLOUDFLARE_API_TOKEN`: Cloudflare API token with Workers Scripts edit permission for the target account.
-- `CLOUDFLARE_ACCOUNT_ID`: Cloudflare account ID that owns the `k3-track` Worker.
-
-Workflow: `.github/workflows/deploy.yml`
-
-If either secret is missing, deployment intentionally fails before Wrangler runs. This prevents edits from appearing "successful" in GitHub while production remains stale.
+GitHub Actions の `.github/workflows/deploy.yml` は手動の予備経路。mainへのpushでは起動しない。
+手動経路には `CLOUDFLARE_API_TOKEN` と `CLOUDFLARE_ACCOUNT_ID` が必要。
+認証設定がない状態でのActions失敗は、Cloudflare直接連携の失敗を意味しない。
 
 ### Publishing rule
 
-1. Update source/data on `main`.
-2. Confirm the `Deploy K3 Worker` workflow succeeds.
-3. Verify the production page response/header and the visible change.
-4. Only then treat the update as published.
+1. 正本の公開対象を確認して表示データをmainへ反映する。
+2. Cloudflareのビルド履歴で同じコミットの成功と本番100%配信を確認する。
+3. 公開URLで件数・指定日・店舗・注意書き・出典を確認する。
+4. 公開画面の確認後に公開完了と報告する。GitHubへの保存だけでは公開完了としない。
 
-The site Worker disables caching for HTML, JSON, CSS, JS, and K3 OG images to reduce stale UI/OG previews after deployment.
+WorkerはHTML・JSON・CSS・JSなどのキャッシュを無効化する。

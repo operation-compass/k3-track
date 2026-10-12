@@ -53,7 +53,7 @@ Promise.all([
 
   document.getElementById('coverageStores').innerHTML=d.storeList.map(s=>`<a class="coverage-store" href="./store.html?name=${encodeURIComponent(s.name)}"><strong>${esc(s.name)}</strong><span>${esc(s.count)}回 →</span></a>`).join('');
   const results=d.results||[];
-  document.getElementById('coverageResults').innerHTML=results.length?results.map(x=>`<article class="coverage-result-card"><span class="chip chip--light">${esc(dateShort(x.date))}</span><h3>${esc(x.store)}</h3><p>${esc(x.note||x.detail||'確認済み結果')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">結果出典を見る →</a>`:''}</article>`).join(''):'<div class="empty-detail">公開できる確認済み結果はありません。</div>';
+  document.getElementById('coverageResults').innerHTML=results.length?results.map(x=>`<article class="coverage-result-card"><span class="chip chip--light">${esc(dateShort(x.date))}</span>${x.provisional?'<span class="chip">速報・最終結果未確認</span>':''}<h3>${esc(x.store)}</h3><p>${esc(x.note||x.detail||'確認済み結果')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">結果出典を見る →</a>`:''}</article>`).join(''):'<div class="empty-detail">公開できる確認済み結果はありません。</div>';
   document.getElementById('coverageHistory').innerHTML=d.events.map(x=>`<article class="coverage-history-item"><div class="coverage-history-item__top"><time>${esc(dateShort(x.date))}</time><div class="history-badges">${trustBadge(x.confidence)}<span class="chip">${esc(x.kind||'K3')}</span></div></div><h3>${esc(x.store)}</h3><p>${esc(x.memo||x.event||'確認済み情報')}</p>${x.url?`<a class="source-link" href="${esc(x.url)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('');
 }).catch(()=>{
   document.getElementById('coverageTitle').textContent='読み込みエラー';

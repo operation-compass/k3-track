@@ -12,11 +12,11 @@
         "k3name": "非公式K3",
         "url": "https://x.com/k_777_3/status/2040357193552388467",
         "storeUrl": "https://x.com/stadiumkyoto",
-        "checked": "2026/10/05",
+        "checked": "2026/10/12",
         "confidence": "A:本人発信確認",
         "publish": "公開",
-        "status": "開催確認",
-        "memo": "本人Xで来店＆ライブ配信を確認。同日『ランプの魔法取材』開催。K3側は来店情報として登録"
+        "status": "開催確認・結果未取得",
+        "memo": "本人Xで10/5来店・ライブ配信確認。同日ランプの魔法取材あり。2026/10/12再監査：スロマップAI（https://www.slo-map.com/halls/7213）は出玉データ非提供。K3来店実績と同日別取材の結果を混同しない。K会長note/本人Xで再照合"
       },
       {
         "id": "EV-20260922-01",
@@ -85,6 +85,108 @@
         "publish": "公開",
         "status": "完了",
         "memo": "8月スケジュール確認"
+      },
+      {
+        "id": "EV-20260720-01",
+        "date": "2026/07/20",
+        "store": "オメガ寺町",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://x.com/k_777_3",
+        "storeUrl": "https://www.p-world.co.jp/kyoto/omega-ava.htm",
+        "checked": "2026/10/04",
+        "confidence": "A:本人/K会長確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "初来店。本人X前日告知＋K会長X当日応援投稿で確認"
+      },
+      {
+        "id": "EV-20260625-01",
+        "date": "2026/06/25",
+        "store": "スタジアム2001京都八幡店",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/nbda1c72b3a1f",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:準公式/媒体確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "同日ランプの魔法取材"
+      },
+      {
+        "id": "EV-20260621-01",
+        "date": "2026/06/21",
+        "store": "Dee2",
+        "pref": "大分県",
+        "area": "大分",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/nbda1c72b3a1f",
+        "storeUrl": "https://x.com/Dee2_oita",
+        "checked": "2026/10/04",
+        "confidence": "A:本人/店舗公式確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "大分県初来店。本人X事前告知＋Dee2当日投稿ミラー確認"
+      },
+      {
+        "id": "EV-20260505-03",
+        "date": "2026/05/05",
+        "store": "スタジアム2001京都八幡店",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/n914eba8b765b",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:準公式/媒体確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "同日ランプの魔法取材"
+      },
+      {
+        "id": "EV-20260426-01",
+        "date": "2026/04/26",
+        "store": "スタジアム2001京都八幡店",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/nd3c7342d8b95",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:準公式/媒体確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "4月スケジュール掲載"
+      },
+      {
+        "id": "EV-20260405-01",
+        "date": "2026/04/05",
+        "store": "スタジアム2001京都八幡店",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/nd3c7342d8b95",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:準公式/媒体確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "同日ランプの魔法取材"
       },
       {
         "id": "EV-20260319-01",
@@ -204,38 +306,127 @@
         "publish": "公開",
         "status": "完了",
         "memo": "1月スケジュール確認"
+      },
+      {
+        "id": "EV-20251227-01",
+        "date": "2025/12/27",
+        "store": "プレイランド平和大治店",
+        "pref": "愛知県",
+        "area": "愛知",
+        "kind": "来店＋取材",
+        "event": "非公式K3来店＋BuZZレポwith非公式K3",
+        "k3name": "非公式K3 / BuZZレポwith非公式K3",
+        "url": "https://note.com/supervisor__k/n/n8fff73297272",
+        "storeUrl": "",
+        "checked": "2026/10/05",
+        "confidence": "B:K会長Note確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "K会長Noteで12/27 非公式K3来店＋BuZZレポwith非公式K3＋BuZZレポwithくまおを確認。K3直接関連の来店＋取材として統合"
+      },
+      {
+        "id": "EV-20251013-01",
+        "date": "2025/10/13",
+        "store": "スタジアム2001京都八幡店",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/n7293bd271297",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:準公式/媒体確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "K会長 W来店"
+      },
+      {
+        "id": "EV-20251012-01",
+        "date": "2025/10/12",
+        "store": "スタジアム2001京都八幡店",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/n7293bd271297",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:準公式/媒体確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "ひょが吉 W来店"
+      },
+      {
+        "id": "EV-20250921-01",
+        "date": "2025/09/21",
+        "store": "スタジアム2001京都八幡店",
+        "pref": "京都府",
+        "area": "京都",
+        "kind": "来店",
+        "event": "非公式K3来店",
+        "k3name": "非公式K3",
+        "url": "https://note.com/supervisor__k/n/n1f4bce9c157f",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:準公式/媒体確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "Note記載: 非公式K3ちゃん実践来店"
       }
     ],
     "storeList": [
       {
         "name": "スタジアム2001京都八幡店",
-        "count": 7
+        "count": 14
       },
       {
         "name": "プレイランド平和大治店",
-        "count": 2
+        "count": 3
       },
       {
         "name": "Dee2",
+        "count": 2
+      },
+      {
+        "name": "トワーズ四谷店",
+        "count": 1
+      },
+      {
+        "name": "オメガ寺町",
         "count": 1
       },
       {
         "name": "オーパス666延岡店",
         "count": 1
-      },
-      {
-        "name": "トワーズ四谷店",
-        "count": 1
       }
     ],
-    "count": 12,
-    "first": "2026/01/04",
+    "count": 22,
+    "first": "2025/09/21",
     "last": "2026/10/05",
     "results": [],
     "resultCount": 0
   },
   "クロウ・スコープ取材": {
     "events": [
+      {
+        "id": "EV-20261003-01",
+        "date": "2026/10/03",
+        "store": "トワーズ西八店",
+        "pref": "東京都",
+        "area": "東京",
+        "kind": "取材",
+        "event": "クロウ・スコープ取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://search.yahoo.co.jp/realtime/search/%E3%82%AF%E3%83%AD%E3%82%A6/?ei=UTF-8&ifr=tl_unit&md=h&p=%E3%82%AF%E3%83%AD%E3%82%A6%E3%83%AA%E3%83%BC%E3%83%89&rkf=1",
+        "storeUrl": "https://x.com/TOWARSNISIHATI",
+        "checked": "2026/10/12",
+        "confidence": "A:店舗公式確認",
+        "publish": "公開",
+        "status": "開催確認・結果未取得",
+        "memo": "店舗公式Xで10/3クロウ・スコープ取材を確認。2026/10/12再監査：RESULTSに該当結果なし。みんレポ・パチスロ店道しるべ・取材Xの該当日最終数値を継続照合。取得できるまで差枚は未記載"
+      },
       {
         "id": "EV-20261003-02",
         "date": "2026/10/03",
@@ -247,11 +438,11 @@
         "k3name": "非公式K3プロデュース",
         "url": "https://x.com/yamatotowars",
         "storeUrl": "https://x.com/yamatotowars",
-        "checked": "2026/10/05",
+        "checked": "2026/10/12",
         "confidence": "A:店舗公式確認",
         "publish": "公開",
-        "status": "完了",
-        "memo": "店舗公式Xで『明日はクロウスコープ&神龍降臨Neo、藤沢店と共闘』を確認。10/2同日投稿群と照合し10/3開催として確定"
+        "status": "開催確認・結果未取得",
+        "memo": "店舗公式Xで10/3クロウ・スコープ取材を確認。2026/10/12再監査：RESULTSの該当結果未取得。スロマップAIの店舗ページ（https://www.slo-map.com/halls/4932）では該当日の確定差枚を取得できず。取材Xの最終報告を要確認"
       },
       {
         "id": "EV-20261003-03",
@@ -264,28 +455,11 @@
         "k3name": "非公式K3プロデュース",
         "url": "https://x.com/towarsfujisawa",
         "storeUrl": "https://x.com/towarsfujisawa",
-        "checked": "2026/10/05",
+        "checked": "2026/10/12",
         "confidence": "A:店舗公式確認",
         "publish": "公開",
-        "status": "完了",
-        "memo": "店舗公式Xで『明日はクロウスコープ＆アツ姫取材、トワーズ大和店と共同戦線』を確認。10/2同日投稿群と照合し10/3開催として確定"
-      },
-      {
-        "id": "EV-20261003-01",
-        "date": "2026/10/03",
-        "store": "トワーズ西八店",
-        "pref": "東京都",
-        "area": "東京",
-        "kind": "取材",
-        "event": "クロウ・スコープ取材",
-        "k3name": "非公式K3プロデュース",
-        "url": "https://search.yahoo.co.jp/realtime/search/%E3%82%AF%E3%83%AD%E3%82%A6/?ei=UTF-8&ifr=tl_unit&md=h&p=%E3%82%AF%E3%83%AD%E3%82%A6%E3%83%AA%E3%83%BC%E3%83%89&rkf=1",
-        "storeUrl": "https://x.com/TOWARSNISIHATI",
-        "checked": "2026/10/04",
-        "confidence": "A:店舗公式確認",
-        "publish": "公開",
-        "status": "完了",
-        "memo": "店舗公式Xで『明日10/3 クロウ・スコープ取材日』を確認"
+        "status": "開催確認・結果未取得",
+        "memo": "店舗公式Xで10/3クロウ・スコープ取材を確認。2026/10/12再監査：RESULTSの該当結果未取得。スロマップAI（https://slo-map.com/halls/4799）は開催予定掲載中心。取材Xの最終報告・台別結果を要確認"
       },
       {
         "id": "EV-20260919-01",
@@ -301,7 +475,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260912-02",
@@ -436,7 +611,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260822-01",
@@ -452,7 +628,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260816-01",
@@ -468,7 +645,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260815-01",
@@ -484,7 +662,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260814-01",
@@ -500,7 +679,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260811-01",
@@ -516,7 +696,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260801-01",
@@ -587,6 +768,57 @@
         "memo": "超団結・初掲載"
       },
       {
+        "id": "EV-20260726-01",
+        "date": "2026/07/26",
+        "store": "トワーズ相模原店",
+        "pref": "神奈川県",
+        "area": "神奈川",
+        "kind": "取材",
+        "event": "クロウ・スコープ取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://search.yahoo.co.jp/realtime/search/%E7%9B%B8%E6%A8%A1%E5%8E%9F%E5%B8%82/?ei=UTF-8&ifr=tl_unit&md=h&p=%E7%9B%B8%E6%A8%A1%E5%8E%9F%E5%B8%82+%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8B+%E3%81%A9%E3%81%93&rkf=1",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:本人X/取材Xミラー確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "本人X事前告知・取材X当日投稿を確認"
+      },
+      {
+        "id": "EV-20260718-01",
+        "date": "2026/07/18",
+        "store": "トワーズ四谷店",
+        "pref": "東京都",
+        "area": "東京",
+        "kind": "取材",
+        "event": "クロウ・スコープ取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://www.sotwe.com/hashtag/%E3%83%88%E3%83%AF%E3%83%BC%E3%82%BA%E5%9B%9B%E8%B0%B7",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:本人X/取材Xミラー確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "本人X事前告知・取材X当日投稿を確認"
+      },
+      {
+        "id": "EV-20260712-01",
+        "date": "2026/07/12",
+        "store": "トワーズ叶谷店",
+        "pref": "東京都",
+        "area": "東京",
+        "kind": "取材",
+        "event": "クロウ・スコープ取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://search.yahoo.co.jp/realtime/search?ei=UTF-8&md=h&p=%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82&rkf=1",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:本人X/店舗Xミラー確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "本人X事前告知・取材X当日投稿・店舗反応を確認"
+      },
+      {
         "id": "EV-20260628-01",
         "date": "2026/06/28",
         "store": "トワーズ西八店",
@@ -600,7 +832,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260627-01",
@@ -616,7 +849,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260622-01",
@@ -632,7 +866,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260620-01",
@@ -648,7 +883,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260613-01",
@@ -715,7 +951,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260516-02",
@@ -731,7 +968,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260506-01",
@@ -747,7 +985,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260506-02",
@@ -763,7 +1002,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260418-01",
@@ -779,7 +1019,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260418-02",
@@ -795,7 +1036,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260411-01",
@@ -811,7 +1053,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260411-02",
@@ -827,7 +1070,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260320-01",
@@ -877,7 +1121,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260314-02",
@@ -893,7 +1138,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260222-01",
@@ -943,7 +1189,8 @@
         "checked": "2026/10/04",
         "confidence": "B:準公式/媒体確認",
         "publish": "公開",
-        "status": "完了"
+        "status": "完了",
+        "memo": ""
       },
       {
         "id": "EV-20260211-02",
@@ -987,11 +1234,11 @@
       },
       {
         "name": "トワーズ四谷店",
-        "count": 7
+        "count": 8
       },
       {
         "name": "トワーズ相模原店",
-        "count": 7
+        "count": 8
       },
       {
         "name": "トワーズ麻溝台店",
@@ -999,6 +1246,14 @@
       },
       {
         "name": "トワーズ叶谷店",
+        "count": 4
+      },
+      {
+        "name": "トワーズ大和店",
+        "count": 3
+      },
+      {
+        "name": "トワーズ藤沢店",
         "count": 3
       },
       {
@@ -1008,17 +1263,9 @@
       {
         "name": "トワーズ大和深見店1120",
         "count": 3
-      },
-      {
-        "name": "トワーズ大和店",
-        "count": 3
-      },
-      {
-        "name": "トワーズ藤沢店",
-        "count": 3
       }
     ],
-    "count": 45,
+    "count": 48,
     "first": "2026/01/19",
     "last": "2026/10/03",
     "results": [
@@ -1550,6 +1797,40 @@
   "双翼乱舞取材": {
     "events": [
       {
+        "id": "EV-20261010-01",
+        "date": "2026/10/10",
+        "store": "Eスペース600空港店",
+        "pref": "福岡県",
+        "area": "福岡",
+        "kind": "取材",
+        "event": "双翼乱舞取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://x.com/k_777_3",
+        "storeUrl": "https://x.com/600Kukou",
+        "checked": "2026/10/11",
+        "confidence": "A:本人/取材X・店舗告知照合",
+        "publish": "公開",
+        "status": "結果収集中",
+        "memo": "10/10はアウトバーンブリッツとの双翼乱舞共闘。取材Xで当日稼働・中間ランキング確認。P-WORLD掲載『K3取材』から正規企画名へ補正"
+      },
+      {
+        "id": "EV-20261010-02",
+        "date": "2026/10/10",
+        "store": "アウトバーンブリッツ",
+        "pref": "福岡県",
+        "area": "福岡",
+        "kind": "取材",
+        "event": "双翼乱舞取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://x.com/k_777_3",
+        "storeUrl": "",
+        "checked": "2026/10/11",
+        "confidence": "A:本人/取材X確認",
+        "publish": "公開",
+        "status": "結果収集中",
+        "memo": "10/10 Eスペース600空港店との双翼乱舞共闘。取材Xで当日状況確認"
+      },
+      {
         "id": "EV-20260909-02",
         "date": "2026/09/09",
         "store": "Eスペース600空港店",
@@ -1616,6 +1897,40 @@
         "publish": "公開",
         "status": "完了",
         "memo": "共闘取材"
+      },
+      {
+        "id": "EV-20260707-02",
+        "date": "2026/07/07",
+        "store": "Eスペース600空港店",
+        "pref": "福岡県",
+        "area": "福岡",
+        "kind": "取材",
+        "event": "双翼乱舞取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://search.yahoo.co.jp/realtime/search?ei=UTF-8&p=%23E%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9600%E7%A9%BA%E6%B8%AF%E5%BA%97&rkf=1",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:本人X/取材Xミラー確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "取材Xで当日投稿・中間ランキングも確認"
+      },
+      {
+        "id": "EV-20260707-01",
+        "date": "2026/07/07",
+        "store": "アウトバーンブリッツ",
+        "pref": "福岡県",
+        "area": "福岡",
+        "kind": "取材",
+        "event": "双翼乱舞取材",
+        "k3name": "非公式K3プロデュース",
+        "url": "https://search.yahoo.co.jp/realtime/search?ei=UTF-8&p=%23E%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9600%E7%A9%BA%E6%B8%AF%E5%BA%97&rkf=1",
+        "storeUrl": "",
+        "checked": "2026/10/04",
+        "confidence": "B:本人Xミラー確認",
+        "publish": "公開",
+        "status": "完了",
+        "memo": "本人X投稿で7/7双翼乱舞・福岡2店舗開催を確認"
       },
       {
         "id": "EV-20260606-02",
@@ -1757,17 +2072,61 @@
     "storeList": [
       {
         "name": "Eスペース600空港店",
-        "count": 6
+        "count": 8
       },
       {
         "name": "アウトバーンブリッツ",
-        "count": 6
+        "count": 8
       }
     ],
-    "count": 12,
+    "count": 16,
     "first": "2026/03/03",
-    "last": "2026/09/09",
+    "last": "2026/10/10",
     "results": [
+      {
+        "id": "RS-20261010-01",
+        "eventId": "EV-20261010-01",
+        "date": "2026/10/10",
+        "store": "Eスペース600空港店",
+        "event": "双翼乱舞取材",
+        "total": "",
+        "avg": "",
+        "winRate": "",
+        "units": "",
+        "machines": "L戦国乙女5 / Lスマスロ マギアレコード / LToLOVEるダークネス / Lスマスロ頭文字D 2nd / Lスマスロ新鬼武者3",
+        "detail": "20スロ: 685番 L戦国乙女5 +7,102枚 / 613番 Lスマスロ マギアレコード +3,419枚 / 225番 LToLOVEるダークネス +3,232枚 / 717番 Lスマスロ頭文字D 2nd +3,119枚。5スロ: 786番 Lスマスロ新鬼武者3 +6,669枚 / 533番 Lスマスロ新鬼武者3 +5,918枚",
+        "url": "https://x.com/k_777_3_iysk",
+        "source": "非公式K3@取材 X（中間速報） / みんレポ（営業後平均G数）",
+        "checked": "2026/10/12",
+        "publish": "公開",
+        "note": "10/10双翼乱舞。中間ランキングの台別速報は最終結果とは区別。みんレポでは平均G数1,745Gを確認（https://min-repo.com/tag/e%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E7%A6%8F%E5%B2%A1%E6%9D%B1%E5%BA%97/）。総差枚・平均差枚は掲載なし。最終ランキング未確認",
+        "provisional": true,
+        "status": "速報・最終結果未確認",
+        "score": "最終結果未確認",
+        "warning": "中間・当日速報です。最終出玉・総差枚・最終ランキングは未確認です。"
+      },
+      {
+        "id": "RS-20261010-02",
+        "eventId": "EV-20261010-02",
+        "date": "2026/10/10",
+        "store": "アウトバーンブリッツ",
+        "event": "双翼乱舞取材",
+        "total": "",
+        "avg": "",
+        "winRate": "",
+        "units": "",
+        "machines": "L革命機ヴァルヴレイヴ / マイジャグラーV / L東京喰種 / モンスターハンター / リコリス・リコイル / 攻殻機動隊 / カバネリ海門",
+        "detail": "当日朝: 抽選30名・一般16名。ヴァルヴレイヴ・マイジャグ満台、東京喰種・モンハン・リコリコ・攻殻機動隊・カバネリ海門も高稼働を確認",
+        "url": "https://x.com/k_777_3_iysk",
+        "source": "非公式K3@取材 X（当日速報） / みんレポ（営業後平均G数）",
+        "checked": "2026/10/12",
+        "publish": "公開",
+        "note": "10/10双翼乱舞。当日の稼働速報であり最終出玉結果ではない。みんレポでは平均G数2,194Gを確認（https://min-repo.com/tag/%E3%82%A2%E3%82%A6%E3%83%88%E3%83%90%E3%83%BC%E3%83%B3%E3%83%96%E3%83%AA%E3%83%83%E3%83%84/）。総差枚・平均差枚は掲載なし。最終ランキング未確認",
+        "provisional": true,
+        "status": "速報・最終結果未確認",
+        "score": "最終結果未確認",
+        "warning": "中間・当日速報です。最終出玉・総差枚・最終ランキングは未確認です。"
+      },
       {
         "id": "RS-20260909-01",
         "eventId": "EV-20260909-01",
@@ -2021,7 +2380,7 @@
         "note": "3/3双翼乱舞開催日と営業後データを照合"
       }
     ],
-    "resultCount": 14
+    "resultCount": 16
   },
   "お前の席ねぇから": {
     "events": [

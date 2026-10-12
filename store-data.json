@@ -35,6 +35,74 @@
       "memo": "同日ランプの魔法取材"
     },
     {
+      "id": "EV-20260625-01",
+      "date": "2026/06/25",
+      "store": "スタジアム2001京都八幡店",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/nbda1c72b3a1f",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "同日ランプの魔法取材"
+    },
+    {
+      "id": "EV-20260505-03",
+      "date": "2026/05/05",
+      "store": "スタジアム2001京都八幡店",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/n914eba8b765b",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "同日ランプの魔法取材"
+    },
+    {
+      "id": "EV-20260426-01",
+      "date": "2026/04/26",
+      "store": "スタジアム2001京都八幡店",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/nd3c7342d8b95",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "4月スケジュール掲載"
+    },
+    {
+      "id": "EV-20260405-01",
+      "date": "2026/04/05",
+      "store": "スタジアム2001京都八幡店",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/nd3c7342d8b95",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "同日ランプの魔法取材"
+    },
+    {
       "id": "EV-20260315-01",
       "date": "2026/03/15",
       "store": "スタジアム2001京都八幡店",
@@ -118,6 +186,110 @@
       "publish": "公開",
       "status": "完了",
       "memo": "1月スケジュール確認"
+    },
+    {
+      "id": "EV-20251013-01",
+      "date": "2025/10/13",
+      "store": "スタジアム2001京都八幡店",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/n7293bd271297",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "K会長 W来店"
+    },
+    {
+      "id": "EV-20251012-01",
+      "date": "2025/10/12",
+      "store": "スタジアム2001京都八幡店",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/n7293bd271297",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "ひょが吉 W来店"
+    },
+    {
+      "id": "EV-20250921-01",
+      "date": "2025/09/21",
+      "store": "スタジアム2001京都八幡店",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/n1f4bce9c157f",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "Note記載: 非公式K3ちゃん実践来店"
+    }
+  ],
+  "プレイランド平和大治店": [
+    {
+      "id": "EV-20260829-01",
+      "date": "2026/08/29",
+      "store": "プレイランド平和大治店",
+      "pref": "愛知県",
+      "area": "愛知",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/nb518fd6e32e2",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "同日BuZZスロ"
+    },
+    {
+      "id": "EV-20260319-01",
+      "date": "2026/03/19",
+      "store": "プレイランド平和大治店",
+      "pref": "愛知県",
+      "area": "愛知",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/n10485e0ea0e4",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "同日BuZZレポwithくまお"
+    },
+    {
+      "id": "EV-20251227-01",
+      "date": "2025/12/27",
+      "store": "プレイランド平和大治店",
+      "pref": "愛知県",
+      "area": "愛知",
+      "kind": "来店＋取材",
+      "event": "非公式K3来店＋BuZZレポwith非公式K3",
+      "k3name": "非公式K3 / BuZZレポwith非公式K3",
+      "url": "https://note.com/supervisor__k/n/n8fff73297272",
+      "storeUrl": "",
+      "checked": "2026/10/05",
+      "confidence": "B:K会長Note確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "K会長Noteで12/27 非公式K3来店＋BuZZレポwith非公式K3＋BuZZレポwithくまおを確認。K3直接関連の来店＋取材として統合"
     }
   ],
   "トワーズ西八店": [
@@ -323,6 +495,23 @@
       "status": "完了"
     },
     {
+      "id": "EV-20260726-01",
+      "date": "2026/07/26",
+      "store": "トワーズ相模原店",
+      "pref": "神奈川県",
+      "area": "神奈川",
+      "kind": "取材",
+      "event": "クロウ・スコープ取材",
+      "k3name": "非公式K3プロデュース",
+      "url": "https://search.yahoo.co.jp/realtime/search/%E7%9B%B8%E6%A8%A1%E5%8E%9F%E5%B8%82/?ei=UTF-8&ifr=tl_unit&md=h&p=%E7%9B%B8%E6%A8%A1%E5%8E%9F%E5%B8%82+%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8B+%E3%81%A9%E3%81%93&rkf=1",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:本人X/取材Xミラー確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "本人X事前告知・取材X当日投稿を確認"
+    },
+    {
       "id": "EV-20260622-01",
       "date": "2026/06/22",
       "store": "トワーズ相模原店",
@@ -453,6 +642,23 @@
       "confidence": "B:準公式/媒体確認",
       "publish": "公開",
       "status": "完了"
+    },
+    {
+      "id": "EV-20260718-01",
+      "date": "2026/07/18",
+      "store": "トワーズ四谷店",
+      "pref": "東京都",
+      "area": "東京",
+      "kind": "取材",
+      "event": "クロウ・スコープ取材",
+      "k3name": "非公式K3プロデュース",
+      "url": "https://www.sotwe.com/hashtag/%E3%83%88%E3%83%AF%E3%83%BC%E3%82%BA%E5%9B%9B%E8%B0%B7",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:本人X/取材Xミラー確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "本人X事前告知・取材X当日投稿を確認"
     },
     {
       "id": "EV-20260627-01",
@@ -707,6 +913,23 @@
       "memo": "共闘取材"
     },
     {
+      "id": "EV-20260707-02",
+      "date": "2026/07/07",
+      "store": "Eスペース600空港店",
+      "pref": "福岡県",
+      "area": "福岡",
+      "kind": "取材",
+      "event": "双翼乱舞取材",
+      "k3name": "非公式K3プロデュース",
+      "url": "https://search.yahoo.co.jp/realtime/search?ei=UTF-8&p=%23E%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9600%E7%A9%BA%E6%B8%AF%E5%BA%97&rkf=1",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:本人X/取材Xミラー確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "取材Xで当日投稿・中間ランキングも確認"
+    },
+    {
       "id": "EV-20260606-02",
       "date": "2026/06/06",
       "store": "Eスペース600空港店",
@@ -828,6 +1051,23 @@
       "memo": "共闘取材"
     },
     {
+      "id": "EV-20260707-01",
+      "date": "2026/07/07",
+      "store": "アウトバーンブリッツ",
+      "pref": "福岡県",
+      "area": "福岡",
+      "kind": "取材",
+      "event": "双翼乱舞取材",
+      "k3name": "非公式K3プロデュース",
+      "url": "https://search.yahoo.co.jp/realtime/search?ei=UTF-8&p=%23E%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9600%E7%A9%BA%E6%B8%AF%E5%BA%97&rkf=1",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:本人Xミラー確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "本人X投稿で7/7双翼乱舞・福岡2店舗開催を確認"
+    },
+    {
       "id": "EV-20260606-01",
       "date": "2026/06/06",
       "store": "アウトバーンブリッツ",
@@ -896,42 +1136,6 @@
       "memo": "約束の共闘"
     }
   ],
-  "プレイランド平和大治店": [
-    {
-      "id": "EV-20260829-01",
-      "date": "2026/08/29",
-      "store": "プレイランド平和大治店",
-      "pref": "愛知県",
-      "area": "愛知",
-      "kind": "来店",
-      "event": "非公式K3来店",
-      "k3name": "非公式K3",
-      "url": "https://note.com/supervisor__k/n/nb518fd6e32e2",
-      "storeUrl": "",
-      "checked": "2026/10/04",
-      "confidence": "B:準公式/媒体確認",
-      "publish": "公開",
-      "status": "完了",
-      "memo": "同日BuZZスロ"
-    },
-    {
-      "id": "EV-20260319-01",
-      "date": "2026/03/19",
-      "store": "プレイランド平和大治店",
-      "pref": "愛知県",
-      "area": "愛知",
-      "kind": "来店",
-      "event": "非公式K3来店",
-      "k3name": "非公式K3",
-      "url": "https://note.com/supervisor__k/n/n10485e0ea0e4",
-      "storeUrl": "",
-      "checked": "2026/10/04",
-      "confidence": "B:準公式/媒体確認",
-      "publish": "公開",
-      "status": "完了",
-      "memo": "同日BuZZレポwithくまお"
-    }
-  ],
   "トワーズ叶谷店": [
     {
       "id": "EV-20260906-01",
@@ -964,6 +1168,23 @@
       "confidence": "B:準公式/媒体確認",
       "publish": "公開",
       "status": "完了"
+    },
+    {
+      "id": "EV-20260712-01",
+      "date": "2026/07/12",
+      "store": "トワーズ叶谷店",
+      "pref": "東京都",
+      "area": "東京",
+      "kind": "取材",
+      "event": "クロウ・スコープ取材",
+      "k3name": "非公式K3プロデュース",
+      "url": "https://search.yahoo.co.jp/realtime/search?ei=UTF-8&md=h&p=%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82&rkf=1",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:本人X/店舗Xミラー確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "本人X事前告知・取材X当日投稿・店舗反応を確認"
     },
     {
       "id": "EV-20260607-01",
@@ -1089,6 +1310,61 @@
       "memo": "初掲載"
     }
   ],
+  "Dee2": [
+    {
+      "id": "EV-20260802-01",
+      "date": "2026/08/02",
+      "store": "Dee2",
+      "pref": "大分県",
+      "area": "大分",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/nb518fd6e32e2",
+      "storeUrl": "",
+      "checked": "2026/10/04",
+      "confidence": "B:準公式/媒体確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "8月スケジュール確認"
+    },
+    {
+      "id": "EV-20260621-01",
+      "date": "2026/06/21",
+      "store": "Dee2",
+      "pref": "大分県",
+      "area": "大分",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://note.com/supervisor__k/n/nbda1c72b3a1f",
+      "storeUrl": "https://x.com/Dee2_oita",
+      "checked": "2026/10/04",
+      "confidence": "A:本人/店舗公式確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "大分県初来店。本人X事前告知＋Dee2当日投稿ミラー確認"
+    }
+  ],
+  "オメガ寺町": [
+    {
+      "id": "EV-20260720-01",
+      "date": "2026/07/20",
+      "store": "オメガ寺町",
+      "pref": "京都府",
+      "area": "京都",
+      "kind": "来店",
+      "event": "非公式K3来店",
+      "k3name": "非公式K3",
+      "url": "https://x.com/k_777_3",
+      "storeUrl": "https://www.p-world.co.jp/kyoto/omega-ava.htm",
+      "checked": "2026/10/04",
+      "confidence": "A:本人/K会長確認",
+      "publish": "公開",
+      "status": "完了",
+      "memo": "初来店。本人X前日告知＋K会長X当日応援投稿で確認"
+    }
+  ],
   "トワーズ大和店": [
     {
       "id": "EV-20261003-02",
@@ -1193,25 +1469,6 @@
       "publish": "公開",
       "status": "完了",
       "memo": "超団結・初掲載"
-    }
-  ],
-  "Dee2": [
-    {
-      "id": "EV-20260802-01",
-      "date": "2026/08/02",
-      "store": "Dee2",
-      "pref": "大分県",
-      "area": "大分",
-      "kind": "来店",
-      "event": "非公式K3来店",
-      "k3name": "非公式K3",
-      "url": "https://note.com/supervisor__k/n/nb518fd6e32e2",
-      "storeUrl": "",
-      "checked": "2026/10/04",
-      "confidence": "B:準公式/媒体確認",
-      "publish": "公開",
-      "status": "完了",
-      "memo": "8月スケジュール確認"
     }
   ],
   "アムズガーデンうるま店": [
