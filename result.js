@@ -11,7 +11,7 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
   const canonical=document.querySelector('link[rel="canonical"]');
   if(canonical) canonical.href=location.origin+location.pathname+'?id='+encodeURIComponent(id);
   const hasWholeStore=Boolean(d.total||d.avg||d.winRate);
-  const resultMode=hasWholeStore?'店舗全体数値あり':'部分結果';
+  const resultMode=d.provisional?'速報・最終結果未確認':hasWholeStore?'店舗全体数値あり':'部分結果';
   document.getElementById('resultTitle').textContent=d.store;
   document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画')+'・'+resultMode;
   const visual=document.getElementById('resultVisual');
@@ -29,7 +29,7 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
     ['対象台数',d.units]
   ].filter(([,v])=>v && v!=='—' && v!=='-');
   document.getElementById('resultFacts').innerHTML=factRows.map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('');
-  document.getElementById('summaryBox').innerHTML=`<h3>結果サマリー</h3><p>${esc(d.detail||d.note||'確認済み結果')}</p>${d.note&&d.detail?`<small class="detail-note">${esc(d.note)}</small>`:''}`;
+  document.getElementById('summaryBox').innerHTML=`<h3>${d.provisional?'中間・当日速報':'結果サマリー'}</h3>${d.warning?`<p class="detail-note"><strong>${esc(d.warning)}</strong></p>`:''}<p>${esc(d.detail||d.note||'確認済み結果')}</p>${d.note&&d.detail?`<small class="detail-note">${esc(d.note)}</small>`:''}`;
   const detail=(d.detail||'').split('/').map(s=>s.trim()).filter(Boolean);
   const machines=(d.machines||'').split('/').map(s=>s.trim()).filter(Boolean);
   const items=detail.length?detail:machines;

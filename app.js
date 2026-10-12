@@ -78,7 +78,7 @@ function renderFeatured(data={},todayKey=''){
   const n=(data.schedule||[]).filter(x=>x.date>todayKey).sort((a,b)=>String(a.date).localeCompare(String(b.date)))[0];
 
   if(resultEl && r){
-    resultEl.innerHTML=`<a class="featured-link" href="./result.html?id=${encodeURIComponent(r.id||'')}"><div class="featured-thumb"><span>RESULT</span><strong>${esc(r.score||'結果確認')}</strong></div><div class="featured-body"><small>PICK UP</small><h2>${esc(r.store)}</h2><p>${esc(r.date||'')} / ${esc(r.note||'確認済み結果')}</p><b>結果詳細を見る →</b></div></a>`;
+    resultEl.innerHTML=`<a class="featured-link" href="./result.html?id=${encodeURIComponent(r.id||'')}"><div class="featured-thumb"><span>RESULT</span><strong>${esc(r.provisional?'速報・最終結果未確認':r.score||'結果確認')}</strong></div><div class="featured-body"><small>PICK UP</small><h2>${esc(r.store)}</h2><p>${esc(r.date||'')} / ${esc(r.note||'確認済み結果')}</p><b>結果詳細を見る →</b></div></a>`;
   }
   if(nextEl && n){
     nextEl.innerHTML=`<div class="featured-link"><div class="featured-thumb featured-thumb--next"><span>NEXT</span><strong>${esc(n.label||String(n.date||'確認中').replace(/^\d{4}\//,''))}</strong></div><div class="featured-body"><small>NEXT SCHEDULE</small><h2>${esc(n.store||'次回予定')}</h2><p>${esc(n.event||'K3関連企画')}</p><b>${esc(n.note||'')}</b></div></div>`;
@@ -155,7 +155,7 @@ function renderResult(items=[]){
     const metrics=metricItems.length
       ? `<div class="metrics metrics--${Math.min(metricItems.length,4)}">${metricItems.slice(0,4).map(([k,v])=>`<div><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div>`
       : '<div class="result-evidence">数値未掲載・内容確認済み</div>';
-    const score=x.score||x.total||x.avg||'結果確認';
+    const score=x.provisional?'速報・最終結果未確認':x.score||x.total||x.avg||'結果確認';
     const date=String(x.date||'').replace(/^\d{4}\//,'');
     return `<a class="result-card result-card--link" href="./result.html?id=${encodeURIComponent(x.id||x.result_id||'')}"><div class="result-card__top"><div><span class="chip chip--light">RESULT ${esc(date)}</span><h3>${esc(x.store||'直近結果')}</h3><small class="result-event">${esc(x.event||'K3関連企画')}</small></div><div class="score">${esc(score)}</div></div>${metrics}<p class="result-card__note">${esc(x.note||x.detail||'確認済み結果')}</p><div class="result-card__foot"><span>${x.checked?`確認 ${esc(x.checked)}`:'出典確認済み'}</span><b>詳細を見る →</b></div></a>`;
   }).join('');
@@ -170,7 +170,7 @@ function renderStats(s={}){
 function renderArchive(items=[]){
   const el=document.getElementById('archiveList');
   if(!el) return;
-  el.innerHTML=items.map(x=>`<article class="archive-item"><time>${esc(x.date||'--/--')}</time><div><h3>${esc(x.store||'')}</h3><p>${esc(x.event||'')}</p></div></article>`).join('');
+  el.innerHTML=items.map(x=>`<article class="archive-item"><time>${esc(x.date||'--/--')}</time><div><h3>${esc(x.store||'')}</h3><p>${esc(x.event||'')}</p>${x.status?`<small>${esc(x.status)}</small>`:''}</div></article>`).join('');
 }
 
 function renderStores(items=[]){

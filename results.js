@@ -15,7 +15,7 @@ function render(){
  count.textContent=rows.length+'件';
  list.innerHTML=rows.length?rows.map(x=>{
    const metrics=[['総差枚',x.total],['平均差枚',x.avg],['勝率',x.winRate]].filter(([,v])=>v&&v!=='—'&&v!=='-');
-   return `<a class="article-row result-archive-row" href="./result.html?id=${encodeURIComponent(x.id)}"><div><time>${esc(x.date||'—')}</time><span class="chip">${esc(x.event||'K3')}</span></div><h2>${esc(x.store)}</h2>${metrics.length?`<div class="result-archive-metrics">${metrics.map(([k,v])=>`<span><small>${esc(k)}</small><strong>${esc(v)}</strong></span>`).join('')}</div>`:''}<p>${esc(x.note||x.detail||'確認済み結果')}</p><b>結果詳細を見る →</b></a>`;
+   return `<a class="article-row result-archive-row" href="./result.html?id=${encodeURIComponent(x.id)}"><div><time>${esc(x.date||'—')}</time><span class="chip">${esc(x.event||'K3')}</span>${x.provisional?'<span class="chip">速報・最終結果未確認</span>':''}</div><h2>${esc(x.store)}</h2>${metrics.length?`<div class="result-archive-metrics">${metrics.map(([k,v])=>`<span><small>${esc(k)}</small><strong>${esc(v)}</strong></span>`).join('')}</div>`:''}<p>${esc(x.note||x.detail||'確認済み結果')}</p><b>結果詳細を見る →</b></a>`;
  }).join(''):'<div class="empty-detail">該当する結果はありません。</div>';
 }
 fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
