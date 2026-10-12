@@ -1,0 +1,16 @@
+.git/
+.github/
+node_modules/
+.wrangler/
+.openai/
+.agents/
+.codex/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+wrangler.jsonc
+wrangler.toml
+worker.js
+README.md
+.assetsignore
