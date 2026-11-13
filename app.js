@@ -270,6 +270,13 @@ Promise.all([
       .filter(x=>x.publish==='公開'||!x.publish)
       .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
     if(detailedResults.length) data.results=detailedResults;
+    const freshness=document.getElementById('officialResultFreshness');
+    if(freshness){
+      const latest=detailedResults[0]?.date || (data.results||[]).map(x=>x.date||'').sort().at(-1) || null;
+      const count=detailedResults.length || (data.results||[]).length;
+      const label=latest?latest+' が最新の掲載日':'公開結果なし';
+      freshness.textContent='公式結果：'+count+'件｜'+label+'。11月の開催告知・店舗全体の参考値は公式結果数に含みません。';
+    }
     renderFeatured(data,todayKey);
     renderToday(todayItems);
     renderSchedule(data.schedule,todayKey);
