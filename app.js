@@ -82,7 +82,7 @@ function renderFeatured(data={},todayKey=''){
     resultEl.innerHTML=`<a class="featured-link" href="./result.html?id=${encodeURIComponent(r.id||'')}"><div class="featured-thumb"><span>RESULT</span><strong>${esc(r.provisional?'速報・最終結果未確認':r.score||'結果確認')}</strong></div><div class="featured-body"><small>PICK UP</small><h2>${esc(r.store)}</h2><p>${esc(r.date||'')} / ${esc(r.note||'確認済み結果')}</p><b>結果詳細を見る →</b></div></a>`;
   }
   if(nextEl && announcement){
-    nextEl.innerHTML=`<a class="featured-link" href="#k3-monthly-announcements"><div class="featured-thumb featured-thumb--next"><span>ANNOUNCED</span><strong>${esc(String(announcement.date||'').replace(/^\\d{4}\\//,''))}</strong></div><div class="featured-body"><small>月間告知・開催未確認</small><h2>${esc(announcement.store)}</h2><p>${esc(announcement.event)}</p><b>告知内容を見る →</b></div></a>`;
+    nextEl.innerHTML=`<a class="featured-link" href="#k3-monthly-announcements"><div class="featured-thumb featured-thumb--next"><span>ANNOUNCED</span><strong>${esc(String(announcement.date||'').slice(5))}</strong></div><div class="featured-body"><small>月間告知・開催未確認</small><h2>${esc(announcement.store)}</h2><p>${esc(announcement.event)}</p><b>告知内容を見る →</b></div></a>`;
   }
   if(nextEl && n){
     nextEl.innerHTML=`<div class="featured-link"><div class="featured-thumb featured-thumb--next"><span>NEXT</span><strong>${esc(n.label||String(n.date||'確認中').replace(/^\d{4}\//,''))}</strong></div><div class="featured-body"><small>NEXT SCHEDULE</small><h2>${esc(n.store||'次回予定')}</h2><p>${esc(n.event||'K3関連企画')}</p><b>${esc(n.note||'')}</b></div></div>`;
