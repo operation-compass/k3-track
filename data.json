@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-12T12:53:01Z",
+  "updated_at": "2026-11-13T15:50:00Z",
   "today": [],
   "schedule": [],
   "results": [
@@ -444,6 +444,98 @@
       "last": "7/20",
       "type": "非公式K3来店",
       "pworld": "https://www.p-world.co.jp/kyoto/omega-ava.htm"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "ANN-202611-01",
+      "date": "2026/11/14",
+      "store": "トワーズ四谷店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-02",
+      "date": "2026/11/16",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-03",
+      "date": "2026/11/18",
+      "store": "トワーズ麻溝台店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-04",
+      "date": "2026/11/19",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-05",
+      "date": "2026/11/21",
+      "store": "トワーズ西八店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-06",
+      "date": "2026/11/21",
+      "store": "トワーズ相模原店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-07",
+      "date": "2026/11/22",
+      "store": "トワーズ叶谷店",
+      "event": "クロウ・スコープ取材",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-08",
+      "date": "2026/11/23",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-09",
+      "date": "2026/11/26",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+    },
+    {
+      "id": "ANN-202611-10",
+      "date": "2026/11/29",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "status": "月間告知・開催未確認",
+      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
     }
   ]
 }
