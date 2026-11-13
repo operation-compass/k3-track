@@ -128,6 +128,28 @@ function renderSchedule(items=[],todayKey=''){
   el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
 }
 
+
+function renderMonthlyAnnouncements(items=[],todayKey=''){
+  const anchor=document.getElementById('scheduleList');
+  if(!anchor) return;
+  const existing=document.getElementById('k3-monthly-announcements');
+  if(existing) existing.remove();
+  const upcoming=(items||[]).filter(x=>x.date>=todayKey)
+    .sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.store).localeCompare(String(b.store),'ja'));
+  if(!upcoming.length) return;
+  const wrapper=document.createElement('section');
+  wrapper.id='k3-monthly-announcements';
+  wrapper.style.cssText='margin-top:24px;padding:16px;border:1px solid rgba(180,149,84,.45);border-radius:14px;';
+  wrapper.innerHTML='<h3 style="margin:0 0 6px">11月の取材告知（開催確認待ち）</h3>'+
+    '<p style="margin:0 0 14px;font-size:.9rem;opacity:.8">K会長の月間告知を掲載。店舗・取材公式による最新の開催確認は未了です。実施済みや確定結果を意味しません。</p>'+
+    '<div class="schedule-day__list">'+upcoming.slice(0,12).map(x=>
+    '<article class="event-card"><div class="event-card__meta"><span class="chip">告知・未確認</span><time>'+esc(x.date)+'</time></div>'+
+    '<h3>'+esc(x.store)+'</h3><p class="event-name">'+esc(x.event)+'</p>'+
+    '<p class="event-note">'+esc(x.note||'事前告知のみ')+'</p>'+
+    '<a class="source-link" href="'+esc(x.sourceUrl)+'" target="_blank" rel="noopener noreferrer">月間告知の出典を見る →</a></article>').join('')+'</div>';
+  anchor.insertAdjacentElement('afterend',wrapper);
+}
+
 function renderResult(items=[]){
   const el=document.getElementById('resultList');
   if(!el) return;
@@ -247,6 +269,7 @@ Promise.all([
     renderFeatured(data,todayKey);
     renderToday(todayItems);
     renderSchedule(data.schedule,todayKey);
+    renderMonthlyAnnouncements(data.announcements||[],todayKey);
     renderResult(data.results);
     renderArchive(data.archive||[]);
     renderStores(data.stores||[]);
