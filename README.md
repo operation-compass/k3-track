@@ -110,3 +110,10 @@ GitHub Actions の `.github/workflows/deploy.yml` は手動の予備経路。mai
 4. 公開画面の確認後に公開完了と報告する。GitHubへの保存だけでは公開完了としない。
 
 WorkerはHTML・JSON・CSS・JSなどのキャッシュを無効化する。
+
+## 2026-11-13 scheduled publishing smoke test
+
+- Scope: verify that a commit to the production `main` branch is received by Cloudflare Workers Builds.
+- This commit changes documentation only. No event, result, publication status, UI, or Worker runtime data is modified.
+- Treat this as a GitHub trigger test, NOT proof of a successful Cloudflare deployment or an updated live website.
+- Verify the deployment commit SHA and the production website separately before marking the test as passed.
