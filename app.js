@@ -138,22 +138,38 @@ function renderMonthlyAnnouncements(items=[],todayKey=''){
   if(!anchor) return;
   const existing=document.getElementById('k3-monthly-announcements');
   if(existing) existing.remove();
-  const upcoming=(items||[]).filter(x=>x.date>=todayKey)
-    .sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.store).localeCompare(String(b.store),'ja'));
-  if(!upcoming.length) return;
+  const rows=(items||[]).slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.store).localeCompare(String(b.store),'ja'));
+  if(!rows.length) return;
+  const upcoming=rows.filter(x=>x.date>=todayKey);
+  const past=rows.filter(x=>x.date<todayKey).reverse();
+  const renderOne=x=>'<article class="event-card"><div class="event-card__meta"><span class="chip">告知・最終結果未確認</span><time>'+esc(x.date)+'</time></div>'+
+    '<h3>'+esc(x.store)+'</h3><p class="event-name">'+esc(x.event)+'</p>'+
+    '<p class="event-note">'+esc(x.note||'日程の事前告知。実施済みを意味しません。')+'</p>'+
+    '<a class="source-link" href="'+esc(x.sourceUrl||'#')+'" target="_blank" rel="noopener noreferrer">情報元を見る →</a></article>';
   const wrapper=document.createElement('section');
   wrapper.id='k3-monthly-announcements';
-  wrapper.style.cssText='margin-top:24px;padding:16px;border:1px solid rgba(180,149,84,.45);border-radius:14px;';
-  wrapper.innerHTML='<h3 style="margin:0 0 6px">11月の取材告知（開催確認待ち）</h3>'+
-    '<p style="margin:0 0 14px;font-size:.9rem;opacity:.8">K会長の月間告知を掲載。店舗・取材公式による最新の開催確認は未了です。実施済みや確定結果を意味しません。</p>'+
-    '<div class="schedule-day__list">'+upcoming.slice(0,12).map(x=>
-    '<article class="event-card"><div class="event-card__meta"><span class="chip">告知・未確認</span><time>'+esc(x.date)+'</time></div>'+
-    '<h3>'+esc(x.store)+'</h3><p class="event-name">'+esc(x.event)+'</p>'+
-    '<p class="event-note">'+esc(x.note||'事前告知のみ')+'</p>'+
-    '<a class="source-link" href="'+esc(x.sourceUrl)+'" target="_blank" rel="noopener noreferrer">月間告知の出典を見る →</a></article>').join('')+'</div>';
+  wrapper.style.cssText='margin-top:24px;padding:16px;border:1px solid rgba(180,149,84,.45);border-radius:14px';
+  wrapper.innerHTML='<h3 style="margin:0 0 6px">11月のK3関連告知（全'+rows.length+'件）</h3>'+
+    '<p style="margin:0 0 14px;font-size:.9rem;opacity:.85">告知は「開催実績」や「取材の最終結果」と異なります。日程に出典相違があるものは照合中と明記しています。</p>'+
+    '<h4 style="margin:12px 0 6px">本日以降の告知 '+upcoming.length+'件</h4>'+
+    (upcoming.length?'<div class="schedule-day__list">'+upcoming.map(renderOne).join('')+'</div>':'<p>今後の公開済み告知はありません。</p>')+
+    (past.length?'<details style="margin-top:16px"><summary style="cursor:pointer;padding:8px 0">過去の告知記録 '+past.length+'件（実施確認とは別）を表示</summary>'+
+      '<div class="schedule-day__list" style="margin-top:8px">'+past.map(renderOne).join('')+'</div></details>':'');
   anchor.insertAdjacentElement('afterend',wrapper);
 }
 
+function renderAnnouncementToday(items=[],todayKey='',onlyIfNoConfirmed=true){
+  if(!onlyIfNoConfirmed) return;
+  const el=document.getElementById('todayCard');
+  if(!el) return;
+  const announcements=(items||[]).filter(x=>x.date===todayKey);
+  if(!announcements.length) return;
+  el.classList.remove('empty-state');
+  el.innerHTML='<div class="today-card__date">TODAY / 告知・未確認</div><div class="today-list">'+announcements.map(x=>
+    '<article class="today-item"><div class="today-card__content"><div class="today-item__head"><h3>'+esc(x.store)+'</h3><span class="status">告知あり</span></div>'+
+    '<p>'+esc(x.event)+'</p><small class="today-source-note">開催実施・K3公式結果は未確認です。</small>'+
+    '<a class="source-link" href="'+esc(x.sourceUrl||'#')+'" target="_blank" rel="noopener noreferrer">出典を見る →</a></div></article>').join('')+'</div>';
+}
 
 function renderVenueResults(items=[]){
   const target=document.getElementById('venueResultsList');
@@ -303,6 +319,7 @@ Promise.all([
     }
     renderFeatured(data,todayKey);
     renderToday(todayItems);
+    renderAnnouncementToday(data.announcements||[],todayKey,!todayItems.length);
     renderSchedule(data.schedule,todayKey);
     renderMonthlyAnnouncements(data.announcements||[],todayKey);
     renderResult(data.results);
