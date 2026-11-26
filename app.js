@@ -161,7 +161,7 @@ function renderVenueResults(items=[]){
   const rows=(items||[]).filter(x=>x.publishClass==='参考公開可')
     .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||String(a.store||'').localeCompare(String(b.store||''),'ja'));
   const counter=document.getElementById('venueResultsCount');
-  if(counter) counter.textContent=rows.length+'件';
+  if(counter) counter.textContent=rows.length+'件（媒体別）';
   if(!rows.length){target.textContent='現在公開できる店舗参考結果はありません。';return;}
   const fmt=value=>value==null?'未掲載':(Number(value)>0?'+':'')+Number(value).toLocaleString('ja-JP')+'枚';
   target.innerHTML=rows.map(x=>'<article style="padding:15px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(0,0,0,.12)">'+
@@ -172,6 +172,7 @@ function renderVenueResults(items=[]){
     '<div style="font-size:.85rem;margin:5px 0">平均差枚 '+esc(fmt(x.avgDiff))+
       (x.winRate?' ／ 勝率 '+esc(x.winRate):'')+'</div>'+
     '<p style="font-size:.78rem;opacity:.8;margin:8px 0">※K3取材公式の結果ではありません。集計元：'+esc(x.source||'外部サイト')+'</p>'+
+    (x.note?'<p style="font-size:.76rem;opacity:.76;margin:5px 0 8px">'+esc(x.note)+'</p>':'')+
     (x.sourceUrl?'<a href="'+esc(x.sourceUrl)+'" target="_blank" rel="noopener noreferrer" class="source-link">出典を見る →</a>':'')+
     '</article>').join('');
 }
