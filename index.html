@@ -27,9 +27,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=ux-20261007-5" />
+  <link rel="stylesheet" href="./styles.css?v=editorial-20261126-1" />
 </head>
-<body>
+<body class="k3-editorial">
   <header class="topbar">
     <div class="container topbar__inner">
       <a class="brand" href="#top" aria-label="K3 TRACK ホーム">
@@ -46,13 +46,9 @@
     <section class="media-hero"><div class="container media-hero__inner">
       <div>
         <div class="eyebrow">UNOFFICIAL K3 / SCHEDULE / RESULT / ARCHIVE</div>
-        <h1>今日どこ？<br>次はどこ？<br><span>前回どうだった？</span></h1>
-        <p class="hero__lead">非公式K3の開催・結果・店舗履歴を、確認済みデータから最短で探せる非公式データハブ。</p>
-        <div id="k3-home-update-20261113" role="status" style="margin:16px 0;padding:14px 16px;border:1px solid rgba(245,201,115,.65);border-radius:12px;background:rgba(245,201,115,.10);line-height:1.75">
-          <strong style="display:block;color:#f5d08a;font-size:0.95rem">最新の確認状況｜2026年11月13日</strong>
-          <span style="display:block;margin-top:4px;font-size:0.90rem">11月14日（土）トワーズ四谷店の「クロウ・スコープ取材」は、K会長の11月告知に掲載されています。店舗・取材公式による最新の開催情報は照合中です。開催済み・確定結果を意味しません。</span>
-          <a href="https://note.com/supervisor__k/n/n8ad9e50973d2" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px;text-decoration:underline;color:#f5d08a;font-size:0.86rem">11月の告知元を確認</a>
-        </div>
+        <h1>K3の取材情報を、<br><span>ひと目で。</span></h1>
+        <p class="hero__lead">開催予定・取材POP・結果・店舗別履歴を出典付きで整理。</p>
+        
         <div class="hero__badges"><span>非公式K3</span><span>出典確認優先</span><span>スマホ最適化</span><span id="lastUpdated">更新 --</span></div>
       </div>
       <div class="hero-panel">
@@ -60,7 +56,7 @@
         <a href="#today">今日の予定 <b>→</b></a>
         <a href="#schedule">次回予定 <b>→</b></a>
         <a href="#results">最新結果 <b>→</b></a>
-        <a href="#stores">店舗別履歴 <b>→</b></a>
+        <a href="#visualShowcase">取材POP <b>→</b></a>
       </div>
     </div></section>
 
@@ -84,28 +80,6 @@
       </div>
     </div></section>
 
-    <section class="media-featured"><div class="container">
-      <div class="featured-grid">
-        <article class="featured-card featured-card--result" id="featuredResult">
-          <div class="featured-thumb"><span>RESULT</span></div>
-          <div class="featured-body"><small>PICK UP</small><h2>最新結果</h2><p>確認済みの結果を表示します。</p></div>
-        </article>
-        <article class="featured-card" id="featuredNext">
-          <div class="featured-thumb featured-thumb--next"><span>NEXT</span></div>
-          <div class="featured-body"><small>NEXT SCHEDULE</small><h2>次回予定</h2><p>公開可能な予定を表示します。</p></div>
-        </article>
-      </div>
-    </div></section>
-
-    <section class="stats-strip">
-      <div class="container stats-grid" id="statsGrid">
-        <div><strong>--</strong><span>登録履歴</span></div>
-        <div><strong>--</strong><span>対象店舗</span></div>
-        <div><strong>--</strong><span>企画種別</span></div>
-        <div><strong>--</strong><span>収集期間</span></div>
-      </div>
-    </section>
-
     <section class="section section--tight" id="today"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker">TODAY</div><h2>今日のK3</h2></div><span class="date-pill" id="todayDate">--/--</span></div>
       <article class="today-card empty-state" id="todayCard">
@@ -119,6 +93,23 @@
       <div class="section-title-row"><div><div class="section-kicker">NEXT SCHEDULE</div><h2>次回予定</h2></div><a class="text-link" href="./schedule.html">一覧を見る →</a></div>
       <div class="card-grid" id="scheduleList">
         <article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回予定</h3><p class="event-name">確認済みの次回予定を表示します</p><p class="event-note">出典確認済みの情報を掲載します</p></article>
+      </div>
+    </div></section>
+
+    <section class="visual-showcase" id="visualShowcase"><div class="container">
+      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">FEATURED COVERAGE</div><h2>取材POP</h2></div><span class="store-note">企画紹介</span></div>
+      <p class="k3-pop-caption">使用許可済みの企画共通POPです。個別店舗・日付の開催告知ではありません。</p><div class="visual-showcase__grid" id="visualShowcaseGrid"></div>
+    </div></section>
+    <section class="media-featured"><div class="container">
+      <div class="featured-grid">
+        <article class="featured-card featured-card--result" id="featuredResult">
+          <div class="featured-thumb"><span>RESULT</span></div>
+          <div class="featured-body"><small>PICK UP</small><h2>最新結果</h2><p>確認済みの結果を表示します。</p></div>
+        </article>
+        <article class="featured-card" id="featuredNext">
+          <div class="featured-thumb featured-thumb--next"><span>NEXT</span></div>
+          <div class="featured-body"><small>NEXT SCHEDULE</small><h2>次回予定</h2><p>公開可能な予定を表示します。</p></div>
+        </article>
       </div>
     </div></section>
 
@@ -141,10 +132,15 @@
       </aside>
     </div></section>
 
-    <section class="visual-showcase" id="visualShowcase"><div class="container">
-      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">FEATURED COVERAGE</div><h2>注目の取材・企画</h2></div><span class="store-note">POP × RESULT</span></div>
-      <div class="visual-showcase__grid" id="visualShowcaseGrid"></div>
-    </div></section>
+    <section class="stats-strip">
+      <div class="container stats-grid" id="statsGrid">
+        <div><strong>--</strong><span>登録履歴</span></div>
+        <div><strong>--</strong><span>対象店舗</span></div>
+        <div><strong>--</strong><span>企画種別</span></div>
+        <div><strong>--</strong><span>収集期間</span></div>
+      </div>
+    </section>
+
     <section class="section" id="archive"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker">ARCHIVE</div><h2>最近の開催履歴</h2></div><a class="text-link" href="./schedule.html">履歴一覧を見る →</a></div>
       <div class="archive-list" id="archiveList"></div>
@@ -173,7 +169,11 @@
 
     <section class="section section--about" id="about"><div class="container about-box">
       <div><div class="section-kicker">ABOUT</div><h2>K3 TRACKについて</h2></div>
-      <div class="about-copy"><p>K3 TRACKは、非公式K3に関連する公開情報を整理する非公式の情報サイトです。本人・店舗・媒体の公式サイトではありません。</p><p>掲載情報は、本人発信・店舗公式・媒体公式などの出典確認を行い、確認できた情報を優先して掲載します。</p><p><a class="text-link" href="./guide.html">出典ランクと公開基準を見る →</a></p></div>
+      <div class="about-copy"><details class="k3-notice-history"><summary>過去の確認状況（11月13日）</summary><div id="k3-home-update-20261113" role="status" style="margin:16px 0;padding:14px 16px;border:1px solid rgba(245,201,115,.65);border-radius:12px;background:rgba(245,201,115,.10);line-height:1.75">
+          <strong style="display:block;color:#f5d08a;font-size:0.95rem">最新の確認状況｜2026年11月13日</strong>
+          <span style="display:block;margin-top:4px;font-size:0.90rem">11月14日（土）トワーズ四谷店の「クロウ・スコープ取材」は、K会長の11月告知に掲載されています。店舗・取材公式による最新の開催情報は照合中です。開催済み・確定結果を意味しません。</span>
+          <a href="https://note.com/supervisor__k/n/n8ad9e50973d2" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px;text-decoration:underline;color:#f5d08a;font-size:0.86rem">11月の告知元を確認</a>
+        </div></details><p>K3 TRACKは、非公式K3に関連する公開情報を整理する非公式の情報サイトです。本人・店舗・媒体の公式サイトではありません。</p><p>掲載情報は、本人発信・店舗公式・媒体公式などの出典確認を行い、確認できた情報を優先して掲載します。</p><p><a class="text-link" href="./guide.html">出典ランクと公開基準を見る →</a></p></div>
     </div></section>
   </main>
   <nav class="bottom-nav" aria-label="クイックナビ">
@@ -184,6 +184,6 @@
       <a href="#coverage"><span>取材</span></a>
     </nav>
   <footer class="footer"><div class="container footer__inner"><div><strong>K3 TRACK</strong><p>Unofficial K3 Data Hub</p></div><p>非公式K3に関する公開情報を出典確認のうえ整理しています。公式サイトではありません。<span id="k3-sync-verification-20261113" style="display:block;margin-top:6px;font-size:0.78em;opacity:0.72">サイト配信確認：2026年11月13日｜予定・結果データは変更していません</span></p></div></footer>
-  <script src="./app.js?v=ux-20261007-5"></script>
+  <script src="./app.js?v=editorial-20261126-1"></script>
 </body>
 </html>
