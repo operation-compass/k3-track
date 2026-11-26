@@ -634,3 +634,89 @@ button,a{-webkit-tap-highlight-color:transparent}
   .performance-panel__head strong{font-size:16px}
   .performance-grid>div{min-height:64px}
 }
+
+/* K3 TRACK / approved sport-media direction. Home only. */
+body.k3-sport{--sport-bg:#0e0b14;--sport-surface:#1b1625;--sport-line:#44354f;--sport-lilac:#d1a8fb;background:var(--sport-bg);color:#f7f4fa}
+.k3-sport .container{max-width:1140px}
+.k3-sport .k3-icon{display:block;width:24px;height:24px;flex:none}
+.k3-sport .topbar{background:#100c16;border-bottom:1px solid #362b41}
+.k3-sport .brand{gap:8px;position:relative;padding-left:13px}
+.k3-sport .brand:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#bc77f1;transform:skew(-18deg)}
+.k3-sport .brand__mark{padding:0;background:none;box-shadow:none;border:0;border-radius:0;color:white;font-size:32px;font-style:italic;font-weight:900;width:auto;height:auto}
+.k3-sport .brand__text strong{font-size:24px;font-weight:400;letter-spacing:.075em;font-style:italic;color:white}
+.k3-sport .brand__text small{font-size:8px;letter-spacing:.12em;color:#d0bddc}
+.k3-sport .k3-head-actions{display:flex;gap:6px;align-items:center}
+.k3-sport .k3-head-actions>a,.k3-sport .menu-btn{display:grid;place-items:center;min-width:44px;min-height:44px;color:#fff;background:transparent;border:0;padding:0}
+.k3-sport .mobile-nav{background:#191321}
+.k3-sport .media-hero{position:relative;isolation:isolate;overflow:hidden;padding:44px 0 22px;background:linear-gradient(120deg,#100c17 24%,#20152e 66%,#3b2056);border-color:var(--sport-line)}
+.k3-sport .k3-hero-art{position:absolute;right:0;top:0;width:58%;height:100%;z-index:-2;object-fit:cover;pointer-events:none}
+.k3-sport .media-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#100c17 6%,rgba(16,12,23,.94) 30%,rgba(16,12,23,.12) 79%),linear-gradient(0deg,#100c17 0%,transparent 40%);pointer-events:none}
+.k3-sport .media-hero__inner{display:grid;grid-template-columns:1fr;gap:22px;align-items:start}
+.k3-sport .media-hero__inner:after{display:none}
+.k3-sport .eyebrow{font-size:10px;letter-spacing:.17em;color:#e4c9f9}
+.k3-sport .eyebrow:after{content:"";display:block;background:#bb76ef;width:42px;height:3px;margin-top:12px}
+.k3-sport .media-hero h1{font-size:clamp(28px,5.2vw,56px);line-height:1.23;letter-spacing:-.05em;margin:15px 0 10px;max-width:750px}
+.k3-sport .media-hero h1 span{color:#fff}
+.k3-sport .hero__lead{max-width:520px;font-size:14px;line-height:1.75;color:#e1d6e8;margin:0 0 12px}
+.k3-sport .hero__badges span{font-size:10px;border-color:#61536b;color:#d9cbe4;background:#21192b}
+.k3-sport .hero-panel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;border:0;padding:0;background:none;box-shadow:none}
+.k3-sport .hero-panel a{display:flex;align-items:center;justify-content:flex-start;gap:10px;min-height:72px;padding:12px;background:linear-gradient(135deg,#272033,#191421);border:1px solid #685477;color:#fff;border-radius:7px;font-weight:700;box-shadow:none}
+.k3-sport .hero-panel a>span{display:grid;gap:3px;font-size:14px}
+.k3-sport .hero-panel a small{font-size:9px;font-weight:500;letter-spacing:.07em;color:#c1b0d0;grid-column:auto}
+.k3-sport .hero-panel a b{margin-left:auto;color:#d1a8fb}
+.k3-sport .section,.k3-sport .visual-showcase,.k3-sport .media-featured{background:#100d17;color:#f7f4fa;padding:28px 0;border-bottom:1px solid #30253b;scroll-margin-top:88px}
+.k3-sport .section-title-row{margin-bottom:16px;gap:8px;align-items:center}
+.k3-sport .section-title-row h2,.k3-sport .visual-showcase h2{font-size:22px;font-weight:800;letter-spacing:-.035em;margin:3px 0 0}
+.k3-sport .section-kicker{color:#c6a4ef;font-size:11px;letter-spacing:.17em;font-weight:700}
+.k3-sport .section-title-row>div{border-left:3px solid #aa65e1;padding-left:12px}
+.k3-sport .text-link,.k3-sport .source-link{color:#d8b6ff;font-weight:700}
+.k3-sport .visual-showcase{position:relative;background:linear-gradient(115deg,#191024,#100d17 55%)}
+.k3-sport .k3-gallery-note{font-size:11px;color:#bfb3cb;line-height:1.65;margin:0 0 14px}
+.k3-sport .visual-showcase__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.k3-sport .k3-pop-card{border:1px solid #544461;background:#1e1829;border-radius:7px;overflow:hidden;min-width:0}
+.k3-sport .k3-pop-art{display:block;aspect-ratio:1122/1402;background:#0b0810}
+.k3-sport .k3-pop-art img{width:100%;height:100%;object-fit:contain;display:block}
+.k3-sport .k3-pop-name{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:10px 12px;gap:5px;font-weight:800;font-size:14px;color:white}
+.k3-sport .k3-pop-name span{border-left:3px solid #af73e5;padding-left:7px;overflow-wrap:anywhere}
+.k3-sport .k3-pop-name b{color:#d9b7ff;font-size:20px}
+.k3-sport .k3-overview{max-width:1140px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:#100d17}
+.k3-sport .k3-overview>section{min-width:0;padding:24px 0}
+.k3-sport .k3-overview .featured-grid{grid-template-columns:1fr;gap:10px}
+.k3-sport .today-card,.k3-sport .event-card,.k3-sport .featured-card{color:#f7f4fa;background:#201a2b;border:1px solid #4c3e59;border-radius:8px;box-shadow:none}
+.k3-sport .today-card p,.k3-sport .event-note,.k3-sport .today-source-note,.k3-sport .event-card time,.k3-sport .featured-body p{color:#d0c3dd}
+.k3-sport .today-card .source-link,.k3-sport .event-card .source-link,.k3-sport .featured-body small,.k3-sport .featured-body b{color:#d6b6fc}
+.k3-sport .today-card__date{background:#684098}
+.k3-sport .schedule-day{background:#17121f;border-color:#41324e}
+.k3-sport .finder-strip{position:relative;margin:0;padding:18px 0;background:#100d17;scroll-margin-top:80px}
+.k3-sport .finder-card{background:#21182d;color:#f7f4fa;border:1px solid #524063;border-radius:8px;box-shadow:none}
+.k3-sport .finder-heading small,.k3-sport .finder-heading>span{color:#d4b4ef}
+.k3-sport .finder-search{background:#110d18;border-color:#665473;color:#fff}
+.k3-sport .finder-search input{color:#fff}
+.k3-sport .finder-search input::placeholder{color:#c9b9d4}
+.k3-sport .finder-results{background:#fff;color:#211729}
+.k3-sport .finder-links a{background:#31243d;color:#f1eafa;border-color:#665473}
+.k3-sport .result-card{border-color:#554263;background:#201a2b;border-radius:8px}
+.k3-sport .stats-strip{background:#15101d}
+.k3-sport #archive,.k3-sport #stores,.k3-sport #coverage,.k3-sport #about{background:#f1edf5;color:#251e2d;border-color:#dcd4e5}
+.k3-sport #archive .section-kicker,.k3-sport #stores .section-kicker,.k3-sport #coverage .section-kicker,.k3-sport #about .section-kicker,.k3-sport #archive .text-link,.k3-sport #about .text-link{color:#684093}
+.k3-sport .k3-past-notice{margin-bottom:12px}
+.k3-sport .k3-past-notice #k3-home-update-20261113{background:#26202f!important;color:white}
+.k3-sport .bottom-nav{background:#100d17;border-top:1px solid #544261}
+.k3-sport .bottom-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#e9e1ee;min-height:54px}
+.k3-sport .bottom-nav a .k3-icon{width:21px;height:21px}
+.k3-sport .bottom-nav a.is-active{color:#d2a6ff;border-bottom:2px solid #b36be9;background:#2b1d3b}
+.k3-sport a:focus-visible,.k3-sport button:focus-visible,.k3-sport input:focus-visible{outline:2px solid #c899ff;outline-offset:3px}
+@media(max-width:720px){
+ .k3-sport .brand__mark{font-size:27px}.k3-sport .brand__text strong{font-size:20px}.k3-sport .brand__text small{font-size:7px}
+ .k3-sport .media-hero{padding:25px 0 18px}.k3-sport .k3-hero-art{width:72%}.k3-sport .media-hero:before{background:linear-gradient(90deg,#100c17 1%,rgba(16,12,23,.92) 35%,rgba(16,12,23,.35) 100%),linear-gradient(0deg,#100c17 0%,transparent 65%)}
+ .k3-sport .media-hero h1{font-size:clamp(26px,7.7vw,40px)}.k3-sport .hero__lead{font-size:12px;max-width:330px}
+ .k3-sport .hero-panel{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.k3-sport .hero-panel a{min-height:56px;padding:8px}.k3-sport .hero-panel a>span{font-size:12px}.k3-sport .hero-panel a small{font-size:8px}.k3-sport .hero-panel a .k3-icon{width:21px;height:21px}
+ .k3-sport .section,.k3-sport .visual-showcase,.k3-sport .media-featured{padding:21px 0}
+ .k3-sport .visual-showcase__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .k3-sport .k3-pop-name{font-size:12px;padding:8px;min-height:44px}
+ .k3-sport .k3-overview{display:block}.k3-sport .k3-overview>section{padding:20px 0}
+ .k3-sport .section-title-row h2,.k3-sport .visual-showcase h2{font-size:20px}
+ .k3-sport .bottom-nav{padding-bottom:max(5px,env(safe-area-inset-bottom))}
+ body.k3-sport{padding-bottom:76px}
+}
+@media(prefers-reduced-motion:no-preference){.k3-sport .k3-pop-card,.k3-sport .hero-panel a{transition:border-color .18s ease,transform .18s ease}.k3-sport .k3-pop-card:hover,.k3-sport .hero-panel a:hover{border-color:#c58af6;transform:translateY(-2px)}}

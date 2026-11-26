@@ -59,13 +59,13 @@ function initGlobalSearch(stores=[],coverage=[]){
 
 function initSectionNav(){
   const links=[...document.querySelectorAll('.bottom-nav a[href^="#"]')];
-  const pairs=links.map(a=>({a,section:document.querySelector(a.getAttribute('href'))})).filter(x=>x.section);
+  const pairs=links.map(a=>({a,section:document.querySelector(a.getAttribute('href')==='#top'?'.media-hero':a.getAttribute('href'))})).filter(x=>x.section);
   if(!pairs.length||!('IntersectionObserver' in window)) return;
   const observer=new IntersectionObserver(entries=>{
     const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
     if(!visible) return;
     links.forEach(a=>a.classList.remove('is-active'));
-    const target=links.find(a=>a.getAttribute('href')==='#'+visible.target.id);
+    const target=pairs.find(p=>p.section===visible.target)?.a;
     target?.classList.add('is-active');
   },{rootMargin:'-25% 0px -60% 0px',threshold:[0,.1,.25,.5]});
   pairs.forEach(x=>observer.observe(x.section));
@@ -89,21 +89,17 @@ function renderFeatured(data={},todayKey=''){
   }
 }
 
+function k3ApprovedPop(name,assetData=cachedCoverageAssets){
+  return (assetData.items||[]).find(a=>a.key===name&&a.type==='pop'&&a.rights==='許可済'&&Array.isArray(a.scope)&&a.scope.includes('web')&&a.status==='WEB反映'&&/^\.\/assets\/[a-zA-Z0-9_.-]+\.(webp|png|jpe?g)$/i.test(a.image||''));
+}
 function renderVisualShowcase(items=[],assetData={}){
   const el=document.getElementById('visualShowcaseGrid');
-  if(!el) return;
-  const picks=['双翼乱舞取材','クロウ・スコープ取材','お前の席ねぇから','超団結 / 7店舗共闘','非公式K3来店'];
-  const rows=picks.map((name,i)=>{
-    const coverage=(items||[]).find(x=>x.name===name);
-    const desc=coverage?.description||'確認済みの開催履歴・結果を表示';
-    const asset=(assetData.items||[]).find(x=>x.key===name && x.type!=='character' && x.image);
-    const fallback=`<div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`;
-    const art=asset
-      ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" width="1122" height="1402" loading="${i<2?'eager':'lazy'}" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`
-      : fallback;
-    return `<a class="visual-teaser visual-teaser--${i+1}" href="./coverage.html?name=${encodeURIComponent(name)}">${art}<div class="visual-teaser__body"><small>K3 COVERAGE</small><h3>${esc(name)}</h3><span class="coverage-status ${coverage?.status==='実績あり'?'':'is-pending'}">${coverage?.status==='実績あり'?'実績あり':'確認済み実績なし'}</span><p>${esc(desc)}</p><b>企画詳細を見る →</b></div></a>`;
-  });
-  el.innerHTML=rows.join('');
+  if(!el)return;
+  const rows=items.filter(x=>x.status==='実績あり'&&k3ApprovedPop(x.name,assetData));
+  el.innerHTML=rows.length?rows.map((x,i)=>{
+    const a=k3ApprovedPop(x.name,assetData);
+    return `<article class="k3-pop-card"><a class="k3-pop-art" href="${esc(a.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(x.name)}のPOPを拡大"><img src="${esc(a.image)}" alt="${esc(x.name)}の企画共通POP" width="${Number(a.width)||1122}" height="${Number(a.height)||1402}" loading="${i===0?'eager':'lazy'}" decoding="async"></a><a class="k3-pop-name" href="./coverage.html?name=${encodeURIComponent(x.name)}"><span>${esc(x.name)}</span><b aria-hidden="true">›</b></a></article>`;
+  }).join(''):'<p class="k3-gallery-note">公開可能な企画POPは準備中です。</p>';
 }
 
 function renderToday(items=[]){
@@ -299,7 +295,7 @@ function renderCoverage(items=[],assetData=cachedCoverageAssets){
   if(!el) return;
   if(!items.length){el.innerHTML='<p class="event-note">該当する取材・企画がありません。</p>';return;}
   el.innerHTML=items.map(x=>{
-    const asset=(assetData.items||[]).find(a=>a.key===x.name && a.type!=='character' && a.image);
+    const asset=x.status==='実績あり'?k3ApprovedPop(x.name,assetData):null;
     const fallback=`<span class="coverage-index">${esc(x.id||'--')}</span>`;
     const thumb=asset?`<div class="coverage-thumb"><img src="${esc(asset.image)}" alt="${esc(asset.label||x.name)}" width="1122" height="1402" loading="lazy" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`:fallback;
     return `<a class="coverage-entry" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article class="coverage-card">${thumb}<div class="coverage-copy"><div class="coverage-title-row"><h3>${esc(x.name)}</h3><span class="coverage-status ${x.status==='実績あり'?'':'is-pending'}">${x.status==='実績あり'?'実績あり':'確認済み実績なし'}</span></div><p>${esc(x.description||'')}</p></div><b aria-hidden="true">→</b></article></a>`;
@@ -337,7 +333,7 @@ Promise.all([
       const latest=detailedResults[0]?.date || (data.results||[]).map(x=>x.date||'').sort().at(-1) || null;
       const count=detailedResults.length || (data.results||[]).length;
       const label=latest?latest+' が最新の掲載日':'公開結果なし';
-      freshness.textContent='公式結果：'+count+'件｜'+label+'。11月の開催告知・店舗全体の参考値は公式結果数に含みません。';
+      freshness.textContent='掲載結果：'+count+'件｜'+label+'。速報と最終結果は区別し、開催告知・店舗全体の参考値は含みません。';
     }
     renderFeatured(data,todayKey);
     renderToday(todayItems);
