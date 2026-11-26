@@ -684,3 +684,12 @@ body.k3-editorial{background:#111116;color:#f4f1f8}
   .k3-editorial .visual-teaser__body h3{font-size:14px}
   .k3-editorial .visual-teaser__body p{font-size:11px}
 }
+
+/* Preserve readable contrast in legacy cards and search results. */
+.k3-editorial #archive,.k3-editorial #stores,.k3-editorial #coverage,.k3-editorial #about{background:#f2eff7;color:#221b2c;border-color:#ddd5e6}
+.k3-editorial #archive .section-kicker,.k3-editorial #stores .section-kicker,.k3-editorial #coverage .section-kicker,.k3-editorial #about .section-kicker,.k3-editorial #archive .text-link,.k3-editorial #about .text-link{color:#6940a1}
+.k3-editorial .finder-results{background:#fff;color:#221b2c}
+.k3-editorial .k3-notice-history #k3-home-update-20261113{background:#26202f!important;color:#fff}
+.k3-editorial .featured-body p{color:#c5bdcf}
+.k3-editorial .featured-body small,.k3-editorial .featured-body b{color:#d5b5ff}
+.k3-editorial .visual-teaser__body h3{min-height:0}
