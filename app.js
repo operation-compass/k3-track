@@ -194,18 +194,18 @@ function renderFieldReports(reports=[]){
   if(!target) return;
   const rows=(reports||[]).slice().sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
   const count=document.getElementById('fieldReportsCount');
-  if(count) count.textContent=rows.length+'開催日／'+rows.reduce((n,x)=>n+(x.machines||[]).length,0)+'台';
-  if(!rows.length){target.textContent='現在公開できる中間速報はありません。';return;}
+  if(count) count.textContent=rows.length+'レポート／'+rows.reduce((n,x)=>n+(x.machines||[]).length,0)+'台';
+  if(!rows.length){target.textContent='現在公開できる現地レポートはありません。';return;}
   target.innerHTML=rows.map(x=>
     '<article style="padding:14px;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:rgba(0,0,0,.12)">'+
-    '<small style="display:block;opacity:.85">'+esc(x.date)+' ／ 中間速報・最終未確認</small>'+
+    '<small style="display:block;opacity:.85">'+esc(x.date)+' ／ '+esc(x.kind||'現地レポート')+'</small>'+ 
     '<h4 style="margin:6px 0;font-size:1.02rem">'+esc(x.store)+'</h4>'+
     '<p style="font-size:.86rem;opacity:.8;margin:4px 0 10px">'+esc(x.event||'K3関連取材')+'</p>'+
     '<div style="display:grid;gap:6px">'+(x.machines||[]).map(y=>
       '<div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.12)">'+
       '<span style="font-size:.82rem">'+esc(y.number)+'番 '+esc(y.machine)+'</span>'+
       '<strong style="white-space:nowrap;font-size:.94rem">'+Number(y.reportedCount).toLocaleString('ja-JP')+'枚</strong></div>').join('')+'</div>'+
-    '<p style="margin:12px 0 6px;font-size:.77rem;opacity:.82">途中時点の掲載枚数。差枚ではありません。最終結果は別途確認します。</p>'+
+    '<p style="margin:10px 0 6px;font-size:.78rem;opacity:.87">'+esc(x.status||'最終結果未確認')+'</p>'+ '<p style="margin:8px 0 8px;font-size:.77rem;opacity:.8">'+esc(x.note||'投稿記載枚数。差枚と断定しません。')+'</p>'+ 
     (x.sourceUrl?'<a class="source-link" href="'+esc(x.sourceUrl)+'" target="_blank" rel="noopener noreferrer">発信元の転載資料を見る →</a>':'')+
     '</article>').join('');
 }
