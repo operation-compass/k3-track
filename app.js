@@ -210,6 +210,25 @@ function renderFieldReports(reports=[]){
     '</article>').join('');
 }
 
+function renderMachineResults(items=[]){
+  const el=document.getElementById('machineResultsList');
+  if(!el) return;
+  const rows=(items||[]).filter(x=>x.publishClass==='参考公開可')
+    .sort((a,b)=>String(b.date||'').localeCompare(String(a.date||''))||String(a.store||'').localeCompare(String(b.store||''),'ja'));
+  const count=document.getElementById('machineResultsCount');
+  if(count) count.textContent=rows.length+'台';
+  if(!rows.length){el.textContent='公開できる営業後の台別参考結果はありません。';return;}
+  el.innerHTML=rows.map(x=>'<article style="padding:15px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(0,0,0,.12)">'+
+    '<small style="display:block;opacity:.85">'+esc(x.date)+' ／ 営業後の外部集計</small>'+
+    '<h4 style="margin:6px 0;font-size:1.02rem">'+esc(x.store)+'</h4>'+
+    '<p style="font-size:.86rem;opacity:.85;margin:3px 0">'+esc(x.number)+'番 '+esc(x.machine)+'</p>'+
+    '<strong style="font-size:1.38rem;display:block;margin:7px 0">差枚 '+(x.diff>0?'+':'')+Number(x.diff).toLocaleString('ja-JP')+'枚</strong>'+
+    '<p style="font-size:.82rem;opacity:.86;margin:4px 0">ゲーム数 '+Number(x.games).toLocaleString('ja-JP')+'G ／ 出典 '+esc(x.source||'外部データ')+'</p>'+
+    '<p style="font-size:.78rem;opacity:.84;margin:8px 0">※K3取材の公式対象台ではありません。'+esc(x.note||'')+'</p>'+
+    (x.sourceUrl?'<a class="source-link" href="'+esc(x.sourceUrl)+'" target="_blank" rel="noopener noreferrer">営業後の台別データを見る →</a>':'')+
+    '</article>').join('');
+}
+
 function renderVenueResults(items=[]){
   const target=document.getElementById('venueResultsList');
   if(!target) return;
@@ -351,8 +370,9 @@ Promise.all([
   fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]})),
   fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({})),
   document.getElementById('venueResultsList')?fetch('./venue-results.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})).catch(()=>({items:[]})):Promise.resolve({items:[]}),
-  document.getElementById('fieldReportsList')?fetch('./field-reports.json',{cache:'no-store'}).then(r=>r.ok?r.json():({reports:[]})).catch(()=>({reports:[]})):Promise.resolve({reports:[]})
-]).then(([data,assetData,resultData,venueData,fieldData])=>{
+  document.getElementById('fieldReportsList')?fetch('./field-reports.json',{cache:'no-store'}).then(r=>r.ok?r.json():({reports:[]})).catch(()=>({reports:[]})):Promise.resolve({reports:[]}),
+  document.getElementById('machineResultsList')?fetch('./machine-results.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})).catch(()=>({items:[]})):Promise.resolve({items:[]})
+]).then(([data,assetData,resultData,venueData,fieldData,machineData])=>{
     cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
     const todayKey=jstDay();
@@ -374,6 +394,7 @@ Promise.all([
     renderResult(data.results);
     renderVenueResults(venueData.items||[]);
     renderFieldReports(fieldData.reports||[]);
+    renderMachineResults(machineData.items||[]);
     renderArchive(data.archive||[]);
     renderStores(data.stores||[]);
     initStoreFilters(data.stores||[]);
