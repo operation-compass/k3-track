@@ -89,14 +89,30 @@ function renderFeatured(data={},todayKey=''){
   }
 }
 
+
+// Only published, web-authorized generic campaign art may be shown.
+// Do not infer event-specific images or match partial names.
+function k3ApprovedPop(name, assetData=cachedCoverageAssets){
+  const canonical=String(name||'').trim();
+  return (assetData.items||[]).find(a=>a.key===canonical && a.type==='pop' &&
+    a.rights==='許可済' && Array.isArray(a.scope) && a.scope.includes('web') &&
+    a.status==='WEB反映' && /^\.\/assets\/[a-zA-Z0-9_.-]+\.(webp|png|jpg|jpeg)$/i.test(a.image||''));
+}
+function k3EventPop(name){
+  const a=k3ApprovedPop(name);
+  if(!a || !cachedCoverage.some(c=>c.name===name && c.status==='実績あり')) return '';
+  return `<figure class="k3-event-pop"><img src="${esc(a.image)}" alt="${esc(name)}の企画共通POP" width="1122" height="1402" loading="lazy" decoding="async" onerror="this.closest('figure').hidden=true"><figcaption>企画共通POP（開催日別の告知画像ではありません）</figcaption></figure>`;
+}
+
 function renderVisualShowcase(items=[],assetData={}){
   const el=document.getElementById('visualShowcaseGrid');
   if(!el) return;
-  const picks=['双翼乱舞取材','クロウ・スコープ取材','お前の席ねぇから','超団結 / 7店舗共闘','非公式K3来店'];
+  const picks=(items||[]).filter(x=>x.status==='実績あり' && k3ApprovedPop(x.name,assetData)).map(x=>x.name);
+  if(!picks.length){el.innerHTML='<p class="k3-pop-caption">掲載可能な企画POPは準備中です。</p>';return;}
   const rows=picks.map((name,i)=>{
     const coverage=(items||[]).find(x=>x.name===name);
     const desc=coverage?.description||'確認済みの開催履歴・結果を表示';
-    const asset=(assetData.items||[]).find(x=>x.key===name && x.type!=='character' && x.image);
+    const asset=k3ApprovedPop(name,assetData);
     const fallback=`<div class="visual-teaser__art"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></div>`;
     const art=asset
       ? `<div class="visual-teaser__image"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" width="1122" height="1402" loading="${i<2?'eager':'lazy'}" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`
@@ -115,7 +131,7 @@ function renderToday(items=[]){
     return;
   }
   el.classList.remove('empty-state');
-  el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-list">${items.map(x=>`<article class="today-item"><div class="today-card__content"><div class="today-item__head"><h3>${esc(x.store)}</h3><span class="status">${esc(x.status||'確認済')}</span></div><p>${esc(x.event||'K3関連企画')}</p>${x.note?`<small class="today-source-note">${esc(x.note)}</small>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</div></article>`).join('')}</div>`;
+  el.innerHTML=`<div class="today-card__date">TODAY</div><div class="today-list">${items.map(x=>`<article class="today-item"><div class="today-card__content"><div class="today-item__head"><h3>${esc(x.store)}</h3><span class="status">${esc(x.status||'確認済')}</span></div><p>${esc(x.event||'K3関連企画')}</p>${k3EventPop(x.event)}${x.note?`<small class="today-source-note">${esc(x.note)}</small>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</div></article>`).join('')}</div>`;
 }
 
 function renderSchedule(items=[],todayKey=''){
@@ -129,7 +145,7 @@ function renderSchedule(items=[],todayKey=''){
   const visible=items.slice(0,8);
   const grouped=new Map();
   visible.forEach(x=>{if(!grouped.has(x.date)) grouped.set(x.date,[]);grouped.get(x.date).push(x);});
-  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
+  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${k3EventPop(x.event)}${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
 }
 
 
@@ -144,11 +160,11 @@ function renderMonthlyAnnouncements(items=[],todayKey=''){
   const wrapper=document.createElement('section');
   wrapper.id='k3-monthly-announcements';
   wrapper.style.cssText='margin-top:24px;padding:16px;border:1px solid rgba(180,149,84,.45);border-radius:14px;';
-  wrapper.innerHTML='<h3 style="margin:0 0 6px">11月の取材告知（開催確認待ち）</h3>'+
+  wrapper.innerHTML='<h3 style="margin:0 0 6px">月間取材告知（開催確認待ち）</h3>'+
     '<p style="margin:0 0 14px;font-size:.9rem;opacity:.8">K会長の月間告知を掲載。店舗・取材公式による最新の開催確認は未了です。実施済みや確定結果を意味しません。</p>'+
     '<div class="schedule-day__list">'+upcoming.slice(0,12).map(x=>
     '<article class="event-card"><div class="event-card__meta"><span class="chip">告知・未確認</span><time>'+esc(x.date)+'</time></div>'+
-    '<h3>'+esc(x.store)+'</h3><p class="event-name">'+esc(x.event)+'</p>'+
+    '<h3>'+esc(x.store)+'</h3><p class="event-name">'+esc(x.event)+'</p>'+k3EventPop(x.event)+
     '<p class="event-note">'+esc(x.note||'事前告知のみ')+'</p>'+
     '<a class="source-link" href="'+esc(x.sourceUrl)+'" target="_blank" rel="noopener noreferrer">月間告知の出典を見る →</a></article>').join('')+'</div>';
   anchor.insertAdjacentElement('afterend',wrapper);
@@ -239,7 +255,7 @@ function renderCoverage(items=[],assetData=cachedCoverageAssets){
   if(!el) return;
   if(!items.length){el.innerHTML='<p class="event-note">該当する取材・企画がありません。</p>';return;}
   el.innerHTML=items.map(x=>{
-    const asset=(assetData.items||[]).find(a=>a.key===x.name && a.type!=='character' && a.image);
+    const asset=x.status==='実績あり'?k3ApprovedPop(x.name,assetData):null;
     const fallback=`<span class="coverage-index">${esc(x.id||'--')}</span>`;
     const thumb=asset?`<div class="coverage-thumb"><img src="${esc(asset.image)}" alt="${esc(asset.label||x.name)}" width="1122" height="1402" loading="lazy" decoding="async" onerror="this.parentElement.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')"></div>`:fallback;
     return `<a class="coverage-entry" href="./coverage.html?name=${encodeURIComponent(x.name)}"><article class="coverage-card">${thumb}<div class="coverage-copy"><div class="coverage-title-row"><h3>${esc(x.name)}</h3><span class="coverage-status ${x.status==='実績あり'?'':'is-pending'}">${x.status==='実績あり'?'実績あり':'確認済み実績なし'}</span></div><p>${esc(x.description||'')}</p></div><b aria-hidden="true">→</b></article></a>`;
@@ -262,6 +278,7 @@ Promise.all([
   fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({}))
 ]).then(([data,assetData,resultData])=>{
     cachedCoverageAssets=assetData;
+    cachedCoverage=data.coverage||[];
     renderStats(data.stats||{});
     const now=new Date();
     const todayKey=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
@@ -275,7 +292,7 @@ Promise.all([
       const latest=detailedResults[0]?.date || (data.results||[]).map(x=>x.date||'').sort().at(-1) || null;
       const count=detailedResults.length || (data.results||[]).length;
       const label=latest?latest+' が最新の掲載日':'公開結果なし';
-      freshness.textContent='公式結果：'+count+'件｜'+label+'。11月の開催告知・店舗全体の参考値は公式結果数に含みません。';
+      freshness.textContent='掲載結果：'+count+'件｜'+label+'。速報は最終結果と区別し、開催告知・店舗全体の参考値は含みません。';
     }
     renderFeatured(data,todayKey);
     renderToday(todayItems);
@@ -297,6 +314,7 @@ Promise.all([
       if(Date.now()-t.getTime()>48*60*60*1000){
         updated.classList.add('is-stale');
         updated.title='最終更新から48時間以上経過しています';
+        updated.textContent+='（更新確認中）';
       }
     }
   })
