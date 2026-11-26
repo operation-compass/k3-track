@@ -1,3 +1,4 @@
+const approvedK3Asset=(assets,name,type='pop')=>(assets.items||[]).find(x=>x.key===name&&x.type===type&&x.rights==='許可済'&&Array.isArray(x.scope)&&x.scope.includes('web')&&x.status==='WEB反映'&&/^\.\/assets\/[a-zA-Z0-9_.-]+\.(webp|png|jpe?g)$/i.test(x.image||''));
 const rankOf=v=>{const s=String(v||''); if(/^A[:：]?/.test(s)) return 'A'; if(/^B[:：]?/.test(s)) return 'B'; if(/^C[:：]?/.test(s)) return 'C'; return '';};
 const trustBadge=v=>{const r=rankOf(v); return r?`<span class="trust-badge trust-${r.toLowerCase()}">${r}</span>`:'';};
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -15,9 +16,9 @@ Promise.all([
   if(canonical && name) canonical.href=location.origin+location.pathname+'?name='+encodeURIComponent(name);
   document.getElementById('coverageTitle').textContent=name||'取材・企画が見つかりません';
   const visual=document.getElementById('coverageVisual');
-  const asset=(assets.items||[]).find(x=>x.key===name && x.type!=='character' && x.image);
+  const asset=Number(d?.count)>0?approvedK3Asset(assets,name):null;
   if(visual){
-    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" width="1122" height="1402" decoding="async" onerror="this.hidden=true">`:`<div class="detail-visual__fallback"><small>K3 COVERAGE</small><strong>${esc(name||'K3')}</strong><span>確認済み企画情報</span></div>`;
+    visual.innerHTML=asset?`<a href="${esc(asset.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(name)}のPOPを拡大"><img src="${esc(asset.image)}" alt="${esc(asset.label||name)}" width="${Number(asset.width)||1122}" height="${Number(asset.height)||1402}" decoding="async" onerror="this.hidden=true"></a><p class="k3-detail-pop-caption">企画共通POP｜個別開催日の告知ではありません。<a href="${esc(asset.image)}" target="_blank" rel="noopener noreferrer">画像を拡大 →</a></p>`:`<div class="detail-visual__fallback"><small>K3 COVERAGE</small><strong>${esc(name||'K3')}</strong><span>${Number(d?.count)>0?'確認済み企画情報':'公開できる開催実績は未確認'}</span></div>`;
     visual.setAttribute('aria-hidden','false');
   }
   const badge=document.createElement('span');
@@ -25,7 +26,7 @@ Promise.all([
   badge.textContent=Number(d?.count)>0?'実績あり':'確認済みデータなし';
   visual?.insertAdjacentElement('beforebegin',badge);
   const character=document.getElementById('coverageCharacter');
-  const charAsset=(assets.items||[]).find(x=>x.key===name && x.type==='character' && x.image);
+  const charAsset=Number(d?.count)>0?approvedK3Asset(assets,name,'character'):null;
   if(character){
     character.innerHTML=charAsset?`<img src="${esc(charAsset.image)}" alt="${esc(charAsset.label||name)}">`:'';
   }

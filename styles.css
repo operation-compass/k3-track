@@ -856,3 +856,8 @@ body.k3-detail{background:#f4f2f7;color:#241d2c;padding-bottom:calc(78px + env(s
 .k3-detail .footer{padding-bottom:24px}.k3-detail .footer__inner p{overflow-wrap:anywhere}
 .k3-browse .section:not(.section--dark) .section-kicker{font-weight:700}
 @media(max-width:720px){.k3-detail .topbar__inner{height:58px}.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero){padding:21px 0 22px}.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero) p{font-size:13px}.k3-detail .section:not(.section--dark){padding:22px 0}.k3-detail .article-row{padding:13px}.k3-detail .article-row h2{font-size:16px}.k3-detail .filter-input{font-size:16px}}
+
+/* POP detail: neutral labeling and readable image controls. */
+.k3-detail .detail-visual .k3-detail-pop-caption{margin:0;padding:12px 14px;font-size:12px;color:#ddd0e8;line-height:1.7;border-top:1px solid #4b375f;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px}
+.k3-detail .k3-detail-pop-caption a{display:inline-flex;align-items:center;min-height:44px;color:#e2caff;text-decoration:underline;text-underline-offset:3px}
+.k3-detail .detail-visual>a{display:block}

@@ -1,3 +1,4 @@
+const approvedK3Asset=(assets,name,type='pop')=>(assets.items||[]).find(x=>x.key===name&&x.type===type&&x.rights==='許可済'&&Array.isArray(x.scope)&&x.scope.includes('web')&&x.status==='WEB反映'&&/^\.\/assets\/[a-zA-Z0-9_.-]+\.(webp|png|jpe?g)$/i.test(x.image||''));
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const id=new URLSearchParams(location.search).get('id')||'';
 Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]}))]).then(([all,assets])=>{
@@ -15,9 +16,9 @@ Promise.all([fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()),fe
   document.getElementById('resultTitle').textContent=d.store;
   document.getElementById('resultSub').textContent=(d.date||'')+'・'+(d.event||'K3関連企画')+'・'+resultMode;
   const visual=document.getElementById('resultVisual');
-  const asset=(assets.items||[]).find(x=>x.key===d.event && x.image) || (assets.items||[]).find(x=>x.key==='RESULT' && x.image);
+  const asset=approvedK3Asset(assets,d.event);
   if(visual){
-    visual.innerHTML=asset?`<img src="${esc(asset.image)}" alt="${esc(asset.label||d.event||'K3結果') }">`:`<div class="detail-visual__fallback"><small>RESULT REPORT</small><strong>${esc(d.event||'K3 RESULT')}</strong><span>確認済み結果データ</span></div>`;
+    visual.innerHTML=asset?`<a href="${esc(asset.image)}" target="_blank" rel="noopener noreferrer" aria-label="企画POPを拡大"><img src="${esc(asset.image)}" alt="${esc(asset.label||d.event||'K3結果')}" width="${Number(asset.width)||1122}" height="${Number(asset.height)||1402}" decoding="async" onerror="this.hidden=true"></a><p class="k3-detail-pop-caption">企画共通POP｜この開催日の告知・結果画像ではありません。<a href="${esc(asset.image)}" target="_blank" rel="noopener noreferrer">画像を拡大 →</a></p>`:`<div class="detail-visual__fallback"><small>RESULT REPORT</small><strong>${esc(d.event||'K3 RESULT')}</strong><span>確認済み結果データ</span></div>`;
     visual.setAttribute('aria-hidden','false');
   }
   const factRows=[
