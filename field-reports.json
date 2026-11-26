@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-26T10:42:41.473Z",
-  "disclaimer": "K3関連企画日の店舗・取材班の中間ランキング速報。正式な出玉結果ではなく、差枚に読み替えない。",
+  "updatedAt": "2026-11-26T15:00:00Z",
+  "disclaimer": "店舗・取材班の中間ランキングと、転載経由の結果報告候補。媒体の『枚』を差枚に読み替えない。日付と企画の原投稿による確認が未完了の項目は明示して区別する。",
   "reports": [
     {
       "date": "2026/11/22",
@@ -94,6 +94,82 @@
           "machine": "L Vivy",
           "reportedCount": 4964,
           "unit": "枚（投稿に掲載された中間数値）"
+        }
+      ]
+    },
+    {
+      "date": "2026/11/11",
+      "store": "Eスペース600空港店",
+      "event": "11/11リニューアル初日の結果報告（超双翼乱舞との同一性は未証明）",
+      "kind": "本人による結果ランキングの転載・営業日間接照合",
+      "publisher": "非公式K3@取材（IYSK_KYUSHU転載）",
+      "sourceUrl": "https://www.sotwe.com/IYSK_KYUSHU",
+      "corroborationUrl": "https://www.p-world.co.jp/fukuoka/halls?facility_id%5B%5D=5",
+      "sourceClass": "本人投稿の転載経由、個別原投稿URLと企画名未取得。営業日はP-WORLDの11/11リニューアル告知と投稿本文『初日』から間接照合",
+      "status": "K3公式の企画結果として未認定／元投稿確認待ち",
+      "note": "転載に『結果報告』と掲載された上位10台の枚数。差枚か獲得枚数かの定義も未確定。11/11店側リニューアル初日との一致は強いが、超双翼乱舞取材対象と断定しない。",
+      "noticeId": "ANN-202611-20",
+      "dateEvidence": "P-WORLD 2026/11/11 11時RENEWALOPEN＋K3投稿文『リニューアル初日』の間接照合",
+      "machines": [
+        {
+          "number": "576",
+          "machine": "L革命機ヴァルヴレイヴ2",
+          "reportedCount": 9876,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "621",
+          "machine": "L牙狼 闇を照らす者",
+          "reportedCount": 8798,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "558",
+          "machine": "L東京喰種",
+          "reportedCount": 7490,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "617",
+          "machine": "L戦国コレクション6",
+          "reportedCount": 7355,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "781",
+          "machine": "Lスマスロ北斗の拳 転生の章2",
+          "reportedCount": 6593,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "607",
+          "machine": "Lスマスロモンスターハンターライズ",
+          "reportedCount": 6289,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "533",
+          "machine": "L東京喰種",
+          "reportedCount": 6182,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "560",
+          "machine": "L東京喰種",
+          "reportedCount": 6090,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "565",
+          "machine": "L東京喰種",
+          "reportedCount": 5737,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
+        },
+        {
+          "number": "531",
+          "machine": "L東京喰種",
+          "reportedCount": 5659,
+          "unit": "枚（本人掲載のランキング表記。差枚不明）"
         }
       ]
     }
