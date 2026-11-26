@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T15:50:00Z",
+  "updated_at": "2026-11-26T10:41:06.318Z",
   "today": [],
   "schedule": [],
   "results": [
@@ -448,94 +448,312 @@
   ],
   "announcements": [
     {
+      "id": "ANN-202611-11",
+      "date": "2026/11/03",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-12",
+      "date": "2026/11/05",
+      "store": "スタジアム2001京都八幡店",
+      "event": "非公式K3来店・ピエロの晩餐",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "来店＋取材",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-13",
+      "date": "2026/11/06",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-14",
+      "date": "2026/11/08",
+      "store": "トワーズ叶谷店",
+      "event": "三華繚乱",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "三華繚乱",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-15",
+      "date": "2026/11/08",
+      "store": "トワーズ四谷店",
+      "event": "三華繚乱",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "三華繚乱",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-16",
+      "date": "2026/11/08",
+      "store": "トワーズ西八店",
+      "event": "三華繚乱",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "三華繚乱",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-17",
+      "date": "2026/11/08",
+      "store": "トワーズ大和店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-18",
+      "date": "2026/11/08",
+      "store": "トワーズ藤沢店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-19",
+      "date": "2026/11/09",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-20",
+      "date": "2026/11/11",
+      "store": "Eスペース600空港店",
+      "event": "超双翼乱舞",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "超双翼乱舞",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-21",
+      "date": "2026/11/11",
+      "store": "Eスペース福岡本店",
+      "event": "超双翼乱舞",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "超双翼乱舞",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-22",
+      "date": "2026/11/11",
+      "store": "アウトバーンブリッツ",
+      "event": "超双翼乱舞",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "超双翼乱舞",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-23",
+      "date": "2026/11/12",
+      "store": "アムズガーデンうるま店",
+      "event": "お前の席ねぇから！",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "お前の席ねぇから",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-24",
+      "date": "2026/11/12",
+      "store": "トワーズ厚木店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-25",
+      "date": "2026/11/12",
+      "store": "トワーズ大和深見店1120",
+      "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-26",
+      "date": "2026/11/13",
+      "store": "パーラーゾーン姪浜店",
+      "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
       "id": "ANN-202611-01",
       "date": "2026/11/14",
       "store": "トワーズ四谷店",
       "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-27",
+      "date": "2026/11/14",
+      "store": "トワーズ麻溝台店",
+      "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
+      "sourceUrl": "https://x.com/k_777_3",
+      "sourceNote": "提供画像：11/14／K会長Note：11/18",
+      "category": "CROW-SCOPE",
+      "note": "日程相違・本人原投稿の再確認待ち"
     },
     {
       "id": "ANN-202611-02",
       "date": "2026/11/16",
       "store": "パーラーゾーン姪浜店",
       "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
     },
     {
       "id": "ANN-202611-03",
       "date": "2026/11/18",
       "store": "トワーズ麻溝台店",
       "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "K会長11月記事：11/18／提供画像：11/14",
+      "category": "CROW-SCOPE",
+      "note": "日程相違・本人原投稿の再確認待ち"
     },
     {
       "id": "ANN-202611-04",
       "date": "2026/11/19",
       "store": "パーラーゾーン姪浜店",
       "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
     },
     {
       "id": "ANN-202611-05",
       "date": "2026/11/21",
       "store": "トワーズ西八店",
       "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
     },
     {
       "id": "ANN-202611-06",
       "date": "2026/11/21",
       "store": "トワーズ相模原店",
       "event": "クロウ・スコープ取材（共闘）",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
+    },
+    {
+      "id": "ANN-202611-28",
+      "date": "2026/11/22",
+      "store": "アムズガーデン国場店",
+      "event": "お前の席ねぇから！",
+      "status": "店舗発信の当日途中報告・最終結果未確認",
+      "sourceUrl": "https://x.com/k_777_3",
+      "sourceNote": "K3本人11/7追加投稿画像＋国場店舗側11/22中間ランキング報告",
+      "category": "お前の席ねぇから",
+      "note": "11/7本人追加告知・11/22店舗側の中間ランキング発信。最終結果未確認。"
     },
     {
       "id": "ANN-202611-07",
       "date": "2026/11/22",
       "store": "トワーズ叶谷店",
       "event": "クロウ・スコープ取材",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "CROW-SCOPE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
     },
     {
       "id": "ANN-202611-08",
       "date": "2026/11/23",
       "store": "パーラーゾーン姪浜店",
       "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
     },
     {
       "id": "ANN-202611-09",
       "date": "2026/11/26",
       "store": "パーラーゾーン姪浜店",
       "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "K会長の月間告知とP-WORLDの店舗発信11/26 10:00〜取材告知を照合。開催実施・最終結果未確認。"
     },
     {
       "id": "ANN-202611-10",
       "date": "2026/11/29",
       "store": "パーラーゾーン姪浜店",
       "event": "ZONE×非公式K3独自取材",
+      "status": "月間告知・実施未確認",
       "sourceUrl": "https://note.com/supervisor__k/n/n8ad9e50973d2",
-      "status": "月間告知・開催未確認",
-      "note": "K会長の11月月間告知。店舗・取材公式による最新の開催確認は未了。"
+      "sourceNote": "提供画像＋K会長11月スケジュール",
+      "category": "K3×ZONE",
+      "note": "画像および月間スケジュールの事前告知。実施済み・確定結果を意味しません。"
     }
   ]
 }
