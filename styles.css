@@ -912,3 +912,7 @@ body.k3-detail{background:#f4f2f7;color:#241d2c;padding-bottom:calc(78px + env(s
  .k3-compact .hero-panel a>span{font-size:11px}
  .k3-compact .hero-panel a small{font-size:7px}
 }
+
+/* Keep official coverage and independent venue references distinct. */
+.k3-compact .k3-result-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:8px}.k3-compact .k3-result-actions .k3-result-cta{margin-top:0;min-width:0;text-align:center;line-height:1.4;padding:8px 5px;gap:4px}.k3-compact .k3-result-actions .k3-result-cta:last-child{border-color:#4f435d;color:#d9cbe5;background:transparent}@media(max-width:359px){.k3-compact .k3-result-actions .k3-result-cta{font-size:11px}}
+.k3-browse #venueResultsBlock{scroll-margin-top:88px}
