@@ -821,3 +821,38 @@ body.k3-sport{--sport-bg:#0e0b14;--sport-surface:#1b1625;--sport-line:#44354f;--
  .k3-compact .k3-today-row{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.k3-sport *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Unified K3 editorial system: dark brand, high-legibility data. */
+body.k3-detail{background:#f4f2f7;color:#241d2c;padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+.k3-detail .topbar__inner{height:64px}
+.k3-detail .k3-head-actions .k3-back-home{font-size:10px;letter-spacing:.09em;color:#e4d1f7;min-width:48px}
+.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero){position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(122deg,#0d0b12 18%,#21182f 70%,#38254e);color:#f4f2f7;padding:34px 0 28px;border-bottom:1px solid #4b375f}
+.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero)::before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(126deg,transparent 71%,rgba(150,96,220,.12) 71%,rgba(150,96,220,.12) 77%,transparent 77%,transparent 82%,rgba(207,184,237,.08) 82%,rgba(207,184,237,.08) 83%,transparent 83%);pointer-events:none}
+.k3-detail .back-link{color:#dcc6f5!important;display:inline-flex;align-items:center;min-height:44px;margin-bottom:12px;font-size:12px;font-weight:700}
+.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero) h1{font-size:clamp(26px,5vw,42px);line-height:1.3;letter-spacing:-.04em;margin:8px 0 12px;overflow-wrap:anywhere}
+.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero) p{color:#ddd0e8;line-height:1.8;font-size:14px}
+.k3-detail .section:not(.section--dark){background:#f4f2f7;color:#241d2c;border-bottom:1px solid #ded6e7;padding:28px 0}
+.k3-detail .section:not(.section--dark) .section-kicker{color:#6941ad}
+.k3-detail .section--dark{background:#120e1a;color:#f4f2f7}
+.k3-detail .section-kicker{letter-spacing:.14em;font-size:11px}
+.k3-detail .section h2{font-size:clamp(19px,3vw,26px);letter-spacing:-.025em;line-height:1.4}
+.k3-detail :is(.article-row,.history-card,.machine-card,.fact-note,.coverage-store,.coverage-history-item,.policy-box,.trust-guide article,.empty-detail){border-radius:6px;background:#fff;border-color:#ded6e7;box-shadow:none}
+.k3-detail .article-row>div{flex-wrap:wrap;justify-content:flex-start;gap:8px}
+.k3-detail .article-row h2{font-size:18px;margin:10px 0 6px}
+.k3-detail :is(.article-row,.history-card,.coverage-history-item) time{color:#6941ad;font-variant-numeric:tabular-nums}
+.k3-detail :is(.article-row,.history-card,.coverage-history-item) p{line-height:1.75;overflow-wrap:anywhere}
+.k3-detail :is(.article-row,.history-card,.coverage-history-item,.coverage-store,.machine-card) :is(h2,h3,strong){overflow-wrap:anywhere}
+.k3-detail .filter-input,.k3-detail .filter-select{min-height:46px;border-radius:5px;background:#fff;color:#241d2c;border-color:#cfc3dd;font-size:14px}
+.k3-detail .list-count{color:#5c4a70;font-variant-numeric:tabular-nums}
+.k3-detail :is(.result-facts,.store-summary,.coverage-summary,.performance-grid) div{border-radius:6px}
+.k3-detail :is(.result-facts,.store-summary,.coverage-summary) small{color:#d0c0de;font-size:11px}
+.k3-detail :is(.detail-visual,.store-visual,.performance-panel){border-radius:7px;border-color:#4b375f;box-shadow:none}
+.k3-detail .detail-visual img{max-height:480px;width:100%;object-fit:contain}
+.k3-detail .source-box{border-radius:6px;border:1px solid #d6cbe1;background:#ebe5f1;color:#241d2c}
+.k3-detail .source-box a,.k3-detail .detail-footer-link,.k3-detail .section:not(.section--dark) .source-link{color:#6941ad;overflow-wrap:anywhere}
+.k3-detail .neutral-note{border-left:3px solid #6941ad;background:#ebe5f1;color:#4a365f}
+.k3-detail .detail-footer-link{display:inline-flex;align-items:center;min-height:44px}
+.k3-detail .bottom-nav a{border-radius:0}.k3-detail .bottom-nav a.is-active::before{display:none}
+.k3-detail .footer{padding-bottom:24px}.k3-detail .footer__inner p{overflow-wrap:anywhere}
+.k3-browse .section:not(.section--dark) .section-kicker{font-weight:700}
+@media(max-width:720px){.k3-detail .topbar__inner{height:58px}.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero){padding:21px 0 22px}.k3-detail :is(.list-hero,.store-detail-hero,.result-detail-hero,.coverage-detail-hero) p{font-size:13px}.k3-detail .section:not(.section--dark){padding:22px 0}.k3-detail .article-row{padding:13px}.k3-detail .article-row h2{font-size:16px}.k3-detail .filter-input{font-size:16px}}

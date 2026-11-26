@@ -10,13 +10,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./styles.css?v=ux-20261007-5">
+<link rel="stylesheet" href="./styles.css?v=unified-20261126-5">
 </head>
-<body>
-<header class="topbar"><div class="container topbar__inner"><a class="brand" href="./index.html"><span class="brand__mark">K3</span><span class="brand__text"><strong>TRACK</strong><small>UNOFFICIAL DATA HUB</small></span></a></div></header>
+<body class="k3-sport k3-detail">
+<header class="topbar"><div class="container topbar__inner"><a class="brand" href="./index.html" aria-label="K3 TRACK ホーム"><span class="brand__mark">K3</span><span class="brand__text"><strong>TRACK</strong><small>UNOFFICIAL COVERAGE MEDIA</small></span></a><div class="k3-head-actions"><a href="./index.html#finder" aria-label="検索"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a><a class="k3-back-home" href="./index.html">HOME</a></div></div></header>
 <main>
 <section class="store-detail-hero"><div class="container">
-<a class="back-link" href="./index.html#stores">← 店舗一覧へ戻る</a>
+<a class="back-link" href="./browse.html#stores">← 店舗一覧へ戻る</a>
 <div class="section-kicker section-kicker--light">STORE HISTORY</div>
 <h1 id="storeTitle">店舗情報</h1>
 <p id="storeSub">確認済みのK3関連履歴を表示します。</p>
@@ -28,9 +28,10 @@
 <section class="section"><div class="container">
 <div class="section-title-row"><div><div class="section-kicker">HISTORY</div><h2>開催履歴</h2></div></div>
 <div class="history-timeline" id="historyList"></div>
-<a class="detail-footer-link" href="./index.html#stores">← 店舗一覧へ戻る</a>
+<a class="detail-footer-link" href="./browse.html#stores">← 店舗一覧へ戻る</a>
 </div></section>
 </main>
+<nav class="bottom-nav" aria-label="クイックナビ"><a href="./index.html"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7v10h-6v-6H9v6H3z"/></svg><span>ホーム</span></a><a href="./browse.html#schedule"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18M7 14h2m3 0h2m3 0h2M7 17h2m3 0h2"/></svg><span>予定</span></a><a href="./browse.html#results"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 18v-5h3v5zM11 18V8h3v10zM17 18V3h3v15z"/></svg><span>結果</span></a><a href="./browse.html#stores" class="is-active" aria-current="true"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h18l-2-7H5zM5 10v11h14V10M9 21v-7h6v7M2 10l2 3 4-3 4 3 4-3 4 3 2-3"/></svg><span>店舗</span></a><a href="./browse.html#visualShowcase"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 6-10 6L2 9zM2 13l10 6 10-6M2 17l10 6 10-6"/></svg><span>POP</span></a></nav>
 <footer class="footer"><div class="container footer__inner"><div><strong>K3 TRACK</strong><p>Unofficial K3 Data Hub</p></div><p>© 2026 K3 TRACK / Unofficial information site</p></div></footer>
 <script src="./store.js?v=ux-20261007-5"></script>
 </body>
