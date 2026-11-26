@@ -312,6 +312,18 @@ function initCoverageFilter(items=[]){
   });
 }
 
+function renderCompactHome(todayItems,announcements,results,todayKey){
+  if(!document.body.classList.contains('k3-compact'))return;
+  const today=document.getElementById('todayCard');
+  const confirmed=(todayItems||[]).map(x=>({...x,isAnnouncement:false}));
+  const announced=(announcements||[]).filter(x=>x.date===todayKey&&!confirmed.some(y=>y.store===x.store&&y.event===x.event)).map(x=>({...x,isAnnouncement:true}));
+  const rows=[...confirmed,...announced];
+  if(today)today.innerHTML=rows.length?rows.slice(0,3).map(x=>`<a class="k3-today-row" href="./browse.html#schedule"><span class="k3-row-status ${x.isAnnouncement?'k3-unconfirmed':''}">${x.isAnnouncement?'告知・未確認':'取材予定'}</span><time>${esc(todayKey.slice(5))}</time><span class="k3-row-copy"><strong>${esc(x.event||'K3関連企画')}</strong><small>${esc(x.store)}</small></span><b aria-hidden="true">›</b></a>`).join('')+(rows.length>3?`<p class="k3-more-count">ほか ${rows.length-3} 件</p>`:''):'<p class="k3-empty-preview">本日の公開予定・告知はありません。</p>';
+  const result=document.getElementById('featuredResult');
+  const r=(results||[])[0];
+  if(result)result.innerHTML=r?`<a class="k3-latest-link" href="./result.html?id=${encodeURIComponent(r.id||r.result_id||'')}"><div class="k3-result-art" aria-hidden="true"><span>RESULT</span><strong>777</strong></div><div class="k3-result-summary"><small>${esc(r.date||'')}｜${r.provisional?'速報・最終未確認':'掲載結果'}</small><strong>${esc(r.store||'取材結果')}</strong><span>${esc(r.event||'K3関連企画')}</span></div></a>`:'<p class="k3-empty-preview">公開できる結果はありません。</p>';
+}
+
 Promise.all([
   fetch('./data.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed'))),
   fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]})),
@@ -338,6 +350,7 @@ Promise.all([
     renderFeatured(data,todayKey);
     renderToday(todayItems);
     renderAnnouncementToday(data.announcements||[],todayKey,!todayItems.length);
+    renderCompactHome(todayItems,data.announcements||[],data.results||[],todayKey);
     renderSchedule(data.schedule,todayKey);
     renderMonthlyAnnouncements(data.announcements||[],todayKey);
     renderResult(data.results);
@@ -361,4 +374,4 @@ Promise.all([
       }
     }
   })
-  .catch(()=>{});
+  .catch(()=>{if(document.body.classList.contains('k3-compact')){for(const id of ['todayCard','featuredResult','visualShowcaseGrid']){const el=document.getElementById(id);if(el)el.textContent='情報を読み込めませんでした。再読み込みしてください。';}}});

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0912" />
+  <meta name="description" content="非公式K3の来店・取材・結果・店舗履歴を、出典付きで見やすく整理する非公式データサイト" />
+  <meta property="og:title" content="K3 TRACK｜非公式K3取材まとめ" />
+  <meta property="og:description" content="今日・次回予定・結果・店舗別履歴・取材別履歴を、出典付きで見やすく整理。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="K3 TRACK" />
+  <meta property="og:url" content="https://k3-track.occompass-info.workers.dev/" />
+  <meta property="og:image" content="https://k3-track.occompass-info.workers.dev/assets/k3-track-og-sakura-final-20261007-v5.jpg?v=20261007-5" />
+  <meta property="og:image:secure_url" content="https://k3-track.occompass-info.workers.dev/assets/k3-track-og-sakura-final-20261007-v5.jpg?v=20261007-5" />
+  
+  
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="非公式K3｜K3 TRACK" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="K3 TRACK｜非公式K3取材まとめ" />
+  <meta name="twitter:description" content="今日・次回予定・結果・店舗別履歴・取材別履歴を出典付きで整理。" />
+  <meta name="twitter:image" content="https://k3-track.occompass-info.workers.dev/assets/k3-track-og-sakura-final-20261007-v5.jpg?v=20261007-5" />
+  <link rel="canonical" href="https://k3-track.occompass-info.workers.dev/">
+<title>取材データ一覧｜K3 TRACK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=compact-20261126-3" />
+</head>
+<body class="k3-sport k3-browse">
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="./index.html" aria-label="K3 TRACK ホーム">
+        <span class="brand__mark">K3</span>
+        <span class="brand__text"><strong>TRACK</strong><small>UNOFFICIAL COVERAGE MEDIA</small></span>
+      </a>
+      <div class="k3-head-actions"><a href="./index.html#finder" aria-label="検索"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a><button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="メニュー"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18M3 12h18M3 19h18"/></svg></button></div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="./index.html#today">今日</a><a href="#schedule">予定</a><a href="#results">結果</a><a href="#archive">履歴</a><a href="#stores">店舗別</a><a href="#coverage">取材一覧</a><a href="./guide.html">情報の見方</a><a href="#about">このサイトについて</a>
+    </nav>
+  </header>
+  <main id="top" class="k3-browse-main"><div class="container k3-browse-heading"><a href="./index.html">← ホームへ</a><h1>取材データ一覧</h1><p>開催予定・取材結果・店舗履歴を出典付きで確認できます。</p></div>
+    <section class="visual-showcase" id="visualShowcase"><div class="container">
+      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">FEATURED POP</div><h2>注目の取材POP</h2></div><a class="text-link" href="#coverage">企画一覧 → →</a></div>
+      <p class="k3-gallery-note">企画共通のPOPを掲載しています。開催日別の告知ではありません。</p><div class="visual-showcase__grid" id="visualShowcaseGrid"></div>
+    </div></section>
+    <section class="section" id="schedule"><div class="container">
+      <div class="section-title-row"><div><div class="section-kicker">NEXT SCHEDULE</div><h2>次回予定</h2></div><a class="text-link" href="./schedule.html">一覧を見る →</a></div>
+      <div class="card-grid" id="scheduleList">
+        <article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>次回予定</h3><p class="event-name">確認済みの次回予定を表示します</p><p class="event-note">出典確認済みの情報を掲載します</p></article>
+      </div>
+    </div></section>
+
+    <section class="section section--dark" id="results"><div class="container">
+      <div class="section-title-row"><div><div class="section-kicker section-kicker--light">LATEST RESULTS</div><h2>最新結果</h2></div><a class="text-link text-link--light" href="./results.html">結果一覧を見る →</a></div>
+      <p id="officialResultFreshness" style="margin:0 0 14px;font-size:.88rem;line-height:1.7;color:#d7d7d7">公式結果の公開状況を読み込み中です。</p>
+      <div class="result-list" id="resultList"><div class="result-card">
+        <div class="result-card__top"><div><span class="chip chip--light">RESULT</span><h3>最新結果</h3></div><div class="score">—</div></div>
+        <div class="metrics"><div><small>平均差枚</small><strong>—</strong></div><div><small>勝率</small><strong>—</strong></div><div><small>対象台数</small><strong>—</strong></div></div>
+        <p class="result-card__note">確認済みの結果がある場合のみ、店舗別・企画別の履歴へつなげて表示します。</p>
+      </div></div>
+      <section id="venueResultsBlock" aria-label="店舗全体の参考結果" style="margin-top:22px;padding:18px;border:1px solid rgba(255,255,255,.25);border-radius:12px;background:rgba(255,255,255,.06);line-height:1.7">
+        <div class="section-kicker section-kicker--light">VENUE DATA / INDEPENDENT SOURCES</div>
+        <h3 style="margin:8px 0 10px">店舗全体の参考結果 <span id="venueResultsCount" style="font-size:.8em;opacity:.8"></span></h3>
+        <p style="font-size:.86rem;opacity:.85;margin-bottom:14px">開催告知日と同日の外部集計データです。非公式K3取材の公式最終結果・指定対象台の成績ではありません。媒体間の集計差を混ぜず、出典ごとに掲載しています。</p>
+        <div id="venueResultsList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:12px">参考結果を読み込み中です。</div>
+      </section>
+      <section id="fieldReportsBlock" aria-label="店舗・取材班の中間ランキング" style="margin-top:20px;padding:18px;border:1px solid rgba(255,255,255,.24);border-radius:12px;background:rgba(255,255,255,.05)">
+        <div class="section-kicker section-kicker--light">FIELD UPDATES / PROVISIONAL</div>
+        <h3 style="margin:8px 0 10px">K3関連取材の中間ランキング <span id="fieldReportsCount" style="font-size:.8em;opacity:.8"></span></h3>
+        <p style="font-size:.85rem;opacity:.85;margin-bottom:14px">取材班・店舗発信の途中速報を掲載。発表時点の枚数であり、閉店後の最終差枚やK3公式確定結果ではありません。</p>
+        <div id="fieldReportsList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px">途中速報を読み込み中です。</div>
+      </section>
+    </div></section>
+
+    <section class="stats-strip">
+      <div class="container stats-grid" id="statsGrid">
+        <div><strong>--</strong><span>登録履歴</span></div>
+        <div><strong>--</strong><span>対象店舗</span></div>
+        <div><strong>--</strong><span>企画種別</span></div>
+        <div><strong>--</strong><span>収集期間</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="archive"><div class="container">
+      <div class="section-title-row"><div><div class="section-kicker">ARCHIVE</div><h2>最近の開催履歴</h2></div><a class="text-link" href="./schedule.html">履歴一覧を見る →</a></div>
+      <div class="archive-list" id="archiveList"></div>
+    </div></section>
+
+    <section class="section section--stores" id="stores"><div class="container">
+      <div class="section-title-row"><div><div class="section-kicker">STORES</div><h2>店舗別K3履歴</h2></div><span class="store-note">実施回数順</span></div>
+      <div class="filter-bar">
+        <input id="storeSearch" class="filter-input" type="search" placeholder="店舗名・エリア・企画で検索" autocomplete="off" />
+        <select id="storeArea" class="filter-select"><option value="">すべてのエリア</option></select>
+      </div>
+      <div class="store-list" id="storeList"></div>
+    </div></section>
+
+    <section class="section" id="coverage"><div class="container">
+      <div class="section-kicker">COVERAGE</div><h2>取材・企画一覧</h2>
+      <div class="filter-bar">
+        <input id="coverageSearch" class="filter-input" type="search" placeholder="取材・企画名で検索" autocomplete="off" />
+      </div>
+      <div class="coverage-list" id="coverageList">
+        <article><span>01</span><div><h3>クロウ・スコープ取材</h3><p>確認済みの開催履歴と結果を表示します。</p></div></article>
+        <article><span>02</span><div><h3>双翼乱舞取材</h3><p>確認済みの開催店舗・履歴を表示します。</p></div></article>
+        <article><span>03</span><div><h3>非公式K3来店</h3><p>公開可能な確認済み情報のみ掲載します。</p></div></article>
+      </div>
+    </div></section>
+
+    <section class="section section--about" id="about"><div class="container about-box">
+      <div><div class="section-kicker">ABOUT</div><h2>K3 TRACKについて</h2></div>
+      <div class="about-copy"><details class="k3-past-notice"><summary>過去の確認状況（11月13日）</summary><div id="k3-home-update-20261113" role="status" style="margin:16px 0;padding:14px 16px;border:1px solid rgba(245,201,115,.65);border-radius:12px;background:rgba(245,201,115,.10);line-height:1.75">
+          <strong style="display:block;color:#f5d08a;font-size:0.95rem">最新の確認状況｜2026年11月13日</strong>
+          <span style="display:block;margin-top:4px;font-size:0.90rem">11月14日（土）トワーズ四谷店の「クロウ・スコープ取材」は、K会長の11月告知に掲載されています。店舗・取材公式による最新の開催情報は照合中です。開催済み・確定結果を意味しません。</span>
+          <a href="https://note.com/supervisor__k/n/n8ad9e50973d2" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px;text-decoration:underline;color:#f5d08a;font-size:0.86rem">11月の告知元を確認</a>
+        </div></details><p>K3 TRACKは、非公式K3に関連する公開情報を整理する非公式の情報サイトです。本人・店舗・媒体の公式サイトではありません。</p><p>掲載情報は、本人発信・店舗公式・媒体公式などの出典確認を行い、確認できた情報を優先して掲載します。</p><p><a class="text-link" href="./guide.html">出典ランクと公開基準を見る →</a></p></div>
+    </div></section>
+  </main>
+  <nav class="bottom-nav" aria-label="クイックナビ"><a href="./index.html"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7v10h-6v-6H9v6H3z"/></svg><span>ホーム</span></a><a href="#schedule"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18M7 14h2m3 0h2m3 0h2M7 17h2m3 0h2"/></svg><span>予定</span></a><a href="#results"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 18v-5h3v5zM11 18V8h3v10zM17 18V3h3v15z"/></svg><span>結果</span></a><a href="#stores"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h18l-2-7H5zM5 10v11h14V10M9 21v-7h6v7M2 10l2 3 4-3 4 3 4-3 4 3 2-3"/></svg><span>店舗</span></a><a href="#visualShowcase"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 6-10 6L2 9zM2 13l10 6 10-6M2 17l10 6 10-6"/></svg><span>POP</span></a></nav>
+  <footer class="footer"><div class="container footer__inner"><div><strong>K3 TRACK</strong><p>Unofficial K3 Data Hub</p></div><p>非公式K3に関する公開情報を出典確認のうえ整理しています。公式サイトではありません。<span id="k3-sync-verification-20261113" style="display:block;margin-top:6px;font-size:0.78em;opacity:0.72">サイト配信確認：2026年11月13日｜予定・結果データは変更していません</span></p></div></footer>
+  <script src="./app.js?v=compact-20261126-3"></script>
+</body>
+</html>

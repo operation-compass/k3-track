@@ -720,3 +720,50 @@ body.k3-sport{--sport-bg:#0e0b14;--sport-surface:#1b1625;--sport-line:#44354f;--
  body.k3-sport{padding-bottom:76px}
 }
 @media(prefers-reduced-motion:no-preference){.k3-sport .k3-pop-card,.k3-sport .hero-panel a{transition:border-color .18s ease,transform .18s ease}.k3-sport .k3-pop-card:hover,.k3-sport .hero-panel a:hover{border-color:#c58af6;transform:translateY(-2px)}}
+
+/* Reference composition: compact landing page, full data on browse.html. */
+.k3-compact .media-hero{padding:30px 0 18px}
+.k3-compact .media-hero__inner{gap:16px}
+.k3-compact .hero-panel a{min-height:62px}
+.k3-compact .visual-showcase{padding:18px 0 20px}
+.k3-compact .visual-showcase__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.k3-compact .k3-pop-art{aspect-ratio:1122/1402}
+.k3-compact .k3-pop-name{min-height:42px;padding:7px 8px;font-size:12px}
+.k3-compact .k3-gallery-note{font-size:10px;margin:0 0 8px}
+.k3-compact .k3-overview{gap:0;grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:1140px}
+.k3-compact .k3-overview>section{padding:16px 0}
+.k3-compact .section-title-row{margin-bottom:10px}
+.k3-compact .section-title-row h2{font-size:18px}
+.k3-compact .section-kicker{font-size:11px;letter-spacing:.12em}
+.k3-compact .k3-today-preview,.k3-compact .k3-result-preview{border:1px solid #44354f;border-radius:6px;background:#1b1625;overflow:hidden}
+.k3-compact .k3-today-row{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;align-items:center;gap:8px;min-height:48px;padding:8px 10px;color:#f7f4fa;border-bottom:1px solid #40344b;font-size:12px}
+.k3-compact .k3-today-row:last-child{border-bottom:0}
+.k3-compact .k3-row-status{background:#654095;color:#fff;border-radius:4px;padding:4px 6px;font-size:10px;white-space:nowrap}
+.k3-compact .k3-unconfirmed{background:#34283f;border:1px solid #a58bb9;color:#eee0f8}
+.k3-compact .k3-row-copy{display:grid;gap:2px;min-width:0}
+.k3-compact .k3-row-copy strong,.k3-compact .k3-row-copy small{overflow-wrap:anywhere}
+.k3-compact .k3-row-copy small{color:#c6b7d4;font-size:10px}
+.k3-compact .k3-today-more,.k3-compact .k3-result-cta{display:flex;align-items:center;justify-content:center;gap:10px;min-height:40px;margin-top:8px;border:1px solid #8e5aba;border-radius:6px;color:#eee0ff;font-size:12px}
+.k3-compact .k3-result-art{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:linear-gradient(125deg,#26173e,#100d17 55%,#43236a);overflow:hidden}
+.k3-compact .k3-result-art span{font-size:10px;letter-spacing:.18em;color:#caa5f6}
+.k3-compact .k3-result-art strong{font-size:50px;font-style:italic;letter-spacing:-.07em;color:#e4c9ff;text-shadow:0 0 18px #9d48f3}
+.k3-compact .k3-result-summary{display:grid;gap:3px;padding:10px;color:#f7f4fa}
+.k3-compact .k3-result-summary small,.k3-compact .k3-result-summary span{font-size:11px;color:#c6b7d4}
+.k3-compact .k3-empty-preview,.k3-compact .k3-more-count{padding:12px;font-size:12px;color:#d3c5df;margin:0}
+.k3-compact .finder-strip{padding:12px 0 18px}
+.k3-compact .finder-card{display:grid;grid-template-columns:minmax(120px,.7fr) minmax(0,1.3fr);align-items:center;gap:12px;padding:14px}
+.k3-compact .finder-heading{margin:0}.k3-compact .finder-heading>span{display:none}.k3-compact .finder-search{margin:0;min-height:46px}
+.k3-compact .footer{padding:12px 0 18px}.k3-compact .footer__inner>p{font-size:10px}
+.k3-browse .k3-browse-heading{padding-top:28px;padding-bottom:18px}.k3-browse .k3-browse-heading a{color:#d6b6fc}.k3-browse .k3-browse-heading h1{font-size:27px}
+@media(max-width:720px){
+ .k3-compact .media-hero{padding:18px 0 13px}.k3-compact .hero__lead{margin-bottom:6px}
+ .k3-compact .hero-panel{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+ .k3-compact .hero-panel a{min-height:62px;flex-direction:column;justify-content:center;gap:3px;padding:5px 2px;text-align:center}
+ .k3-compact .hero-panel a>span{font-size:10px;line-height:1.2;white-space:nowrap}.k3-compact .hero-panel a small{font-size:7px;letter-spacing:0}.k3-compact .hero-panel a b{display:none}
+ .k3-compact .visual-showcase__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .k3-compact .k3-pop-name{font-size:10px;min-height:38px;padding:6px 5px}.k3-compact .k3-pop-name span{padding-left:4px;border-left-width:2px}
+ .k3-compact .k3-overview{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+ .k3-compact .k3-overview>section{padding:13px 0}
+ .k3-compact .finder-card{grid-template-columns:1fr;gap:7px}.k3-compact .finder-heading strong{font-size:14px}
+ .k3-compact .k3-result-art{height:56px}
+}
