@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=compact-20261126-3" />
+  <link rel="stylesheet" href="./styles.css?v=refined-20261126-4" />
 <script>if(/^(#schedule|#results|#archive|#stores|#coverage|#about|#k3-monthly-announcements|#venueResultsBlock|#fieldReportsBlock)$/.test(location.hash)){location.replace('./browse.html'+location.hash);}</script>
 </head>
 <body class="k3-sport k3-compact">
@@ -57,14 +57,14 @@
 
     <section class="visual-showcase" id="visualShowcase"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker section-kicker--light">FEATURED POP</div><h2>注目の取材POP</h2></div><a class="text-link" href="./browse.html#visualShowcase">すべて見る →</a></div>
-      <p class="k3-gallery-note">企画共通POP｜開催日別の告知ではありません。</p><div class="visual-showcase__grid" id="visualShowcaseGrid"></div>
+      <p class="k3-gallery-note">企画共通POP｜開催日別の告知ではありません。</p><div class="visual-showcase__grid" id="visualShowcaseGrid" aria-label="取材POP" aria-live="polite"><p class="k3-gallery-note">取材POPを読み込み中です。</p></div>
     </div></section>
     <div class="k3-overview">    <section class="section section--tight" id="today"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker">TODAY’S EVENT</div><h2>本日の取材情報</h2></div><span class="date-pill" id="todayDate">--/--</span></div>
       <div class="k3-today-preview" id="todayCard" aria-live="polite"><p>本日の取材情報を読み込み中です。</p></div><a class="k3-today-more" href="./browse.html#schedule">開催予定・告知一覧を見る →</a>
     </div></section>
 
-    <section class="media-featured" aria-label="最新の取材結果と今後の予定"><div class="container">
+    <section class="media-featured" aria-label="最新の取材結果"><div class="container">
       <div class="section-title-row"><div><div class="section-kicker section-kicker--light">LATEST RESULT</div><h2>最新の取材結果</h2></div><a class="text-link" href="./browse.html#results">結果一覧 →</a></div><div class="k3-result-preview" id="featuredResult" aria-live="polite"><p>最新の掲載結果を読み込み中です。</p></div><a class="k3-result-cta" href="./browse.html#results">最新結果を見る <span aria-hidden="true">→</span></a></div></section>
 
 </div>
@@ -87,6 +87,12 @@
   </main>
   <nav class="bottom-nav" aria-label="クイックナビ"><a href="#top" class="is-active"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 3l9 7v10h-6v-6H9v6H3z"/></svg><span>ホーム</span></a><a href="./browse.html#schedule"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 2v6M17 2v6M3 10h18M7 14h2m3 0h2m3 0h2M7 17h2m3 0h2"/></svg><span>予定</span></a><a href="./browse.html#results"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 18v-5h3v5zM11 18V8h3v10zM17 18V3h3v15z"/></svg><span>結果</span></a><a href="./browse.html#stores"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h18l-2-7H5zM5 10v11h14V10M9 21v-7h6v7M2 10l2 3 4-3 4 3 4-3 4 3 2-3"/></svg><span>店舗</span></a><a href="#visualShowcase"><svg class="k3-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 10 6-10 6L2 9zM2 13l10 6 10-6M2 17l10 6 10-6"/></svg><span>POP</span></a></nav>
   <footer class="footer"><div class="container footer__inner"><div><strong>K3 TRACK</strong><p>Unofficial K3 Data Hub</p></div><p>非公式K3に関する公開情報を出典確認のうえ整理しています。公式サイトではありません。<span id="k3-sync-verification-20261113" style="display:block;margin-top:6px;font-size:0.78em;opacity:0.72">サイト配信確認：2026年11月13日｜予定・結果データは変更していません</span></p></div></footer>
-  <script src="./app.js?v=compact-20261126-3"></script>
+  <dialog class="k3-pop-dialog" id="k3PopDialog" aria-labelledby="k3PopTitle">
+    <div class="k3-pop-dialog-head"><strong id="k3PopTitle">取材POP</strong><button type="button" id="k3PopClose" aria-label="POPを閉じる">×</button></div>
+    <div class="k3-pop-dialog-image"><img id="k3PopImage" alt=""></div>
+    <p>企画共通POP｜開催日別の告知ではありません。</p>
+    <a id="k3PopDetail" href="./browse.html#coverage">企画詳細を見る →</a>
+  </dialog>
+  <script src="./app.js?v=refined-20261126-4"></script>
 </body>
 </html>

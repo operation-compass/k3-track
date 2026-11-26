@@ -14,8 +14,8 @@ document.querySelectorAll('#mobileNav a').forEach(link=>{
   });
 });
 
-const d=new Date();
-const md=`${d.getMonth()+1}/${d.getDate()}`;
+const jstDay=(d=new Date())=>new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(d).replace(/\//g,'/');
+const md=jstDay().slice(5).replace(/^0/,'').replace('/0','/');
 const todayDate=document.getElementById('todayDate');
 if(todayDate) todayDate.textContent=md;
 
@@ -54,6 +54,8 @@ function initGlobalSearch(stores=[],coverage=[]){
   };
 
   input.addEventListener('input',draw);
+  input.addEventListener('keydown',e=>{if(e.key==='Escape'){input.value='';draw();}if(e.key==='Enter'&&!box.hidden){const first=box.querySelector('a');if(first){e.preventDefault();first.focus();}}});
+  draw();
   clear?.addEventListener('click',()=>{input.value='';draw();input.focus();});
 }
 
@@ -98,10 +100,30 @@ function renderVisualShowcase(items=[],assetData={}){
   const rows=items.filter(x=>x.status==='実績あり'&&k3ApprovedPop(x.name,assetData));
   el.innerHTML=rows.length?rows.map((x,i)=>{
     const a=k3ApprovedPop(x.name,assetData);
-    return `<article class="k3-pop-card"><a class="k3-pop-art" href="${esc(a.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(x.name)}のPOPを拡大"><img src="${esc(a.image)}" alt="${esc(x.name)}の企画共通POP" width="${Number(a.width)||1122}" height="${Number(a.height)||1402}" loading="${i===0?'eager':'lazy'}" decoding="async"></a><a class="k3-pop-name" href="./coverage.html?name=${encodeURIComponent(x.name)}"><span>${esc(x.name)}</span><b aria-hidden="true">›</b></a></article>`;
+    return `<article class="k3-pop-card"><a class="k3-pop-art" data-pop-name="${esc(x.name)}" href="${esc(a.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(x.name)}のPOPを拡大"><img src="${esc(a.image)}" alt="${esc(x.name)}の企画共通POP" width="${Number(a.width)||1122}" height="${Number(a.height)||1402}" loading="${i===0?'eager':'lazy'}" decoding="async"></a><a class="k3-pop-name" href="./coverage.html?name=${encodeURIComponent(x.name)}"><span>${esc(x.name)}</span><b aria-hidden="true">›</b></a></article>`;
   }).join(''):'<p class="k3-gallery-note">公開可能な企画POPは準備中です。</p>';
 }
 
+function initPopViewer(){
+  const gallery=document.getElementById('visualShowcaseGrid'),dialog=document.getElementById('k3PopDialog');
+  if(!gallery||!dialog||typeof dialog.showModal!=='function')return;
+  const image=document.getElementById('k3PopImage'),title=document.getElementById('k3PopTitle'),detail=document.getElementById('k3PopDetail'),close=document.getElementById('k3PopClose');
+  if(!image||!title||!detail||!close)return;
+  let trigger=null;
+  gallery.addEventListener('click',e=>{
+    const a=e.target.closest('a.k3-pop-art');
+    if(!a||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+    const name=a.dataset.popName,asset=k3ApprovedPop(name);
+    if(!asset||dialog.open)return;
+    e.preventDefault();trigger=a;
+    title.textContent=name;image.src=asset.image;image.alt=name+'の企画共通POP';
+    detail.href='./coverage.html?name='+encodeURIComponent(name);
+    dialog.showModal();close.focus();
+  });
+  close.addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  dialog.addEventListener('close',()=>{image.removeAttribute('src');if(trigger)trigger.focus();});
+}
 function renderToday(items=[]){
   const el=document.getElementById('todayCard');
   if(!el) return;
@@ -321,20 +343,19 @@ function renderCompactHome(todayItems,announcements,results,todayKey){
   if(today)today.innerHTML=rows.length?rows.slice(0,3).map(x=>`<a class="k3-today-row" href="./browse.html#schedule"><span class="k3-row-status ${x.isAnnouncement?'k3-unconfirmed':''}">${x.isAnnouncement?'告知・未確認':'取材予定'}</span><time>${esc(todayKey.slice(5))}</time><span class="k3-row-copy"><strong>${esc(x.event||'K3関連企画')}</strong><small>${esc(x.store)}</small></span><b aria-hidden="true">›</b></a>`).join('')+(rows.length>3?`<p class="k3-more-count">ほか ${rows.length-3} 件</p>`:''):'<p class="k3-empty-preview">本日の公開予定・告知はありません。</p>';
   const result=document.getElementById('featuredResult');
   const r=(results||[])[0];
-  if(result)result.innerHTML=r?`<a class="k3-latest-link" href="./result.html?id=${encodeURIComponent(r.id||r.result_id||'')}"><div class="k3-result-art" aria-hidden="true"><span>RESULT</span><strong>777</strong></div><div class="k3-result-summary"><small>${esc(r.date||'')}｜${r.provisional?'速報・最終未確認':'掲載結果'}</small><strong>${esc(r.store||'取材結果')}</strong><span>${esc(r.event||'K3関連企画')}</span></div></a>`:'<p class="k3-empty-preview">公開できる結果はありません。</p>';
+  if(result)result.innerHTML=r?`<a class="k3-latest-link" href="./result.html?id=${encodeURIComponent(r.id||r.result_id||'')}"><div class="k3-result-art" aria-hidden="true"><span>RESULT ARCHIVE</span><svg viewBox="0 0 96 34" fill="none"><path d="M4 30h88M10 24V16h10v8M30 24V9h10v15M50 24V13h10v11M70 24V3h10v21" stroke="currentColor" stroke-width="2"/></svg></div><div class="k3-result-summary"><small>${esc(r.date||'')}｜${r.provisional?'速報・最終未確認':'掲載結果'}</small><strong>${esc(r.store||'取材結果')}</strong><span>${esc(r.event||'K3関連企画')}</span></div></a>`:'<p class="k3-empty-preview">公開できる結果はありません。</p>';
 }
 
 Promise.all([
   fetch('./data.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('data fetch failed'))),
   fetch('./assets.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({items:[]})),
   fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({})),
-  fetch('./venue-results.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})).catch(()=>({items:[]})),
-  fetch('./field-reports.json',{cache:'no-store'}).then(r=>r.ok?r.json():({reports:[]})).catch(()=>({reports:[]}))
+  document.getElementById('venueResultsList')?fetch('./venue-results.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})).catch(()=>({items:[]})):Promise.resolve({items:[]}),
+  document.getElementById('fieldReportsList')?fetch('./field-reports.json',{cache:'no-store'}).then(r=>r.ok?r.json():({reports:[]})).catch(()=>({reports:[]})):Promise.resolve({reports:[]})
 ]).then(([data,assetData,resultData,venueData,fieldData])=>{
     cachedCoverageAssets=assetData;
     renderStats(data.stats||{});
-    const now=new Date();
-    const todayKey=`${now.getFullYear()}/${String(now.getMonth()+1).padStart(2,'0')}/${String(now.getDate()).padStart(2,'0')}`;
+    const todayKey=jstDay();
     const todayItems=[...(data.today||[]),...(data.schedule||[])].filter((x,i,arr)=>x.date===todayKey && arr.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i);
     const detailedResults=Object.values(resultData||{})
       .filter(x=>x.publish==='公開'||!x.publish)
@@ -347,10 +368,7 @@ Promise.all([
       const label=latest?latest+' が最新の掲載日':'公開結果なし';
       freshness.textContent='掲載結果：'+count+'件｜'+label+'。速報と最終結果は区別し、開催告知・店舗全体の参考値は含みません。';
     }
-    renderFeatured(data,todayKey);
-    renderToday(todayItems);
-    renderAnnouncementToday(data.announcements||[],todayKey,!todayItems.length);
-    renderCompactHome(todayItems,data.announcements||[],data.results||[],todayKey);
+    if(document.body.classList.contains('k3-compact')){renderCompactHome(todayItems,data.announcements||[],data.results||[],todayKey);}else{renderFeatured(data,todayKey);renderToday(todayItems);renderAnnouncementToday(data.announcements||[],todayKey,!todayItems.length);}
     renderSchedule(data.schedule,todayKey);
     renderMonthlyAnnouncements(data.announcements||[],todayKey);
     renderResult(data.results);
@@ -361,16 +379,18 @@ Promise.all([
     initStoreFilters(data.stores||[]);
     renderCoverage(data.coverage||[],assetData);
     renderVisualShowcase(data.coverage||[],assetData);
+    initPopViewer();
     initCoverageFilter(data.coverage||[]);
     initGlobalSearch(data.stores||[],data.coverage||[]);
     initSectionNav();
     const updated=document.getElementById('lastUpdated');
     if(updated&&data.updated_at){
       const t=new Date(data.updated_at);
-      updated.textContent='更新 '+(t.getMonth()+1)+'/'+t.getDate()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');
+      if(!Number.isNaN(t.getTime())) updated.textContent='更新 '+new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(t)+' JST';
       if(Date.now()-t.getTime()>48*60*60*1000){
         updated.classList.add('is-stale');
         updated.title='最終更新から48時間以上経過しています';
+        updated.textContent+='（更新確認中）';
       }
     }
   })
