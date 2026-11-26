@@ -870,3 +870,45 @@ body.k3-detail{background:#f4f2f7;color:#241d2c;padding-bottom:calc(78px + env(s
 .k3-compact .media-hero .eyebrow{color:#d7bcef;letter-spacing:.13em;line-height:1.6}
 .k3-compact .hero__lead{color:#e4dbe9}
 @media(max-width:720px){.k3-compact .media-hero .k3-hero-art--editorial{width:82%;opacity:.84}.k3-compact .media-hero:before{background:linear-gradient(90deg,#0d0b12 0%,rgba(13,11,18,.96) 22%,rgba(13,11,18,.68) 55%,rgba(13,11,18,.2) 100%),linear-gradient(0deg,#0d0b12 1%,rgba(13,11,18,.83) 21%,transparent 55%)}.k3-compact .media-hero .eyebrow{font-size:9px;letter-spacing:.09em}.k3-compact .media-hero h1{font-size:clamp(25px,7.1vw,40px)}}
+
+/* Brand and narrow-screen accessibility polish. No layout or data model change. */
+.k3-sport .brand{flex:0 1 auto;min-width:0;gap:9px;padding-left:12px}
+.k3-sport .brand:before{width:3px;background:#b58be4;transform:skew(-16deg)}
+.k3-sport .brand__mark{font-family:Arial,system-ui,sans-serif;font-weight:900;font-style:italic;letter-spacing:-.085em;line-height:1.05;color:#f4f2f7}
+.k3-sport .brand__text{min-width:0}
+.k3-sport .brand__text strong{font-family:Arial,system-ui,sans-serif;font-weight:700;letter-spacing:.08em;line-height:1.05;color:#f4f2f7}
+.k3-sport .brand__text small{font-weight:500;letter-spacing:.075em;color:#cbb8dc}
+.k3-sport .k3-head-actions{flex:none}
+.k3-sport .bottom-nav{box-shadow:none;padding-bottom:calc(5px + env(safe-area-inset-bottom,0px))}
+.k3-sport .bottom-nav a{min-width:0;border-radius:0;line-height:1.3;border-bottom:2px solid transparent}
+.k3-sport .bottom-nav a.is-active{border-bottom-color:#9660dc}
+.k3-sport .bottom-nav a.is-active::before{display:none}
+.k3-compact .hero-panel a{min-width:0}
+.k3-compact .hero-panel a>span{white-space:normal;overflow-wrap:anywhere;text-align:center}
+.k3-compact .hero-panel a small{line-height:1.25}
+.k3-compact .k3-pop-name span{min-width:0;line-height:1.4}
+.k3-compact .k3-pop-name b{flex:none}
+.k3-compact .finder-search{min-width:0}
+.k3-compact .finder-search input{min-width:0}
+.k3-compact .k3-today-row b{color:#cfb8ed}
+@media(max-width:720px){
+ body.k3-sport{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+ .k3-compact .hero-panel a>span{font-size:12px}
+ .k3-compact .hero-panel a small{font-size:8px}
+ .k3-compact .k3-pop-name{font-size:12px}
+ .k3-compact .k3-gallery-note{font-size:11px}
+ .k3-compact .k3-today-row{grid-template-columns:auto minmax(0,1fr) auto;gap:5px 8px}
+ .k3-compact .k3-today-row .k3-row-status{grid-column:1;grid-row:1}
+ .k3-compact .k3-today-row time{grid-column:1;grid-row:2;font-size:11px;color:#c6b8d2}
+ .k3-compact .k3-today-row .k3-row-copy{grid-column:2;grid-row:1/span 2}
+ .k3-compact .k3-today-row b{grid-column:3;grid-row:1/span 2}
+}
+@media(max-width:359px){
+ .k3-sport .brand{gap:6px;padding-left:8px}
+ .k3-sport .brand__mark{font-size:25px}
+ .k3-sport .brand__text strong{font-size:18px}
+ .k3-sport .brand__text small{font-size:6.5px;letter-spacing:0}
+ .k3-sport .k3-head-actions{gap:0}
+ .k3-compact .hero-panel a>span{font-size:11px}
+ .k3-compact .hero-panel a small{font-size:7px}
+}

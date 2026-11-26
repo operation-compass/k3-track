@@ -16,7 +16,7 @@ export default {
       headers.set("cache-control", "no-cache, no-store, must-revalidate");
       headers.set("pragma", "no-cache");
       headers.set("expires", "0");
-      headers.set("x-k3-build", "editorial-20261126-8");
+      headers.set("x-k3-build", "brand-polish-20261126-9");
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
