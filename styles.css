@@ -861,3 +861,12 @@ body.k3-detail{background:#f4f2f7;color:#241d2c;padding-bottom:calc(78px + env(s
 .k3-detail .detail-visual .k3-detail-pop-caption{margin:0;padding:12px 14px;font-size:12px;color:#ddd0e8;line-height:1.7;border-top:1px solid #4b375f;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px}
 .k3-detail .k3-detail-pop-caption a{display:inline-flex;align-items:center;min-height:44px;color:#e2caff;text-decoration:underline;text-underline-offset:3px}
 .k3-detail .detail-visual>a{display:block}
+
+/* Editorial hero: original vector illustration, no external image request. */
+.k3-compact .media-hero .k3-hero-art--editorial{width:66%;height:100%;right:0;top:0;opacity:.95}
+.k3-compact .media-hero:before{background:linear-gradient(90deg,#0d0b12 3%,rgba(13,11,18,.97) 28%,rgba(13,11,18,.72) 48%,rgba(13,11,18,.12) 83%),linear-gradient(0deg,#0d0b12 0%,rgba(13,11,18,.85) 17%,transparent 48%)}
+.k3-compact .media-hero__inner>div:first-child{position:relative;min-width:0}
+.k3-compact .media-hero h1{color:#f4f2f7;text-shadow:0 2px 12px rgba(13,11,18,.65)}
+.k3-compact .media-hero .eyebrow{color:#d7bcef;letter-spacing:.13em;line-height:1.6}
+.k3-compact .hero__lead{color:#e4dbe9}
+@media(max-width:720px){.k3-compact .media-hero .k3-hero-art--editorial{width:82%;opacity:.84}.k3-compact .media-hero:before{background:linear-gradient(90deg,#0d0b12 0%,rgba(13,11,18,.96) 22%,rgba(13,11,18,.68) 55%,rgba(13,11,18,.2) 100%),linear-gradient(0deg,#0d0b12 1%,rgba(13,11,18,.83) 21%,transparent 55%)}.k3-compact .media-hero .eyebrow{font-size:9px;letter-spacing:.09em}.k3-compact .media-hero h1{font-size:clamp(25px,7.1vw,40px)}}
