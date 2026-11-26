@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-26T10:42:41.473Z",
+  "disclaimer": "K3関連企画日の店舗・取材班の中間ランキング速報。正式な出玉結果ではなく、差枚に読み替えない。",
+  "reports": [
+    {
+      "date": "2026/11/22",
+      "store": "アムズガーデン国場店",
+      "event": "お前の席ねぇから！",
+      "kind": "中間ランキング",
+      "publisher": "アムズこくば師団長（店舗側投稿の転載）",
+      "sourceUrl": "https://teapawt.net/itantencho",
+      "sourceClass": "公開投稿転載・原投稿URL未取得",
+      "status": "最終結果未確認",
+      "note": "投稿に掲載された途中時点の枚数。閉店後の差枚・K3最終結果ではありません。",
+      "noticeId": "ANN-202611-28",
+      "machines": [
+        {
+          "number": "466",
+          "machine": "L甲鉄城のカバネリ 海門決戦",
+          "reportedCount": 6033,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "480",
+          "machine": "L炎炎ノ消防隊2",
+          "reportedCount": 5128,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "494",
+          "machine": "L東京喰種",
+          "reportedCount": 4037,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "460",
+          "machine": "Lガンゲイル・オンライン",
+          "reportedCount": 3838,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "509",
+          "machine": "LアズールレーンTHE ANIMATION",
+          "reportedCount": 3825,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "483",
+          "machine": "Lマギアレコード",
+          "reportedCount": 3527,
+          "unit": "枚（投稿に掲載された中間数値）"
+        }
+      ]
+    },
+    {
+      "date": "2026/11/12",
+      "store": "アムズガーデンうるま店",
+      "event": "お前の席ねぇから！",
+      "kind": "中間ランキング",
+      "publisher": "IYSK取材班（転載）",
+      "sourceUrl": "https://www.sotwe.com/IYSK_KYUSHU",
+      "sourceClass": "公開投稿転載・原投稿URL未取得",
+      "status": "最終結果未確認",
+      "note": "投稿に掲載された途中時点の枚数。閉店後の差枚・K3最終結果ではありません。",
+      "noticeId": "ANN-202611-23",
+      "machines": [
+        {
+          "number": "208",
+          "machine": "L東京喰種",
+          "reportedCount": 7426,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "47",
+          "machine": "Lソードアート・オンラインII",
+          "reportedCount": 6590,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "55",
+          "machine": "L革命機ヴァルヴレイヴ2",
+          "reportedCount": 6426,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "56",
+          "machine": "Lゴジラ対エヴァンゲリオン2",
+          "reportedCount": 4966,
+          "unit": "枚（投稿に掲載された中間数値）"
+        },
+        {
+          "number": "376",
+          "machine": "L Vivy",
+          "reportedCount": 4964,
+          "unit": "枚（投稿に掲載された中間数値）"
+        }
+      ]
+    }
+  ]
+}
