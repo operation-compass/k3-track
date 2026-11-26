@@ -218,6 +218,42 @@
       "publishClass": "参考公開可",
       "note": "11/3の店舗全体営業結果。K3公式結果ではない。",
       "collectedOn": "2026/11/26"
+    },
+    {
+      "id": "VR-20261112-01",
+      "date": "2026/11/12",
+      "store": "アムズガーデンうるま店",
+      "event": "お前の席ねぇから！（同日取材投稿）",
+      "dataScope": "店舗全体",
+      "totalDiff": 649,
+      "avgDiff": 2,
+      "avgGames": 2897,
+      "winRate": null,
+      "unitCount": null,
+      "source": "みんレポ（営業後の台別集計）",
+      "sourceUrl": "https://min-repo.com/3466738/",
+      "verification": "K3公式結果未確認",
+      "publishClass": "参考公開可",
+      "note": "みんレポ11/12日別集計。店全体+649枚/平均+2枚/平均G2,897。中間ランキングとは別の営業後独立集計。取材指定台の最終結果ではない。",
+      "collectedOn": "2026/11/26"
+    },
+    {
+      "id": "VR-20261122-01",
+      "date": "2026/11/22",
+      "store": "アムズガーデン国場店",
+      "event": "お前の席ねぇから！（同日取材投稿）",
+      "dataScope": "店舗全体",
+      "totalDiff": null,
+      "avgDiff": null,
+      "avgGames": 3045,
+      "winRate": null,
+      "unitCount": null,
+      "source": "みんレポ（営業後の台別集計）",
+      "sourceUrl": "https://min-repo.com/3486468/",
+      "verification": "K3公式結果未確認",
+      "publishClass": "参考公開可",
+      "note": "みんレポ11/22営業後の機種別・台別データと平均G3,045を確認。総差枚・平均差枚は日別一覧に数値がないため空欄。11台中間速報の最終値ではない。",
+      "collectedOn": "2026/11/26"
     }
   ]
 }
