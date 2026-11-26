@@ -137,17 +137,17 @@ function renderToday(items=[]){
 }
 
 function renderSchedule(items=[],todayKey=''){
-  items=(items||[]).filter(x=>x.date>todayKey).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.store).localeCompare(String(b.store),'ja'));
+  items=(items||[]).filter((x,i,all)=>x.date>=todayKey&&all.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i).sort((a,b)=>String(a.date).localeCompare(String(b.date))||String(a.store).localeCompare(String(b.store),'ja'));
   const el=document.getElementById('scheduleList');
   if(!el) return;
   if(!items.length){
-    el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>開催確定済みの次回予定はありません</h3><p class="event-name">月間告知は下の「開催確認待ち」に分けて掲載しています</p><p class="event-note">告知と開催確定を区別しています</p></article>';
+    el.innerHTML='<article class="event-card"><div class="event-card__meta"><span class="chip">DATA</span><time>--/--</time></div><h3>本日以降の確認済み予定はありません</h3><p class="event-name">開催告知は確認済み予定と分けて掲載しています</p><p class="event-note">告知と開催確定を区別しています</p></article>';
     return;
   }
-  const visible=items.slice(0,8);
+  const visible=[...items.filter(x=>x.date===todayKey),...items.filter(x=>x.date>todayKey).slice(0,8)];
   const grouped=new Map();
   visible.forEach(x=>{if(!grouped.has(x.date)) grouped.set(x.date,[]);grouped.get(x.date).push(x);});
-  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
+  el.innerHTML=[...grouped.entries()].map(([date,rows],idx)=>`<section class="schedule-day ${idx===0?'schedule-day--next':''}"><div class="schedule-day__head"><div><small>${date===todayKey?'TODAY':idx===0?'NEXT':'UPCOMING'}</small><strong>${esc(rows[0].label||date.replace(/^\d{4}\//,''))}</strong></div><span>${rows.length}件</span></div><div class="schedule-day__list">${rows.map(x=>`<article class="event-card"><div class="event-card__meta"><span class="chip chip--accent">${esc(x.status||'確認済')}</span><time>${esc(x.date||'--/--')}</time></div><h3>${esc(x.store)}</h3><p class="event-name">${esc(x.event||'K3関連企画')}</p>${x.note?`<p class="event-note">${esc(x.note)}</p>`:''}${x.sourceUrl?`<a class="source-link" href="${esc(x.sourceUrl)}" target="_blank" rel="noopener">出典を見る →</a>`:''}</article>`).join('')}</div></section>`).join('');
 }
 
 
@@ -160,14 +160,14 @@ function renderMonthlyAnnouncements(items=[],todayKey=''){
   if(!rows.length) return;
   const upcoming=rows.filter(x=>x.date>=todayKey);
   const past=rows.filter(x=>x.date<todayKey).reverse();
-  const renderOne=x=>'<article class="event-card"><div class="event-card__meta"><span class="chip">告知・最終結果未確認</span><time>'+esc(x.date)+'</time></div>'+
+  const renderOne=x=>'<article class="event-card"><div class="event-card__meta"><span class="chip">告知・開催確認待ち</span><time>'+esc(x.date)+'</time></div>'+
     '<h3>'+esc(x.store)+'</h3><p class="event-name">'+esc(x.event)+'</p>'+
     '<p class="event-note">'+esc(x.note||'日程の事前告知。実施済みを意味しません。')+'</p>'+
     '<a class="source-link" href="'+esc(x.sourceUrl||'#')+'" target="_blank" rel="noopener noreferrer">情報元を見る →</a></article>';
   const wrapper=document.createElement('section');
   wrapper.id='k3-monthly-announcements';
   wrapper.style.cssText='margin-top:24px;padding:16px;border:1px solid rgba(180,149,84,.45);border-radius:14px';
-  wrapper.innerHTML='<h3 style="margin:0 0 6px">11月のK3関連告知（全'+rows.length+'件）</h3>'+
+  wrapper.innerHTML='<h3 style="margin:0 0 6px">K3関連告知（全'+rows.length+'件）</h3>'+
     '<p style="margin:0 0 14px;font-size:.9rem;opacity:.85">告知は「開催実績」や「取材の最終結果」と異なります。日程に出典相違があるものは照合中と明記しています。</p>'+
     '<h4 style="margin:12px 0 6px">本日以降の告知 '+upcoming.length+'件</h4>'+
     (upcoming.length?'<div class="schedule-day__list">'+upcoming.map(renderOne).join('')+'</div>':'<p>今後の公開済み告知はありません。</p>')+
@@ -389,7 +389,7 @@ Promise.all([
       freshness.textContent='掲載結果：'+count+'件｜'+label+'。速報と最終結果は区別し、開催告知・店舗全体の参考値は含みません。';
     }
     if(document.body.classList.contains('k3-compact')){renderCompactHome(todayItems,data.announcements||[],data.results||[],todayKey);}else{renderFeatured(data,todayKey);renderToday(todayItems);renderAnnouncementToday(data.announcements||[],todayKey,!todayItems.length);}
-    renderSchedule(data.schedule,todayKey);
+    renderSchedule([...(data.today||[]),...(data.schedule||[])],todayKey);
     renderMonthlyAnnouncements(data.announcements||[],todayKey);
     renderResult(data.results);
     renderVenueResults(venueData.items||[]);
