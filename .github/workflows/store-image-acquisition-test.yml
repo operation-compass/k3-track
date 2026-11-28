@@ -10,25 +10,22 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
-      - name: Acquire two exact operator image candidates
+      - name: Acquire and verify exact AMS Uruma image candidate
         run: |
           set -euo pipefail
           mkdir -p /tmp/store-image-check
-          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output /tmp/store-image-check/store-dee2.png 'https://diamondgroup.co.jp/wp/wp-content/themes/diamondgroup/images/service/dee02.png'
-          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output /tmp/store-image-check/store-ams-uruma.jpg 'https://ams-groups.co.jp/wp-content/uploads/2025/01/pachinko_uruma.jpg'
-          test "$(file -b --mime-type /tmp/store-image-check/store-dee2.png)" = image/png
-          test "$(file -b --mime-type /tmp/store-image-check/store-ams-uruma.jpg)" = image/jpeg
-          for f in /tmp/store-image-check/*; do
-            test "$(wc -c < "$f")" -le 10000000
-            file "$f"
-            sha256sum "$f"
-          done
-      - name: Save candidates for manual review (not production)
+          f=/tmp/store-image-check/store-ams-uruma.jpg
+          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output "$f" 'https://ams-groups.co.jp/wp-content/uploads/2025/01/pachinko_uruma.jpg'
+          test "$(file -b --mime-type "$f")" = image/jpeg
+          test "$(wc -c < "$f")" -le 10000000
+          file "$f"
+          sha256sum "$f"
+      - name: Save candidate for review (not production)
         uses: actions/upload-artifact@v4
         with:
-          name: k3-dee2-ams-uruma-candidates
-          path: /tmp/store-image-check/*
+          name: k3-ams-uruma-candidate
+          path: /tmp/store-image-check/store-ams-uruma.jpg
           retention-days: 1
           if-no-files-found: error
