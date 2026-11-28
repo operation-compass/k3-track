@@ -1,0 +1,29 @@
+name: Stage approved OPUS store image
+on:
+  push:
+    branches:
+      - test/store-opus-publish-20261128
+    paths:
+      - .github/workflows/stage-opus-store-image.yml
+permissions:
+  contents: write
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify previously reviewed original and stage only on test branch
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/test/store-opus-publish-20261128
+          mkdir -p assets
+          f=assets/store-opus-nobeoka.jpg
+          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output "$f" 'https://www.kanayama-g.co.jp/recruit-lp/assets/images/company/shop-nobeoka.jpg'
+          echo '0c6ffacc4edda3d321133d66bbccae6ed0801c89148191cc43bd7b4d9c1ce5bd  assets/store-opus-nobeoka.jpg' | sha256sum -c
+          test "$(file -b --mime-type "$f")" = image/jpeg
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$f"
+          git commit -m 'Stage reviewed OPUS Nobeoka exterior image'
+          git push origin HEAD:refs/heads/test/store-opus-publish-20261128
