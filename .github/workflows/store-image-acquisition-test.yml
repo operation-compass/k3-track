@@ -12,33 +12,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Acquire and validate nine official photos
+      - name: Acquire two exact operator image candidates
         run: |
           set -euo pipefail
           mkdir -p /tmp/store-image-check
-          while read -r slug path; do
-            out="/tmp/store-image-check/store-towars-${slug}.jpg"
-            curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output "$out" "https://www.towars.com/wp-content/uploads/$path"
-            test "$(file -b --mime-type "$out")" = image/jpeg
-            test "$(wc -c < "$out")" -le 1000000
-            file "$out"
-            sha256sum "$out"
-          done <<'SOURCES'
-          nishihachi 2022/10/hall_list_05-1.jpg
-          yotsuya 2016/08/hall_list_04.jpg
-          sagamihara 2016/08/hall_list_19.jpg
-          asamizodai 2016/08/hall_list_27.jpg
-          kanouya 2022/10/hall_list_16-1.jpg
-          atsugi 2016/08/hall_list_22.jpg
-          yamatofukami 2016/08/hall_list_36.jpg
-          yamato 2016/08/hall_list_25.jpg
-          fujisawa 2016/08/hall_list_30.jpg
-          SOURCES
-          test "$(find /tmp/store-image-check -name '*.jpg' | wc -l)" -eq 9
+          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output /tmp/store-image-check/store-dee2.png 'https://diamondgroup.co.jp/wp/wp-content/themes/diamondgroup/images/service/dee02.png'
+          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output /tmp/store-image-check/store-ams-uruma.jpg 'https://ams-groups.co.jp/wp-content/uploads/2025/01/pachinko_uruma.jpg'
+          test "$(file -b --mime-type /tmp/store-image-check/store-dee2.png)" = image/png
+          test "$(file -b --mime-type /tmp/store-image-check/store-ams-uruma.jpg)" = image/jpeg
+          for f in /tmp/store-image-check/*; do
+            test "$(wc -c < "$f")" -le 10000000
+            file "$f"
+            sha256sum "$f"
+          done
       - name: Save candidates for manual review (not production)
         uses: actions/upload-artifact@v4
         with:
-          name: k3-towars-nine-candidates
-          path: /tmp/store-image-check/*.jpg
+          name: k3-dee2-ams-uruma-candidates
+          path: /tmp/store-image-check/*
           retention-days: 1
           if-no-files-found: error
