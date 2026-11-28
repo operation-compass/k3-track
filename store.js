@@ -1,6 +1,6 @@
 function approvedStoreVisual(name,registry={}){
   const v=registry.stores?.[name];
-  if(!v||!['公開可','公開反映済'].includes(v.status)||v.rights!=='許可済'||!Array.isArray(v.scope)||!v.scope.includes('web')||!['店舗提供','店舗公式','自社撮影','P-WORLD許諾済'].includes(v.sourceType)||!/^https:\/\//i.test(v.sourceUrl||'')||!/^\.\/assets\/store-[a-z0-9_-]+\.(webp|png|jpe?g)$/i.test(v.image||'')||!['外観写真','店舗パース'].includes(v.kind))return null;
+  if(!v||!['公開可','公開反映済'].includes(v.status)||v.rights!=='許可済'||!Array.isArray(v.scope)||!v.scope.includes('web')||!['店舗提供','店舗公式','自社撮影','P-WORLD許諾済'].includes(v.sourceType)||!/^https:\/\//i.test(v.sourceUrl||'')||!/^\.\/assets\/store-[a-z0-9_-]+\.(webp|png|jpe?g)$/i.test(v.image||'')||!['外観写真','店舗パース','店舗外観画像'].includes(v.kind))return null;
   return v;
 }
 const rankOf=v=>{const s=String(v||''); if(/^A[:：]?/.test(s)) return 'A'; if(/^B[:：]?/.test(s)) return 'B'; if(/^C[:：]?/.test(s)) return 'C'; return '';};

@@ -16,7 +16,7 @@ export default {
       headers.set("cache-control", "no-cache, no-store, must-revalidate");
       headers.set("pragma", "no-cache");
       headers.set("expires", "0");
-      headers.set("x-k3-build", "result-access-20261126-10");
+      headers.set("x-k3-build", "store-visual-first-20261128-12");
       return new Response(response.body, {
         status: response.status,
         statusText: response.statusText,

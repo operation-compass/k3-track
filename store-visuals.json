@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-05T03:30:00+09:00",
+  "updated_at": "2026-11-28",
   "policy": "店舗ビジュアルは段階導入。開催頻度・結果データ・代表性を基準に優先順位を決め、権利確認後に公開。",
   "stores": {
     "トワーズ西八店": {
@@ -69,8 +69,21 @@
     },
     "オーパス666延岡店": {
       "priority": "C",
-      "image": "",
-      "status": "素材待ち"
+      "image": "./assets/store-opus-nobeoka.jpg",
+      "status": "公開可",
+      "rights": "許可済",
+      "scope": [
+        "web"
+      ],
+      "sourceType": "店舗公式",
+      "sourceUrl": "https://www.kanayama-g.co.jp/recruit-lp/company/",
+      "credit": "株式会社OPUS 公式採用サイト",
+      "kind": "店舗外観画像",
+      "width": 720,
+      "height": 481,
+      "permissionBasis": "店舗画像掲載了承取得済み（ユーザー申告）。個別書面未照合。",
+      "sourceImageUrl": "https://www.kanayama-g.co.jp/recruit-lp/assets/images/company/shop-nobeoka.jpg",
+      "sha256": "0c6ffacc4edda3d321133d66bbccae6ed0801c89148191cc43bd7b4d9c1ce5bd"
     },
     "Dee2": {
       "priority": "B",
