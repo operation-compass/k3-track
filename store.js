@@ -1,3 +1,8 @@
+function approvedStoreVisual(name,registry={}){
+  const v=registry.stores?.[name];
+  if(!v||!['公開可','公開反映済'].includes(v.status)||v.rights!=='許可済'||!Array.isArray(v.scope)||!v.scope.includes('web')||!['店舗提供','店舗公式','自社撮影','P-WORLD許諾済'].includes(v.sourceType)||!/^https:\/\//i.test(v.sourceUrl||'')||!/^\.\/assets\/store-[a-z0-9_-]+\.(webp|png|jpe?g)$/i.test(v.image||'')||!['外観写真','店舗パース'].includes(v.kind))return null;
+  return v;
+}
 const rankOf=v=>{const s=String(v||''); if(/^A[:：]?/.test(s)) return 'A'; if(/^B[:：]?/.test(s)) return 'B'; if(/^C[:：]?/.test(s)) return 'C'; return '';};
 const trustBadge=v=>{const r=rankOf(v); return r?`<span class="trust-badge trust-${r.toLowerCase()}">${r}</span>`:'';};
 const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -18,11 +23,11 @@ Promise.all([
   document.getElementById('storeTitle').textContent=name||'店舗が見つかりません';
   document.getElementById('storeSub').textContent=store?((store.area||'')+'・'+(store.type||'K3関連')):'確認済みのK3関連履歴';
   const visual=document.getElementById('storeVisual');
-  const vd=(visualData.stores||{})[name]||{};
+  const vd=store?approvedStoreVisual(name,visualData):null;
   if(visual){
-    visual.innerHTML=vd.image
-      ? `<img src="${esc(vd.image)}" alt="${esc(name)} 店舗ビジュアル">`
-      : `<div class="store-visual__fallback"><small>STORE VISUAL</small><strong>${esc(name||'K3 STORE')}</strong><span>確認済み店舗情報</span></div>`;
+    visual.innerHTML=vd
+      ? `<figure class="store-photo-figure"><a href="${esc(vd.image)}" target="_blank" rel="noopener noreferrer"><img src="${esc(vd.image)}" alt="${esc(name)} ${esc(vd.kind)}" width="${Number(vd.width)||1200}" height="${Number(vd.height)||675}" decoding="async"></a><figcaption><span>${esc(vd.kind)}｜${esc(vd.credit||vd.sourceType)}${vd.kind==='店舗パース'?'（完成イメージ）':''}</span><a href="${esc(vd.sourceUrl)}" target="_blank" rel="noopener noreferrer">画像出典 ↗</a></figcaption></figure>`
+      : `<div class="store-visual__fallback"><small>STORE VISUAL</small><strong>${esc(name||'K3 STORE')}</strong><span>店舗画像は準備中です</span></div>`;
   }
   const summary=document.getElementById('storeSummary');
   summary.innerHTML=`<div><small>確認回数</small><strong>${esc(store?.count??items.length)}回</strong></div><div><small>最終実施</small><strong>${esc(store?.last||items[0]?.date||'—')}</strong></div><div><small>エリア</small><strong>${esc(store?.area||items[0]?.area||'—')}</strong></div>`;

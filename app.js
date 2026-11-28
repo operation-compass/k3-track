@@ -20,6 +20,13 @@ const todayDate=document.getElementById('todayDate');
 if(todayDate) todayDate.textContent=md;
 
 let cachedStores=[];
+let cachedStoreVisuals={stores:{}};
+function approvedStoreVisual(name,registry={}){
+  const v=registry.stores?.[name];
+  if(!v||!['公開可','公開反映済'].includes(v.status)||v.rights!=='許可済'||!Array.isArray(v.scope)||!v.scope.includes('web')||!['店舗提供','店舗公式','自社撮影','P-WORLD許諾済'].includes(v.sourceType)||!/^https:\/\//i.test(v.sourceUrl||'')||!/^\.\/assets\/store-[a-z0-9_-]+\.(webp|png|jpe?g)$/i.test(v.image||'')||!['外観写真','店舗パース'].includes(v.kind))return null;
+  return v;
+}
+
 let cachedCoverage=[];
 let cachedCoverageAssets={items:[]};
 
@@ -306,7 +313,7 @@ function renderStores(items=[]){
   el.innerHTML=items
     .slice()
     .sort((a,b)=>(Number(b.count)||0)-(Number(a.count)||0))
-    .map(x=>`<a class="store-row" href="./store.html?name=${encodeURIComponent(x.name)}"><div><h3>${esc(x.name)}</h3><p>${esc(x.area||'')}・${esc(x.type||'K3関連')}</p></div><div class="store-meta"><strong>${esc(x.count||0)}回</strong><small>最終 ${esc(x.last||'—')}</small><small>詳細を見る →</small></div></a>`)
+     .map(x=>{const v=approvedStoreVisual(x.name,cachedStoreVisuals);return `<a class="store-row${v?' store-row--visual':''}" href="./store.html?name=${encodeURIComponent(x.name)}">${v?`<div class="store-row__photo"><img src="${esc(v.image)}" alt="${esc(x.name)} ${esc(v.kind)}" loading="lazy" decoding="async" width="${Number(v.width)||1200}" height="${Number(v.height)||675}" onerror="this.parentElement.hidden=true;this.closest(\'a\').classList.remove(\'store-row--visual\')"></div>`:''}<div class="store-row__copy"><h3>${esc(x.name)}</h3><p>${esc(x.area||'')}・${esc(x.type||'K3関連')}</p></div><div class="store-meta"><strong>${esc(x.count||0)}回</strong><small>最終 ${esc(x.last||'—')}</small><small>詳細を見る →</small></div></a>`;})
     .join('');
 }
 
@@ -371,9 +378,11 @@ Promise.all([
   fetch('./result-data.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({})),
   document.getElementById('venueResultsList')?fetch('./venue-results.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})).catch(()=>({items:[]})):Promise.resolve({items:[]}),
   document.getElementById('fieldReportsList')?fetch('./field-reports.json',{cache:'no-store'}).then(r=>r.ok?r.json():({reports:[]})).catch(()=>({reports:[]})):Promise.resolve({reports:[]}),
-  document.getElementById('machineResultsList')?fetch('./machine-results.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})).catch(()=>({items:[]})):Promise.resolve({items:[]})
-]).then(([data,assetData,resultData,venueData,fieldData,machineData])=>{
+  document.getElementById('machineResultsList')?fetch('./machine-results.json',{cache:'no-store'}).then(r=>r.ok?r.json():({items:[]})).catch(()=>({items:[]})):Promise.resolve({items:[]}),
+  document.getElementById('storeList')?fetch('./store-visuals.json',{cache:'no-store'}).then(r=>r.ok?r.json():({stores:{}})).catch(()=>({stores:{}})):Promise.resolve({stores:{}})
+]).then(([data,assetData,resultData,venueData,fieldData,machineData,storeVisuals])=>{
     cachedCoverageAssets=assetData;
+    cachedStoreVisuals=storeVisuals||{stores:{}};
     renderStats(data.stats||{});
     const todayKey=jstDay();
     const todayItems=[...(data.today||[]),...(data.schedule||[])].filter((x,i,arr)=>x.date===todayKey && arr.findIndex(y=>y.date===x.date&&y.store===x.store&&y.event===x.event)===i);

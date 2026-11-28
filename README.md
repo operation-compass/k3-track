@@ -117,3 +117,13 @@ WorkerはHTML・JSON・CSS・JSなどのキャッシュを無効化する。
 - This commit changes documentation only. No event, result, publication status, UI, or Worker runtime data is modified.
 - Treat this as a GitHub trigger test, NOT proof of a successful Cloudflare deployment or an updated live website.
 - Verify the deployment commit SHA and the production website separately before marking the test as passed.
+
+
+## Store exterior images — publication workflow (2026-11-28)
+
+- Use existing STORE_VISUALS master and store-visuals.json, one representative exterior image per exact public store name. Never promote internal-only stores via the image registry.
+- Store-level approval reported by project owner. Record specific image source and WEB rights before publishing. Prefer store-supplied originals or store-owned official images; P-WORLD redistribution requires its own applicable permission. No hotlinking or generated substitute exterior.
+- Prefer WebP, 1200–1600px width, retain original aspect ratio and signage, aim below 500KB. Use ./assets/store-<stable-slug>.webp. Record exact width and height.
+- Each public entry requires image, status (公開可 or 公開反映済), rights (許可済), scope (["web"]), sourceType (店舗提供 / 店舗公式 / 自社撮影 / P-WORLD許諾済), sourceUrl (HTTPS attribution page), kind (外観写真 / 店舗パース), optional credit, width, height. Keep authorization evidence in private master.
+- Cards and store detail display eligible images only. Unavailable assets retain text-only list or explicit image-pending panel.
+- First batch acquisition candidates: nine TOWARS public entries have official store photo pages linked from https://www.towars.com/hall_list ; Eスペース600空港店 operator index https://e-space.co.jp/list-2/ . Remaining stores use existing official links for requests. Not downloaded or individually verified assets.
