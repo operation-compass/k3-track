@@ -1,4 +1,4 @@
-name: One-time store image acquisition test
+name: Read-only production exterior image verification
 on:
   push:
     branches:
@@ -8,37 +8,36 @@ on:
 permissions:
   contents: read
 jobs:
-  inspect:
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: omega
-            url: https://omega.gr.jp/
-          - name: espace
-            url: https://e-space.co.jp/list-2/
-          - name: stadium
-            url: https://www.yashirogroup.co.jp/shop.html
+    timeout-minutes: 4
     steps:
-      - name: Inspect public operator page for image sources
-        env:
-          PAGE_URL: ${{ matrix.url }}
+      - name: Verify live site, exact registry entry and image bytes
         run: |
           set -euo pipefail
-          curl --fail --location --max-time 20 --proto '=https' --proto-redir '=https' --output /tmp/operator.html "$PAGE_URL"
-          python - <<'PY'
-          from html.parser import HTMLParser
-          from urllib.parse import urljoin
-          import os
-          class Parser(HTMLParser):
-              def handle_starttag(self,tag,attrs):
-                  a=dict(attrs)
-                  if tag=='img':
-                      print('IMAGE',a.get('alt','')[:120],urljoin(os.environ['PAGE_URL'],a.get('src') or a.get('data-src') or ''))
-                  elif tag=='link' and a.get('as')=='image':
-                      print('IMAGE LINK',urljoin(os.environ['PAGE_URL'],a.get('href','')))
-          p=Parser()
-          p.feed(open('/tmp/operator.html',encoding='utf-8',errors='replace').read())
-          PY
+          base=https://k3-track.occompass-info.workers.dev
+          mkdir -p /tmp/k3-live-check
+          cd /tmp/k3-live-check
+          for f in browse.html store.html app.js store.js store-visuals.json assets/store-opus-nobeoka.jpg; do
+            out="${f##*/}"
+            curl --fail --location --max-time 20 --proto '=https' --proto-redir '=https' -D "$out.headers" -o "$out" "$base/$f"
+            echo "$f : $(wc -c < "$out") bytes"
+          done
+          grep -i '^x-k3-build:' store.html.headers
+          grep -F 'store-visual-first-20261128-12' store.html.headers
+          echo '0c6ffacc4edda3d321133d66bbccae6ed0801c89148191cc43bd7b4d9c1ce5bd  store-opus-nobeoka.jpg' | sha256sum -c
+          test "$(file -b --mime-type store-opus-nobeoka.jpg)" = image/jpeg
+          node - <<'JS'
+          const fs=require('fs'), assert=require('assert');
+          const r=JSON.parse(fs.readFileSync('store-visuals.json','utf8'));
+          const name='オーパス666延岡店';
+          for(const path of ['app.js','store.js']){
+            const s=fs.readFileSync(path,'utf8');
+            const gate=new Function(s.match(/function approvedStoreVisual[\s\S]*?\n}/)[0]+';return approvedStoreVisual')();
+            assert.equal(gate(name,r).image,'./assets/store-opus-nobeoka.jpg');
+            assert.deepEqual(Object.keys(r.stores).filter(n=>gate(n,r)),[name]);
+          }
+          assert(fs.readFileSync('browse.html','utf8').includes('app.js?v=store-visual-first-20261128-12'));
+          assert(fs.readFileSync('store.html','utf8').includes('store.js?v=store-visual-first-20261128-12'));
+          console.log('LIVE_REGISTRY_AND_ASSET_OK; browser rendering not tested');
+          JS
