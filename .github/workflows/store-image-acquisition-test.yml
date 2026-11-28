@@ -10,21 +10,35 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
-      - name: Test acquisition of the exact official Nishihachi photo
+      - name: Acquire and validate nine official photos
         run: |
           set -euo pipefail
           mkdir -p /tmp/store-image-check
-          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output /tmp/store-image-check/store-towars-nishihachi.jpg 'https://www.towars.com/wp-content/uploads/2022/10/hall_list_05-1.jpg'
-          test "$(file -b --mime-type /tmp/store-image-check/store-towars-nishihachi.jpg)" = image/jpeg
-          test "$(wc -c < /tmp/store-image-check/store-towars-nishihachi.jpg)" -le 1000000
-          file /tmp/store-image-check/store-towars-nishihachi.jpg
-          sha256sum /tmp/store-image-check/store-towars-nishihachi.jpg
-      - name: Save one candidate for manual review (not production)
+          while read -r slug path; do
+            out="/tmp/store-image-check/store-towars-${slug}.jpg"
+            curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output "$out" "https://www.towars.com/wp-content/uploads/$path"
+            test "$(file -b --mime-type "$out")" = image/jpeg
+            test "$(wc -c < "$out")" -le 1000000
+            file "$out"
+            sha256sum "$out"
+          done <<'SOURCES'
+          nishihachi 2022/10/hall_list_05-1.jpg
+          yotsuya 2016/08/hall_list_04.jpg
+          sagamihara 2016/08/hall_list_19.jpg
+          asamizodai 2016/08/hall_list_27.jpg
+          kanouya 2022/10/hall_list_16-1.jpg
+          atsugi 2016/08/hall_list_22.jpg
+          yamatofukami 2016/08/hall_list_36.jpg
+          yamato 2016/08/hall_list_25.jpg
+          fujisawa 2016/08/hall_list_30.jpg
+          SOURCES
+          test "$(find /tmp/store-image-check -name '*.jpg' | wc -l)" -eq 9
+      - name: Save candidates for manual review (not production)
         uses: actions/upload-artifact@v4
         with:
-          name: k3-nishihachi-candidate
-          path: /tmp/store-image-check/store-towars-nishihachi.jpg
+          name: k3-towars-nine-candidates
+          path: /tmp/store-image-check/*.jpg
           retention-days: 1
           if-no-files-found: error
