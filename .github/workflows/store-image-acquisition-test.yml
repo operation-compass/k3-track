@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - name: Acquire and verify exact AMS Uruma image candidate
+      - name: Acquire OPUS Nobeoka official image candidate
         run: |
           set -euo pipefail
           mkdir -p /tmp/store-image-check
-          f=/tmp/store-image-check/store-ams-uruma.jpg
-          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output "$f" 'https://ams-groups.co.jp/wp-content/uploads/2025/01/pachinko_uruma.jpg'
+          f=/tmp/store-image-check/store-opus-nobeoka.jpg
+          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output "$f" 'https://www.kanayama-g.co.jp/recruit-lp/assets/images/company/shop-nobeoka.jpg'
           test "$(file -b --mime-type "$f")" = image/jpeg
           test "$(wc -c < "$f")" -le 10000000
           file "$f"
@@ -25,7 +25,7 @@ jobs:
       - name: Save candidate for review (not production)
         uses: actions/upload-artifact@v4
         with:
-          name: k3-ams-uruma-candidate
-          path: /tmp/store-image-check/store-ams-uruma.jpg
+          name: k3-opus-nobeoka-candidate
+          path: /tmp/store-image-check/store-opus-nobeoka.jpg
           retention-days: 1
           if-no-files-found: error
