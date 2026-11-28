@@ -1,0 +1,30 @@
+name: One-time store image acquisition test
+on:
+  push:
+    branches:
+      - test/store-image-acquisition-20261128
+    paths:
+      - .github/workflows/store-image-acquisition-test.yml
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Test acquisition of the exact official Nishihachi photo
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/store-image-check
+          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output /tmp/store-image-check/store-towars-nishihachi.jpg 'https://www.towars.com/wp-content/uploads/2022/10/hall_list_05-1.jpg'
+          test "$(file -b --mime-type /tmp/store-image-check/store-towars-nishihachi.jpg)" = image/jpeg
+          test "$(wc -c < /tmp/store-image-check/store-towars-nishihachi.jpg)" -le 1000000
+          file /tmp/store-image-check/store-towars-nishihachi.jpg
+          sha256sum /tmp/store-image-check/store-towars-nishihachi.jpg
+      - name: Save one candidate for manual review (not production)
+        uses: actions/upload-artifact@v4
+        with:
+          name: k3-nishihachi-candidate
+          path: /tmp/store-image-check/store-towars-nishihachi.jpg
+          retention-days: 1
+          if-no-files-found: error
