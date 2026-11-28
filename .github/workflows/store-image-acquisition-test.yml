@@ -8,24 +8,37 @@ on:
 permissions:
   contents: read
 jobs:
-  test:
+  inspect:
     runs-on: ubuntu-latest
     timeout-minutes: 3
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: omega
+            url: https://omega.gr.jp/
+          - name: espace
+            url: https://e-space.co.jp/list-2/
+          - name: stadium
+            url: https://www.yashirogroup.co.jp/shop.html
     steps:
-      - name: Acquire OPUS Nobeoka official image candidate
+      - name: Inspect public operator page for image sources
+        env:
+          PAGE_URL: ${{ matrix.url }}
         run: |
           set -euo pipefail
-          mkdir -p /tmp/store-image-check
-          f=/tmp/store-image-check/store-opus-nobeoka.jpg
-          curl --fail --location --max-time 30 --proto '=https' --proto-redir '=https' --output "$f" 'https://www.kanayama-g.co.jp/recruit-lp/assets/images/company/shop-nobeoka.jpg'
-          test "$(file -b --mime-type "$f")" = image/jpeg
-          test "$(wc -c < "$f")" -le 10000000
-          file "$f"
-          sha256sum "$f"
-      - name: Save candidate for review (not production)
-        uses: actions/upload-artifact@v4
-        with:
-          name: k3-opus-nobeoka-candidate
-          path: /tmp/store-image-check/store-opus-nobeoka.jpg
-          retention-days: 1
-          if-no-files-found: error
+          curl --fail --location --max-time 20 --proto '=https' --proto-redir '=https' --output /tmp/operator.html "$PAGE_URL"
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from urllib.parse import urljoin
+          import os
+          class Parser(HTMLParser):
+              def handle_starttag(self,tag,attrs):
+                  a=dict(attrs)
+                  if tag=='img':
+                      print('IMAGE',a.get('alt','')[:120],urljoin(os.environ['PAGE_URL'],a.get('src') or a.get('data-src') or ''))
+                  elif tag=='link' and a.get('as')=='image':
+                      print('IMAGE LINK',urljoin(os.environ['PAGE_URL'],a.get('href','')))
+          p=Parser()
+          p.feed(open('/tmp/operator.html',encoding='utf-8',errors='replace').read())
+          PY
